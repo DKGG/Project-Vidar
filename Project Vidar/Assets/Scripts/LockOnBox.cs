@@ -108,7 +108,7 @@ public class LockOnBox : MonoBehaviour
         
         if (isLocked == true && isInside)
         {
-            player.transform.parent = transform;
+            /*player.*/transform.parent = transform;
             //não desligar o código aqui desligar no player
             playerController.CheckScripts(false, "Movement");
             playerController.CheckScripts(false, "playerJump");

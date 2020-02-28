@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
-{
+{    
     public bool CheckInputE()
     {
         return Input.GetKeyDown(KeyCode.E);
