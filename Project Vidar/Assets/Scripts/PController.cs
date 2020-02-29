@@ -12,7 +12,6 @@ public class PController : MonoBehaviour
 
     bool isInside;
 
-    //Continuar o trabalho a partir do momento de verificar onde o player se lockou e mandar ele pra respectiva parte do meio da face
 
     void Start()
     {
@@ -22,18 +21,13 @@ public class PController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(status);
-
         #region interacaoCaixas
 
         if (caixa != null)
         {
             if (isInside == true && inputController.CheckInputE() == true && status == "quo")
             {
-                //caixa.GetComponent<LockB>().locka = !caixa.GetComponent<LockB>().locka;
                 caixa.GetComponent<LockB>().locka = true;
-               
-               
             }
             else if (isInside == true && inputController.CheckInputE() == true && status == "locked")
             {
@@ -48,16 +42,21 @@ public class PController : MonoBehaviour
             if (caixa.GetComponent<LockB>().islocked == true)
             {
                 status = "locked";
-                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5);
+                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5);                
+                caixa.GetComponent<ThrowContinuousBox>().lockSide = caixa.GetComponent<LockB>().side;
             }
             else
             {
                 status = "quo";
             }
+
+            if (status == "locked" && inputController.CheckInputQ())
+            {
+                caixa.GetComponent<ThrowContinuousBox>().push = true;
+            }
         }
         #endregion
         PlayerAction(status);
-
     }
 
     public void PlayerAction(string status)

@@ -26,6 +26,8 @@ public class LockB : MonoBehaviour
     bool noOeste;
     bool noLeste;
 
+    public string side = "";
+
     public LayerMask Player;
 
     Rigidbody rb;
@@ -43,6 +45,7 @@ public class LockB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
         noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
@@ -53,19 +56,23 @@ public class LockB : MonoBehaviour
         {
             if (noNorte == true)
             {
-                posicao = FaceNorte;
+                posicao = FaceNorte;                
+                side = "norte";
             }
             if (noSul == true)
             {
                 posicao = FaceSul;
+                side = "sul";
             }
             if (noOeste == true)
             {
                 posicao = FaceOeste;
+                side = "oeste";
             }
             if (noLeste == true)
             {
                 posicao = FaceLeste;
+                side = "leste";
             }
 
             Debug.Log("PodeLockar");

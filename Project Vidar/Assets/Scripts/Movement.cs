@@ -10,10 +10,12 @@ public class Movement : MonoBehaviour
     Vector2 input;
     float angle;
     Quaternion targetRotation;
-    Transform cam;     
+    Transform cam;
+    InputController inputController;
     private void Start()
     {
-        cam = Camera.main.transform;       
+        cam = Camera.main.transform;
+        inputController = GetComponent<InputController>();
     }
 
     private void Update()
@@ -43,8 +45,8 @@ public class Movement : MonoBehaviour
 
     private void getInput()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
+        input.x = inputController.CheckInputHorizontal();
+        input.y = inputController.CheckInputVertical();
     }
 
     void calculateDirection()

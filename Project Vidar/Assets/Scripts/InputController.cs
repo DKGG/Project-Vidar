@@ -13,4 +13,13 @@ public class InputController : MonoBehaviour
     {
         return Input.GetKey(KeyCode.Q);
     }
+    public float CheckInputHorizontal()
+    {
+        return Input.GetAxisRaw("Horizontal");         
+    }
+
+    public float CheckInputVertical()
+    {
+        return Input.GetAxisRaw("Vertical");
+    }
 }
