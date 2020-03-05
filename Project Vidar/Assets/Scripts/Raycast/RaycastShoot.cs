@@ -16,6 +16,8 @@ public class RaycastShoot : MonoBehaviour
     private LineRenderer laserLine;
     private float nextFire;
 
+    private Vector3 freezeSave;
+
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
@@ -44,18 +46,22 @@ public class RaycastShoot : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
 
-                ShootableBox health = hit.collider.GetComponent<ShootableBox>();
-
-                if (health != null)
-                {
-                    health.Damage(gunDamage);
-                }
+                FreezableBox box = hit.collider.GetComponent<FreezableBox>();
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForce(-hit.normal * hitForce);
-
-                    // hit.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+                    if (box.isFrozen)
+                    {
+                        box.isFrozen = false;
+                        box.rb.constraints = RigidbodyConstraints.None;
+                        box.rb.velocity = freezeSave;
+                    }
+                    else
+                    {
+                        box.isFrozen = true;
+                        freezeSave = box.rb.velocity;
+                        box.rb.constraints = RigidbodyConstraints.FreezeAll;
+                    }
                 }
             }
             else
