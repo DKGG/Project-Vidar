@@ -10,7 +10,7 @@ public class RaycastShoot : MonoBehaviour
     public float hitForce = 100f;
     public Transform gunEnd;
 
-    private Camera fpsCam;
+    public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
     private AudioSource gunAudio;
     private LineRenderer laserLine;
@@ -20,13 +20,11 @@ public class RaycastShoot : MonoBehaviour
     {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
-        fpsCam = GetComponentInParent<Camera>();
     }
 
     void Update()
     {
-        
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetKeyDown("e") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
 
@@ -42,7 +40,6 @@ public class RaycastShoot : MonoBehaviour
 
             laserLine.SetPosition(0, gunEnd.position);
 
-            /*
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
             {
                 laserLine.SetPosition(1, hit.point);
@@ -57,13 +54,14 @@ public class RaycastShoot : MonoBehaviour
                 if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * hitForce);
+
+                    // hit.rigidbody.constraints = RigidbodyConstraints.FreezeAll;
                 }
             }
             else
             {
                 laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             }
-            */
         }
 
     }
