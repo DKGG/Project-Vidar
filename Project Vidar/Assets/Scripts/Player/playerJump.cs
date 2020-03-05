@@ -5,28 +5,50 @@ using UnityEngine;
 public class playerJump : MonoBehaviour
 {
     Rigidbody rb;
-    bool inputJump;
-    bool verificaChao;
-    float jumpForce = 5f;
-    float contaPulo = 0;
+    bool isGrounded = true;
+    bool doubleJump = true;
+    public float jumpForce = 5f;
 
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //verificaChao = 
-        //Debug.Log(contaPulo);
-        inputJump = Input.GetKeyDown(KeyCode.Space);
-        if (inputJump/* && contaPulo < 2*/ ){
+        GroundCheck();
 
-            rb.velocity += Vector3.up * Mathf.Sqrt(jumpForce * 1f * -Physics.gravity.y);
-            //rb.velocity += Physics.gravity.y;
-            contaPulo++; 
-        }       
-        
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (isGrounded)
+            {
+                Jump();
+            }
+            else if (doubleJump)
+            {
+                doubleJump = false;
+                Jump();
+            }
+        }
+    }
+
+    private void GroundCheck()
+    {
+        Vector3 down = transform.TransformDirection(Vector3.down);
+
+        if (Physics.Raycast(transform.position, down, 2f))
+        {
+            isGrounded = true;
+            doubleJump = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = Vector3.up * Mathf.Sqrt(jumpForce * -1f * Physics.gravity.y);
     }
 }

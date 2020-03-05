@@ -10,23 +10,23 @@ public class RaycastShoot : MonoBehaviour
     public float hitForce = 100f;
     public Transform gunEnd;
 
-    private Camera fpsCam;
+    public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
     private AudioSource gunAudio;
     private LineRenderer laserLine;
     private float nextFire;
 
+    private Vector3 freezeSave;
+
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
-        fpsCam = GetComponentInParent<Camera>();
     }
 
     void Update()
     {
-        
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetKeyDown("e") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
 
@@ -42,28 +42,32 @@ public class RaycastShoot : MonoBehaviour
 
             laserLine.SetPosition(0, gunEnd.position);
 
-            /*
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, weaponRange))
             {
                 laserLine.SetPosition(1, hit.point);
 
-                ShootableBox health = hit.collider.GetComponent<ShootableBox>();
-
-                if (health != null)
-                {
-                    health.Damage(gunDamage);
-                }
+                FreezableBox box = hit.collider.GetComponent<FreezableBox>();
 
                 if (hit.rigidbody != null)
                 {
-                    hit.rigidbody.AddForce(-hit.normal * hitForce);
+                    if (box.isFrozen)
+                    {
+                        box.isFrozen = false;
+                        box.rb.constraints = RigidbodyConstraints.None;
+                        box.rb.velocity = freezeSave;
+                    }
+                    else
+                    {
+                        box.isFrozen = true;
+                        freezeSave = box.rb.velocity;
+                        box.rb.constraints = RigidbodyConstraints.FreezeAll;
+                    }
                 }
             }
             else
             {
                 laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
             }
-            */
         }
 
     }
