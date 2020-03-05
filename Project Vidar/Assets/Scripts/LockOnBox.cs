@@ -66,11 +66,11 @@ public class LockOnBox : MonoBehaviour
         #region controlador lock
         //ele não tem que verificar se os inputs foram apertados aqui tem que ser no playerController
         //ele só tem que saber que ele tem que lockar
-        if (inputController.CheckInputE() && !isLocked && isInside)
+        if (inputController.GetKeyE() && !isLocked && isInside)
         {
             isLocked = true;
         }
-        else if (inputController.CheckInputE() && isLocked == true && isInside)
+        else if (inputController.GetKeyE() && isLocked == true && isInside)
         {
             isLocked = false;
         }
@@ -140,14 +140,14 @@ public class LockOnBox : MonoBehaviour
 
             #region
             //ele não tem que verificar se os inputs foram apertados aqui tem que ser no playerController
-            if (inputController.CheckInputQ())
+            if (inputController.GetKeyQ())
             {
                 // forceCounter += 0.1f;
                 readyToPush = true;
                 // streghtForce += 100;
 
             }
-            if (!inputController.CheckInputQ() && readyToPush == true)
+            if (!inputController.GetKeyQ() && readyToPush == true)
             {
                 //transform.DetachChildren();
                 playerAsChild.parent = null;

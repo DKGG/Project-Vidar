@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
-{    
-    public bool CheckInputE()
+{
+    public bool GetKeyLeftShift()
+    {
+        return Input.GetKeyDown(KeyCode.LeftShift);
+    }
+
+    public bool GetKeyE()
     {
         return Input.GetKeyDown(KeyCode.E);
     }
 
-    public bool CheckInputQ()
+    public bool GetKeyQ()
     {
-        return Input.GetKey(KeyCode.Q);
+        return Input.GetKeyDown(KeyCode.Q);
     }
     public float CheckInputHorizontal()
     {

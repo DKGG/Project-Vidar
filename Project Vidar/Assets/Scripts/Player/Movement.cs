@@ -7,11 +7,13 @@ public class Movement : MonoBehaviour
 {
     public float velocity = 5f;
     public float turnSpeed = 100f;
+
     Vector2 input;
     float angle;
     Quaternion targetRotation;
     Transform cam;
     InputController inputController;
+
     private void Start()
     {
         cam = Camera.main.transform;

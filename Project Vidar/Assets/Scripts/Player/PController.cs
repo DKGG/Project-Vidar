@@ -27,11 +27,11 @@ public class PController : MonoBehaviour
 
         if (caixa != null)
         {
-            if (isInside == true && inputController.CheckInputE() == true && status == "quo")
+            if (isInside == true && inputController.GetKeyE() == true && status == "quo")
             {
                 caixa.GetComponent<LockB>().locka = true;
             }
-            else if (isInside == true && inputController.CheckInputE() == true && status == "locked")
+            else if (isInside == true && inputController.GetKeyE() == true && status == "locked")
             {
                 caixa.GetComponent<LockB>().locka = false;
             }
@@ -52,7 +52,7 @@ public class PController : MonoBehaviour
                 status = "quo";
             }
 
-            if (status == "locked" && inputController.CheckInputQ())
+            if (status == "locked" && inputController.GetKeyQ())
             {
                 //rb.velocity = Vector3.zero;
                 caixa.GetComponent<LockB>().locka = false;
