@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class ThrowContinuousBox : MonoBehaviour
 {
+    enum directionForce
+    {
+        up,
+        normal,
+    }
+
     public Transform checaChaoCenter;
     public Transform checaChao;
+
+    [SerializeField] directionForce dirf;
 
     bool readyToPush = false;
     bool colidiu = false;
@@ -26,50 +34,53 @@ public class ThrowContinuousBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Push);
+        //Debug.Log("Push é: " + push);
+        //Debug.Log(colidiu);
         //Debug.Log(lockSide);
         isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
+
         if (push == true && colidiu == false)
         {
-            //switch (lockSide)
-            //{
-            //    case "norte":
-            //        rb.velocity = transform.forward * 5000 * Time.deltaTime;
-            //        break;
-            //    case "sul":
-            //        rb.velocity = -transform.forward * 5000 * Time.deltaTime;
-            //        break;
-            //    case "oeste":
-            //        rb.velocity = transform.right * 5000 * Time.deltaTime;
-            //        break;
-            //    case "leste":
-            //        rb.velocity = -transform.right * 5000 * Time.deltaTime;
-            //        break;
-            //    case "":
-            //        break;
-            //    default:
-            //        break;
+            if (dirf.Equals(directionForce.normal))
+            {
+                switch (lockSide)
+                {
+                    case "norte":
+                        rb.constraints = RigidbodyConstraints.None;
+                        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        rb.velocity = transform.right * 5000 * Time.deltaTime;
+                        break;
+                    case "sul":
+                        rb.constraints = RigidbodyConstraints.None;
+                        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        rb.velocity = -transform.right * 5000 * Time.deltaTime;
+                        break;
+                    case "oeste":
+                        rb.constraints = RigidbodyConstraints.None;
+                        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        rb.velocity = -transform.forward * 5000 * Time.deltaTime;
+                        break;
+                    case "leste":
+                        rb.constraints = RigidbodyConstraints.None;
+                        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        rb.velocity = transform.forward * 5000 * Time.deltaTime;
+                        break;
+                    case "":
+                        break;
+                    default:
+                        break;
 
-            //}
+                }
+            }
 
-            if(lockSide == "norte")
+            if (dirf.Equals(directionForce.up))
             {
-                rb.velocity = transform.forward * 5000 * Time.deltaTime;
-            }
-            else if(lockSide == "sul")
-            {
-                rb.velocity = -transform.forward * 5000 * Time.deltaTime;
-            }
-            else if (lockSide == "oeste")
-            {
-                rb.velocity = transform.right * 5000 * Time.deltaTime;
-            }
-            else
-            {
-                rb.velocity = -transform.right * 5000 * Time.deltaTime;
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.velocity = transform.up * 5000 * Time.deltaTime;
             }
         }
-        if(colidiu == true)
+        if (colidiu == true)
         {
             if (Mathf.Abs(rb.velocity.x) < 1 || Mathf.Abs(rb.velocity.y) < 1 || Mathf.Abs(rb.velocity.z) < 1)
             {
@@ -78,6 +89,7 @@ public class ThrowContinuousBox : MonoBehaviour
                 if (Mathf.Abs(rb.velocity.x) < 1 && Mathf.Abs(rb.velocity.y) < 1 && Mathf.Abs(rb.velocity.z) < 1)
                 {
                     rb.velocity = Vector3.zero;
+                    push = false;
                 }
 
             }
@@ -89,7 +101,7 @@ public class ThrowContinuousBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("paraBloco"))
         {
-            colidiu = true;            
+            colidiu = true;
         }
     }
 

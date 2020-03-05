@@ -7,6 +7,7 @@ public class PController : MonoBehaviour
     string status = "quo";
 
     GameObject caixa = null;
+    Rigidbody rb;
 
     InputController inputController;
 
@@ -16,6 +17,7 @@ public class PController : MonoBehaviour
     void Start()
     {
         inputController = GetComponent<InputController>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -42,7 +44,7 @@ public class PController : MonoBehaviour
             if (caixa.GetComponent<LockB>().islocked == true)
             {
                 status = "locked";
-                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5);                
+                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5f);                
                 caixa.GetComponent<ThrowContinuousBox>().lockSide = caixa.GetComponent<LockB>().side;
             }
             else
@@ -52,7 +54,10 @@ public class PController : MonoBehaviour
 
             if (status == "locked" && inputController.CheckInputQ())
             {
-                caixa.GetComponent<ThrowContinuousBox>().push = true;
+                //rb.velocity = Vector3.zero;
+                caixa.GetComponent<LockB>().locka = false;
+                caixa.GetComponent<ThrowContinuousBox>().push = true;                
+                
             }
         }
         #endregion

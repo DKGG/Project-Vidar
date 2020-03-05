@@ -54,28 +54,33 @@ public class LockB : MonoBehaviour
 
         if (locka == true && islocked == false)
         {
+
             if (noNorte == true)
             {
                 posicao = FaceNorte;                
                 side = "norte";
+                Debug.Log("" + side);
             }
             if (noSul == true)
             {
                 posicao = FaceSul;
                 side = "sul";
+                Debug.Log("" + side);
             }
             if (noOeste == true)
             {
                 posicao = FaceOeste;
                 side = "oeste";
+                Debug.Log("" + side);
             }
             if (noLeste == true)
             {
                 posicao = FaceLeste;
                 side = "leste";
+                Debug.Log(""+side);
             }
 
-            Debug.Log("PodeLockar");
+            
             playerTransform.transform.parent = transform;
             boxMovement.enabled = true;
             islocked = true;
