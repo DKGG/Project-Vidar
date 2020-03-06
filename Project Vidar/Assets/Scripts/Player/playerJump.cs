@@ -5,12 +5,13 @@ using UnityEngine;
 public class playerJump : MonoBehaviour
 {
     Rigidbody rb;
-    bool isGrounded = true;
     bool doubleJump = true;
     public float jumpForce = 5f;
+    InputController inputController;
 
     private void Start()
     {
+        inputController = GetComponent<InputController>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -18,9 +19,9 @@ public class playerJump : MonoBehaviour
     {
         GroundCheck();
 
-        if (Input.GetButtonDown("Jump"))
+        if (inputController.GetButtonJump())
         {
-            if (isGrounded)
+            if (inputController.isGrounded)
             {
                 Jump();
             }
@@ -38,12 +39,12 @@ public class playerJump : MonoBehaviour
 
         if (Physics.Raycast(transform.position, down, 2f))
         {
-            isGrounded = true;
+            inputController.isGrounded = true;
             doubleJump = true;
         }
         else
         {
-            isGrounded = false;
+            inputController.isGrounded = false;
         }
     }
 
