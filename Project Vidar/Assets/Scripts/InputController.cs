@@ -22,4 +22,9 @@ public class InputController : MonoBehaviour
     {
         return Input.GetAxisRaw("Vertical");
     }
+
+    //public float CheckHoldQ()
+    //{
+    //    return
+    //}
 }

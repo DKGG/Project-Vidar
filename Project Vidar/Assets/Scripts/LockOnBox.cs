@@ -105,10 +105,11 @@ public class LockOnBox : MonoBehaviour
             }
         }
 
-        
+
         if (isLocked == true && isInside)
         {
-            /*player.*/transform.parent = transform;
+            /*player.*/
+            transform.parent = transform;
             //não desligar o código aqui desligar no player
             playerController.CheckScripts(false, "Movement");
             playerController.CheckScripts(false, "playerJump");
@@ -118,7 +119,7 @@ public class LockOnBox : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezeRotation;
             if (noNorte == true)
             {
-                playerAsChild.transform.position = FaceNorte.position;                
+                playerAsChild.transform.position = FaceNorte.position;
                 //rb.velocity = Vector3.zero;
             }
             if (noSul == true)
@@ -217,7 +218,6 @@ public class LockOnBox : MonoBehaviour
                 break;
 
         }
-
         yield return new WaitForSeconds(0.6f);
         readyToPush = false;
         isLocked = false;
