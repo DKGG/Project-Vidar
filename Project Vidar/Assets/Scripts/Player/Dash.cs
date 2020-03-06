@@ -12,9 +12,7 @@ public class Dash : MonoBehaviour
 
     InputController inputController;
     Rigidbody rb;
-    WaitForSeconds dashDuration = new WaitForSeconds(.5f);
-
-    bool isDashing = false;
+    WaitForSeconds dashDuration = new WaitForSeconds(1.0f);
 
     void Start()
     {
@@ -24,7 +22,7 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        if (inputController.GetKeyLeftShift() && !isDashing)
+        if (inputController.GetKeyLeftShift() && !inputController.isDashing)
         {
             dashVariables();
 
@@ -34,15 +32,15 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashReset()
     {
+        inputController.isDashing = true;
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
-        isDashing = false;
+        inputController.isDashing = false;
         rb.drag = 0;
     }
 
     private void dashVariables()
     {
-        isDashing = true;
         rb.drag = dragIntensity;
 
         dashDirection = new Vector3(
@@ -51,13 +49,9 @@ public class Dash : MonoBehaviour
             Mathf.Clamp(Mathf.Log(1f / (Time.deltaTime * rb.drag)) / Time.deltaTime, 0, 100)      // Z
         );
 
-        Debug.Log(dashDirection);
-
         dashVelocity = Vector3.Scale(
             transform.forward,              // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
-
-        Debug.Log(dashVelocity);
     }
 }

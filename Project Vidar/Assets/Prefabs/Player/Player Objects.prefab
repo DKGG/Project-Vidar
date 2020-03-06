@@ -329,7 +329,7 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 0.15178537, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.023584902, b: 0.09110305, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 5
@@ -369,7 +369,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 714578084001642774}
   - component: {fileID: 902953758047320398}
   - component: {fileID: 902953758047320397}
+  - component: {fileID: 705767262}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -727,6 +728,20 @@ MonoBehaviour:
   hitForce: 360
   gunEnd: {fileID: 4787882802268091007}
   fpsCam: {fileID: 162486998418623494}
+--- !u!114 &705767262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064726072221488955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f5c73b03ef52a438024e547d46cb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashDistance: 0.9
+  dragIntensity: 8
 --- !u!1 &2290456554499534623
 GameObject:
   m_ObjectHideFlags: 0

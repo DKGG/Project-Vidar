@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    public bool isGrounded = true;
+    public bool isDashing = false;
+
+    public bool GetButtonJump()
+    {
+        return Input.GetButtonDown("Jump");
+    }
+
     public bool GetKeyLeftShift()
     {
         return Input.GetKeyDown(KeyCode.LeftShift);
