@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PController : MonoBehaviour
 {
-    string status = "quo";
+    string status = "idle";
 
     bool lockedInContinuous;
     bool lockedInSimple;
     bool isInside;
-    bool throwing;
+    bool wantToThrow = false;
 
     float strength;
 
@@ -36,7 +36,7 @@ public class PController : MonoBehaviour
 
         if (caixa != null)
         {
-            if (isInside == true && inputController.GetKeyE() == true && status == "quo")
+            if (isInside == true && inputController.GetKeyE() == true && status == "idle")
             {
                 caixa.GetComponent<LockB>().locka = true;
             }
@@ -66,37 +66,50 @@ public class PController : MonoBehaviour
             }
             else
             {
-                status = "quo";
+                status = "idle";
             }
 
             if (status == "locked" && inputController.GetKeyQ())
             {
-                //Debug.Log("Entrei no  antes do if do que eu achei que n ia funcionar");
-                throwing = true;
-                //rb.velocity = Vector3.zero;
-                strength += 1f;
-                if (strength > 30f)
-                {
-                    strength = 30f;
-                }
+                //Debug.Log("Entrei no  antes do if do que eu achei que n ia funcionar");                
+                //rb.velocity = Vector3.zero;               
                 caixa.GetComponent<LockB>().locka = false;
                 if (lockedInContinuous)
                 {
                     caixa.GetComponent<ThrowContinuousBox>().push = true;
                 }
-                if (lockedInSimple)
-                {
-
-                }
+                
             }
-            if (status == "locked" && throwing == true)
+
+            if (inputController.GetKeyQHeld() == true)
             {
-                Debug.Log("Entrei no if que eu achei que n ia funcionar");
-                caixa.GetComponent<ThrowBox>().strength = strength * 10f;
-                caixa.GetComponent<ThrowBox>().push = true;
-                throwing = false;
-
+                strength += 1f;
+                if (strength > 15f)
+                {
+                    strength = 15f;
+                }
+                wantToThrow = true;
             }
+            if(inputController.GetKeyQHeld() == false && wantToThrow == true)
+            {
+                caixa.GetComponent<ThrowBox>().strength = strength;
+                caixa.GetComponent<ThrowBox>().push = true;
+                wantToThrow = false;
+            }
+
+            //if (!inputController.GetKeyQ())
+            //{
+            //    Debug.Log("aquele if do get keyQ" + inputController.GetKeyQ());
+            //    throwing = true;
+            //}
+            //if (status == "locked" && throwing == true)
+            //{
+            //    Debug.Log("Entrei no if que eu achei que n ia funcionar");
+            //    caixa.GetComponent<ThrowBox>().strength = strength * 10f;
+            //    caixa.GetComponent<ThrowBox>().push = true;
+            //    throwing = false;
+
+            //}
         }
         #endregion
         PlayerAction(status);
@@ -106,7 +119,7 @@ public class PController : MonoBehaviour
     {
         switch (status)
         {
-            case "quo":
+            case "idle":
                 GetComponent<Movement>().enabled = true;
                 GetComponent<playerJump>().enabled = true;
                 break;
