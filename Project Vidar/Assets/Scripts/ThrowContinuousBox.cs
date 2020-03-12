@@ -14,7 +14,8 @@ public class ThrowContinuousBox : MonoBehaviour
     public Transform checaChao;
 
     [SerializeField] directionForce dirf;
-    
+
+    bool readyToPush = false;
     bool colidiu = false;
     bool isGrounded;
     public bool push = false;
