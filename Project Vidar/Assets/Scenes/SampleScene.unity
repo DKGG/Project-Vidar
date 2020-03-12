@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -226,6 +226,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1734678949}
+    - target: {fileID: 162486998418623492, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
+        type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 1268507725}
     - target: {fileID: 902953758047320397, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
         type: 3}
       propertyPath: m_Enabled
@@ -291,7 +296,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6137907535480366622, guid: 95d9bdd6545f49747b367bf2e2e79bc6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95d9bdd6545f49747b367bf2e2e79bc6, type: 3}
 --- !u!1 &112032349
 GameObject:
@@ -586,36 +592,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f17914526c9ab6408b2deaea547437d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dirForce: 0
-  checaChao: {fileID: 112032350}
-  checaChaoCenter: {fileID: 416549605}
-  playerAsChild: {fileID: 0}
-  ponto1: {fileID: 1506609066}
-  ponto2: {fileID: 1386682206}
-  ponto3: {fileID: 1354973521}
-  ponto4: {fileID: 994154582}
-  FaceNorte: {fileID: 317014698}
-  FaceSul: {fileID: 317014698}
-  FaceOeste: {fileID: 1475998431}
-  FaceLeste: {fileID: 994154582}
-  isLocked: 0
-  readyToPush: 0
-  veloContinua: 0
-  colidiu: 0
-  isInside: 0
-  isGrounded: 1
-  noNorte: 0
-  noSul: 0
-  noOeste: 0
-  noLeste: 0
-  Player:
-    m_Bits: 256
-  wayToGo: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
-  rb: {fileID: 0}
-  inputController: {fileID: 0}
-  playerController: {fileID: 0}
-  boxMovement: {fileID: 0}
 --- !u!65 &331843444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1055,7 +1031,8 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.0000008142067, y: 6.323129e-19, z: 6337696, w: NaN}
+  m_BoundingSphereOverride: {x: 8.8696596e-33, y: 1.3563156e-19, z: 1.102182e+24,
+    w: 1.5793328e-19}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1462,6 +1439,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1268507725 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2290456554499534623, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 62484461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1325103184
 GameObject:
   m_ObjectHideFlags: 0

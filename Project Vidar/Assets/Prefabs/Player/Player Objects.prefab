@@ -161,6 +161,7 @@ MonoBehaviour:
   playerTransForm: {fileID: 4787882802268091007}
   lookTarget: {fileID: 162486997857717616}
   rotationSpeed: 5
+  cameraPivot: {fileID: 0}
 --- !u!1 &165440998177660973
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +393,6 @@ GameObject:
   - component: {fileID: 6936769715497373268}
   - component: {fileID: 8140982726263462623}
   - component: {fileID: 3578711152712311870}
-  - component: {fileID: 6137907535480366622}
   - component: {fileID: 2174328866436133726}
   - component: {fileID: 1280667015773650589}
   - component: {fileID: 714578084001642774}
@@ -478,18 +478,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 5
---- !u!114 &6137907535480366622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064726072221488955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77af5325ebd35c54ab1ca779c93fcc5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2174328866436133726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,6 +730,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashDistance: 0.9
   dragIntensity: 8
+  cam: {fileID: 0}
 --- !u!1 &2290456554499534623
 GameObject:
   m_ObjectHideFlags: 0
