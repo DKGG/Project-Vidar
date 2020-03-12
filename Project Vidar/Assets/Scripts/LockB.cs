@@ -18,13 +18,12 @@ public class LockB : MonoBehaviour
     public Transform posicao;
 
     // public bool isInside;
-    public bool locka = false;
-    public bool islocked;
-    bool isGrounded = true;
+    public bool locka = false;       
     bool noNorte;
     bool noSul;
     bool noOeste;
     bool noLeste;
+    public bool islocked;
 
     public string side = "";
 
@@ -44,20 +43,18 @@ public class LockB : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
-        isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
+    {        
         noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
         noOeste = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noLeste = Physics.Linecast(ponto3.position, ponto4.position, Player);
 
-        if (locka == true && islocked == false)
+        if (locka == true && PlayerEntity.getLocked() == false)
         {
 
             if (noNorte == true)
             {
-                posicao = FaceNorte;                
+                posicao = FaceNorte;
                 side = "norte";
                 Debug.Log("" + side);
             }
@@ -77,21 +74,21 @@ public class LockB : MonoBehaviour
             {
                 posicao = FaceLeste;
                 side = "leste";
-                Debug.Log(""+side);
+                Debug.Log("" + side);
             }
 
-            
+
             playerTransform.transform.parent = transform;
-            boxMovement.enabled = true;
+            boxMovement.enabled = true;            
             islocked = true;
-         
+
 
         }
-        if (locka == false && islocked == true)
+        if (locka == false && PlayerEntity.getLocked() == true)
         {
             Debug.Log("NãoPodeLockar");
             playerTransform.parent = null;
-            boxMovement.enabled = false;
+            boxMovement.enabled = false;            
             islocked = false;
         }
     }

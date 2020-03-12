@@ -9,17 +9,7 @@ public class OverTheShoulderCamera : MonoBehaviour
     [SerializeField] Transform playerTransForm, lookTarget;
     [SerializeField] float rotationSpeed = 5.0f;
 
-    [Header("Camera Zoom")]
-    [Range(0.0f, 10.0f)]
-    public float speed = 5.0f;
-
-    InputController inputController;
-    public Transform zoomIn;
-    public Transform zoomOut;
-
-    bool moveCam = false;
-
-    private Transform cameraPivot;
+    public Transform cameraPivot;
 
     private float startTime;
     private float journeyLength;

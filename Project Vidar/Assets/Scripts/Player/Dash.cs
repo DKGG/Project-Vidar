@@ -6,23 +6,22 @@ public class Dash : MonoBehaviour
 {
     [SerializeField] float DashDistance = 10f;
     [SerializeField] int dragIntensity = 8;
+    [SerializeField] GameObject cam;
 
     Vector3 dashDirection;
     Vector3 dashVelocity;
-
-    InputController inputController;
+   
     Rigidbody rb;
     WaitForSeconds dashDuration = new WaitForSeconds(1.0f);
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        inputController = GetComponent<InputController>();
+        rb = GetComponent<Rigidbody>();        
     }
 
     void Update()
     {
-        if (inputController.GetKeyLeftShift() && !inputController.isDashing)
+        if (PlayerEntity.getKeyLeftShift() && PlayerEntity.getDashing() == false)
         {
             dashVariables();
 
@@ -32,10 +31,10 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashReset()
     {
-        inputController.isDashing = true;
+        PlayerEntity.setDashing(true);
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
-        inputController.isDashing = false;
+        PlayerEntity.setDashing(false);
         rb.drag = 0;
     }
 
@@ -50,7 +49,7 @@ public class Dash : MonoBehaviour
         );
 
         dashVelocity = Vector3.Scale(
-            transform.forward,              // Coloca o dash para a frente do player
+           cam.transform.forward,              // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
     }

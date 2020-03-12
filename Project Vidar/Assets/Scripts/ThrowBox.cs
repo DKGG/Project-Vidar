@@ -15,9 +15,8 @@ public class ThrowBox : MonoBehaviour
 
     [SerializeField] directionForce dirf;
 
-    bool colidiu = false;
     bool isGrounded;
-    public bool push = false;    
+    public bool push = false;
     public float strength;
 
     public string lockSide = "";
@@ -36,7 +35,7 @@ public class ThrowBox : MonoBehaviour
     {
         Debug.Log("strength no throwBox" + strength);
         isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
-        if (push==true)
+        if (push == true)
         {
             ApplyForce();
         }
@@ -46,56 +45,54 @@ public class ThrowBox : MonoBehaviour
     private void ApplyForce()
     {
         push = false;
-        //if (push == true)
-        //{
-            if (dirf.Equals(directionForce.normal))
+        if (dirf.Equals(directionForce.normal))
+        {
+            switch (lockSide)
             {
-                switch (lockSide)
-                {
-                    case "norte":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = transform.right * strength /* *Time.deltaTime*/;
-                        break;
-                    case "sul":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = -transform.right * strength /* *Time.deltaTime*/;
-                        break;
-                    case "oeste":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = -transform.forward * strength /* *Time.deltaTime*/;
-                        break;
-                    case "leste":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = transform.forward * strength /** Time.deltaTime*/;
-                        break;
-                    case "":
-                        break;
-                    default:
-                        break;
+                case "norte":
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = transform.right * strength;
+                    break;
+                case "sul":
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = -transform.right * strength;
+                    break;
+                case "oeste":
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = -transform.forward * strength;
+                    break;
+                case "leste":
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = transform.forward * strength;
+                    break;
+                case "":
+                    break;
+                default:
+                    break;
 
-                }
             }
+        }
 
-            if (dirf.Equals(directionForce.up))
-            {
-                rb.constraints = RigidbodyConstraints.None;
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
-                rb.velocity = transform.up * 50  /* * Time.deltaTime*/;
-            }
-        //}
+        if (dirf.Equals(directionForce.up))
+        {
+            rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezeRotation;
+            rb.velocity = transform.up * strength;
+        }
+
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-       
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
 
-    private void OnCollisionExit(Collision collision)
-    {
-        
-    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+
+    //}
 }

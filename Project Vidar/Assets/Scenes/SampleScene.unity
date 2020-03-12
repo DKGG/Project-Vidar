@@ -222,6 +222,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 705767262, guid: 95d9bdd6545f49747b367bf2e2e79bc6, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1734678949}
     - target: {fileID: 902953758047320397, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
         type: 3}
       propertyPath: m_Enabled
@@ -594,9 +598,24 @@ MonoBehaviour:
   FaceSul: {fileID: 317014698}
   FaceOeste: {fileID: 1475998431}
   FaceLeste: {fileID: 994154582}
+  isLocked: 0
+  readyToPush: 0
+  veloContinua: 0
+  colidiu: 0
+  isInside: 0
+  isGrounded: 1
+  noNorte: 0
+  noSul: 0
+  noOeste: 0
+  noLeste: 0
   Player:
-    serializedVersion: 2
     m_Bits: 256
+  wayToGo: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  rb: {fileID: 0}
+  inputController: {fileID: 0}
+  playerController: {fileID: 0}
+  boxMovement: {fileID: 0}
 --- !u!65 &331843444
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -653,6 +672,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072dae6b17d7de54282f5c13130f300a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dirForce: 0
+  checaChaoCenter: {fileID: 0}
+  checaChao: {fileID: 0}
 --- !u!114 &331843448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1873,6 +1895,12 @@ Transform:
   m_Father: {fileID: 331843441}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1734678949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 162486998418623493, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 62484461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1737411507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3948840067029483595, guid: 95d9bdd6545f49747b367bf2e2e79bc6,
