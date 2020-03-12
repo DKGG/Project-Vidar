@@ -26,7 +26,7 @@ public class RaycastShoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("e") && Time.time > nextFire)
+        if (PlayerEntity.getKeyQ() == true && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
 

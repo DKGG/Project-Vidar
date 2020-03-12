@@ -9,7 +9,7 @@ public class OverTheShoulderCamera : MonoBehaviour
     [SerializeField] Transform playerTransForm, lookTarget;
     [SerializeField] float rotationSpeed = 5.0f;
 
-    private Transform cameraPivot;
+    public Transform cameraPivot;
 
     // Private variables
     private float mouseX, mouseY;

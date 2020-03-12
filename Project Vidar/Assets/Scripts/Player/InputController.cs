@@ -3,36 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InputController : MonoBehaviour
-{
-    public bool isGrounded = true;
-    public bool isDashing = false;
-
-    public bool GetButtonJump()
+{    
+    public float CheckInputMouseX()
     {
-        return Input.GetButtonDown("Jump");
+        return Input.GetAxis("Mouse X");
     }
 
-    public bool GetKeyLeftShift()
+    public float CheckInputMouseY()
     {
-        return Input.GetKeyDown(KeyCode.LeftShift);
+         return Input.GetAxis("Mouse Y");
     }
 
-    public bool GetKeyE()
-    {
-        return Input.GetKeyDown(KeyCode.E);
-    }
-
-    public bool GetKeyQ()
-    {
-        return Input.GetKeyDown(KeyCode.Q);
-    }
-    public float CheckInputHorizontal()
-    {
-        return Input.GetAxisRaw("Horizontal");         
-    }
-
-    public float CheckInputVertical()
-    {
-        return Input.GetAxisRaw("Vertical");
-    }
+    
 }

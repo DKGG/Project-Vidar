@@ -11,13 +11,11 @@ public class Movement : MonoBehaviour
     Vector2 input;
     float angle;
     Quaternion targetRotation;
-    Transform cam;
-    InputController inputController;
+    Transform cam;    
 
     private void Start()
     {
-        cam = Camera.main.transform;
-        inputController = GetComponent<InputController>();
+        cam = Camera.main.transform;        
     }
 
     private void Update()
@@ -47,8 +45,8 @@ public class Movement : MonoBehaviour
 
     private void getInput()
     {
-        input.x = inputController.CheckInputHorizontal();
-        input.y = inputController.CheckInputVertical();
+        input.x = PlayerEntity.checkInputHorizontal();
+        input.y = PlayerEntity.checkInputVertical();
     }
 
     void calculateDirection()
