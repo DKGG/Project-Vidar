@@ -219,5 +219,15 @@ public static class PlayerEntity
     {
         return Input.GetAxisRaw("Vertical");
     }
+
+    public static float checkMouseX()
+    {
+        return Input.GetAxis("Mouse X");
+    }
+
+    public static float checkMouseY()
+    {
+        return Input.GetAxis("Mouse Y");
+    }
     #endregion
 }
