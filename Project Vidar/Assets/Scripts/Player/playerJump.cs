@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class playerJump : MonoBehaviour
 {
-    Rigidbody rb;
-    bool doubleJump = true;
-    public float jumpForce = 5f;
-    InputController inputController;
+    Rigidbody rb;    
+    public float jumpForce = 5f;    
 
     private void Start()
-    {
-        inputController = GetComponent<InputController>();
+    {        
         rb = GetComponent<Rigidbody>();
     }
 
@@ -19,15 +16,15 @@ public class playerJump : MonoBehaviour
     {
         GroundCheck();
 
-        if (inputController.GetButtonJump())
+        if (PlayerEntity.getButtonJump())
         {
-            if (inputController.isGrounded)
+            if (PlayerEntity.getGrounded() == true)
             {
                 Jump();
             }
-            else if (doubleJump)
+            else if (PlayerEntity.getCanDoubleJump())
             {
-                doubleJump = false;
+                PlayerEntity.setCanDoubleJump(false);                
                 Jump();
             }
         }
@@ -39,12 +36,12 @@ public class playerJump : MonoBehaviour
 
         if (Physics.Raycast(transform.position, down, 2f))
         {
-            inputController.isGrounded = true;
-            doubleJump = true;
+            PlayerEntity.setGrounded(true);
+            PlayerEntity.setCanDoubleJump(true);
         }
         else
         {
-            inputController.isGrounded = false;
+            PlayerEntity.setGrounded(false);
         }
     }
 

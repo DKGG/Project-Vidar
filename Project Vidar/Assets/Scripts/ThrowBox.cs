@@ -15,7 +15,6 @@ public class ThrowBox : MonoBehaviour
 
     [SerializeField] directionForce dirf;
 
-    bool colidiu = false;
     bool isGrounded;
     public bool push = false;
     public float strength;
@@ -87,13 +86,13 @@ public class ThrowBox : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+    //private void OnCollisionEnter(Collision collision)
+    //{
 
-    }
+    //}
 
-    private void OnCollisionExit(Collision collision)
-    {
+    //private void OnCollisionExit(Collision collision)
+    //{
 
-    }
+    //}
 }
