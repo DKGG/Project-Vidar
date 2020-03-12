@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerJump : MonoBehaviour
 {
+    
+
     Rigidbody rb;
     bool doubleJump = true;
     public float jumpForce = 5f;
