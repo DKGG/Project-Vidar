@@ -184,7 +184,6 @@ public static class PlayerEntity
     }
     #endregion
 
-
     #region Inputs
     public static bool getButtonJump()
     {
@@ -228,6 +227,11 @@ public static class PlayerEntity
     public static float checkMouseY()
     {
         return Input.GetAxis("Mouse Y");
+    }
+
+    public static bool getKeyX()
+    {
+        return Input.GetKeyDown(KeyCode.X);
     }
     #endregion
 }

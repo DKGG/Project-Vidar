@@ -6,11 +6,13 @@ using UnityEngine;
 public class boxMovement : MonoBehaviour
 {
     public float velocity = 5f;
-    public float turnSpeed = 1f;
+    public float turnSpeed = 100f;
+
     Vector2 input;
     float angle;
     Quaternion targetRotation;
     Transform cam;
+
     private void Start()
     {
         cam = Camera.main.transform;
@@ -24,6 +26,7 @@ public class boxMovement : MonoBehaviour
         {
             return;
         }
+
         calculateDirection();
         rotate();
         move();
@@ -31,9 +34,9 @@ public class boxMovement : MonoBehaviour
 
     private void move()
     {
-
+        Debug.Log("Y" + input.y);
+        Debug.Log("X" + input.x);
         transform.position += transform.forward * velocity * Time.deltaTime;
-
     }
 
     private void rotate()

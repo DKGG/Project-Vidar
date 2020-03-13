@@ -7,22 +7,17 @@ public class PController : MonoBehaviour
     float strength;
 
     GameObject caixa = null;
-    Rigidbody rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         PlayerEntity.setIdle(true);
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Debug.Log("strength no pcontroller" + strength);
 
-
         #region interacaoCaixas
-
         if (caixa != null)
         {
             if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getIdle() == true)
@@ -90,6 +85,7 @@ public class PController : MonoBehaviour
 
         }
         #endregion
+
         PlayerAction();
     }
 

@@ -30,10 +30,8 @@ public class LockB : MonoBehaviour
     public LayerMask Player;
 
     Rigidbody rb;
-
     boxMovement boxMovement;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,50 +39,47 @@ public class LockB : MonoBehaviour
         posicao = FaceNorte;
     }
 
-    // Update is called once per frame
     void Update()
-    {        
-        noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
-        noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
-        noOeste = Physics.Linecast(ponto1.position, ponto2.position, Player);
-        noLeste = Physics.Linecast(ponto3.position, ponto4.position, Player);
-
-        if (locka == true && PlayerEntity.getLocked() == false)
+    {
+        if (locka && !PlayerEntity.getLocked())
         {
+            noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
+            noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
+            noOeste = Physics.Linecast(ponto1.position, ponto2.position, Player);
+            noLeste = Physics.Linecast(ponto3.position, ponto4.position, Player);
 
-            if (noNorte == true)
+            if (noNorte)
             {
                 posicao = FaceNorte;
                 side = "norte";
                 Debug.Log("" + side);
             }
-            if (noSul == true)
+
+            if (noSul)
             {
                 posicao = FaceSul;
                 side = "sul";
                 Debug.Log("" + side);
             }
-            if (noOeste == true)
+            if (noOeste)
             {
                 posicao = FaceOeste;
                 side = "oeste";
                 Debug.Log("" + side);
             }
-            if (noLeste == true)
+            if (noLeste)
             {
                 posicao = FaceLeste;
                 side = "leste";
                 Debug.Log("" + side);
             }
 
-
             playerTransform.transform.parent = transform;
             boxMovement.enabled = true;            
             islocked = true;
-
-
         }
-        if (locka == false && PlayerEntity.getLocked() == true)
+
+        if (!locka && PlayerEntity.getLocked())
         {
             Debug.Log("NãoPodeLockar");
             playerTransform.parent = null;
