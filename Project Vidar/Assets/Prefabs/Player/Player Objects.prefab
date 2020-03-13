@@ -161,6 +161,7 @@ MonoBehaviour:
   playerTransForm: {fileID: 4787882802268091007}
   lookTarget: {fileID: 162486997857717616}
   rotationSpeed: 5
+  cameraPivot: {fileID: 0}
 --- !u!1 &165440998177660973
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +718,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064726072221488955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2334f87ebb248c346933762d13f7818e, type: 3}
   m_Name: 
@@ -742,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashDistance: 0.9
   dragIntensity: 8
+  cam: {fileID: 162486998418623493}
 --- !u!1 &2290456554499534623
 GameObject:
   m_ObjectHideFlags: 0
