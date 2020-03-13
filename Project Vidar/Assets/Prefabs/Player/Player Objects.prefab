@@ -166,6 +166,7 @@ MonoBehaviour:
   playerObject: {fileID: 2290456554499534623}
   zoomIn: {fileID: 2448022612843557640}
   zoomOut: {fileID: 3694907603332534752}
+  cameraPivot: {fileID: 0}
 --- !u!1 &165440998177660973
 GameObject:
   m_ObjectHideFlags: 0

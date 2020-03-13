@@ -15,8 +15,6 @@ public class PController : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("strength no pcontroller" + strength);
-
         #region interacaoCaixas
         if (caixa != null)
         {
