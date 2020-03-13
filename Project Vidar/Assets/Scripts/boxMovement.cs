@@ -9,6 +9,7 @@ public class boxMovement : MonoBehaviour
     public float turnSpeed = 100f;
 
     Vector2 input;
+    Vector3 boxPush;
     float angle;
     Quaternion targetRotation;
     Transform cam;
@@ -28,15 +29,40 @@ public class boxMovement : MonoBehaviour
         }
 
         calculateDirection();
-        rotate();
+        // rotate();
         move();
     }
 
     private void move()
     {
-        Debug.Log("Y" + input.y);
-        Debug.Log("X" + input.x);
-        transform.position += transform.forward * velocity * Time.deltaTime;
+        Debug.Log("Y: " + input.y);
+//         Debug.Log("X: " + input.x);
+
+        // Debug.Log("Forward: " + transform.forward);
+
+        if (input.y > 0)
+        {
+            transform.position += transform.forward * velocity * Time.deltaTime;
+            // boxPush = transform.forward;
+            Debug.Log(boxPush);
+        }
+        
+        if (input.y < 0)
+        {
+            transform.position -= transform.forward * velocity * Time.deltaTime;
+        }
+
+        if (input.x > 0)
+        {
+            Debug.Log("X plus");
+            transform.position -= transform.right * velocity * Time.deltaTime;
+        }
+
+        if (input.x < 0)
+        {
+            Debug.Log("X minus");
+            transform.position += transform.right * velocity * Time.deltaTime;
+        }
     }
 
     private void rotate()

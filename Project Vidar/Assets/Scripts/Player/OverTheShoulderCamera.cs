@@ -22,11 +22,14 @@ public class OverTheShoulderCamera : MonoBehaviour
     // Private variables
     private float mouseX, mouseY;
     Transform cameraPivot;
-    Transform cameraFocus;
+    Transform playerFocus;
 
     private void Start()
     {
         cameraPivot = transform.parent;
+        changeTargetAxis = new Vector3(2.5f, 0.75f, -16f);
+        OldchangeTargetAxis = new Vector3(2.5f, 0.75f, -3.75f);
+        playerFocus = playerTransForm;
     }
 
     private void Update()
@@ -42,25 +45,20 @@ public class OverTheShoulderCamera : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, zoomOut.transform.position, Time.deltaTime * 5f);
-            
-            changeTargetAxis = new Vector3(1.5f, 0.5f, -8f);
-            OldchangeTargetAxis = new Vector3(1.5f, 0.5f, -2.5f);
-
-            cameraFocus = playerTransForm;
+            transform.position = Vector3.Lerp(transform.position, zoomOut.transform.position, Time.deltaTime * 5f);            
         }
 
-        if (PlayerEntity.getLocked() && !changeCam)
+        if (PlayerEntity.getLocked())
         {
             Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);
             playerTransForm = playerObject.transform.parent;
             changeCam = true;
         }
 
-        if (PlayerEntity.getLocked() && changeCam)
+        if (!PlayerEntity.getLocked())
         {
-            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, OldchangeTargetAxis, Time.deltaTime * 5);
-            playerTransForm = cameraFocus;
+            //Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, OldchangeTargetAxis, Time.deltaTime * 100);
+            playerTransForm = playerFocus;
             changeCam = false;
         }
     }
