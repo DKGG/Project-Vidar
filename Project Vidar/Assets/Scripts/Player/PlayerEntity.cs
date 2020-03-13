@@ -184,7 +184,6 @@ public static class PlayerEntity
     }
     #endregion
 
-
     #region Inputs
     public static bool getButtonJump()
     {
@@ -218,6 +217,16 @@ public static class PlayerEntity
     public static float checkInputVertical()
     {
         return Input.GetAxisRaw("Vertical");
+    }
+
+    public static float CheckInputMouseX()
+    {
+        return Input.GetAxis("Mouse X");
+    }
+
+    public static float CheckInputMouseY()
+    {
+        return Input.GetAxis("Mouse Y");
     }
     #endregion
 }

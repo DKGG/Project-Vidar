@@ -7,17 +7,6 @@ public class PlayerController : MonoBehaviour
     float forceCounter;
     float forceTime = 0.5f;
     bool isInside;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Debug.Log(isInside);
-    }
 
     public void CheckScripts(bool active, string name)
     {
@@ -41,7 +30,6 @@ public class PlayerController : MonoBehaviour
                 else
                     GetComponent<playerJump>().enabled = false;
                 break;
-
         }
     }
 
@@ -62,20 +50,4 @@ public class PlayerController : MonoBehaviour
                 return false;
         }
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("ContinuosBox"))
-    //    {
-    //        isInside = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("ContinuosBox"))
-    //    {
-    //        isInside = false;
-    //    }
-    //}
 }
