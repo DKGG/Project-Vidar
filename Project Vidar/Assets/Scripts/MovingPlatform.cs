@@ -17,11 +17,17 @@ public class MovingPlatform : MonoBehaviour
         right
     };
 
+    #region Field Declarations
+
+    [Header("Movement Configs")]
+    [SerializeField] bool movementEnabled = true;
+    [SerializeField] bool positiveDirection = true;[Space]
+
+    [SerializeField] float speed = 15f;[Space]
+
+    [Header("How will i move")]
     [SerializeField] PlatformMovement platformMovement;
     [SerializeField] Physics platformPhysics;
-    [SerializeField] bool movementEnabled = true;
-    [SerializeField] float speed = 15f;
-    [SerializeField] bool positiveDirection = true;
 
     int direction = 1;
     bool isColliding = false;
@@ -29,6 +35,8 @@ public class MovingPlatform : MonoBehaviour
 
     Vector3 scaleVector = new Vector3(1, 1, 1);
     Vector3 forward, back, left, right, up, down;
+
+    #endregion
 
     private void Start()
     {

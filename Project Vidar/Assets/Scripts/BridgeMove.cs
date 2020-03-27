@@ -5,15 +5,21 @@ using UnityEngine;
 public class BridgeMove : MonoBehaviour
 {
     [SerializeField] GameObject bridge;
-    
+    [SerializeField] Vector3 moveTo;
+    [SerializeField] float speed = 7f;
+
+    bool triggered = false;
+
+
     void Update()
     {
-        
+        if (triggered)
+            bridge.transform.position = Vector3.Lerp(bridge.transform.position, moveTo, Time.deltaTime * speed);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        bridge.transform.position = new Vector3(-0.75f, -3.5f, -0.75f);
+        triggered = true;
         // rb.MovePosition(transform.position + forward * Time.fixedDeltaTime);
     }
 }
