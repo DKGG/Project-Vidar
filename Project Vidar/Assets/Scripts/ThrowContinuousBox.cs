@@ -27,49 +27,72 @@ public class ThrowContinuousBox : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        lockSide = GetComponent<LockB>().side;
+        //lockSide = GetComponent<LockB>().side;
     }
 
     // Update is called once per frame
     void Update()
-    {
-        //Debug.Log("Push é: " + push);
-        //Debug.Log(colidiu);
-        //Debug.Log(lockSide);
+    {        
         isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
 
         if (push == true && colidiu == false)
         {
             if (dirf.Equals(directionForce.normal))
             {
-                switch (lockSide)
-                {
-                    case "norte":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = transform.right * 5000 * Time.deltaTime;
-                        break;
-                    case "sul":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = -transform.right * 5000 * Time.deltaTime;
-                        break;
-                    case "oeste":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = -transform.forward * 5000 * Time.deltaTime;
-                        break;
-                    case "leste":
-                        rb.constraints = RigidbodyConstraints.None;
-                        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        rb.velocity = transform.forward * 5000 * Time.deltaTime;
-                        break;
-                    case "":
-                        break;
-                    default:
-                        break;
 
+                if (PlayerEntity.getIsLockedInNorth())
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = transform.right * 5000 * Time.deltaTime;
                 }
+                if (PlayerEntity.getIsLockedInSouth())
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = -transform.right * 5000 * Time.deltaTime;
+                }
+                if (PlayerEntity.getIsLockedInWest())
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = -transform.forward * 5000 * Time.deltaTime;
+                }
+                if (PlayerEntity.getIsLockedInEast())
+                {
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.constraints = RigidbodyConstraints.FreezeRotation;
+                    rb.velocity = transform.forward * 5000 * Time.deltaTime;
+                }
+
+                //switch (lockSide)
+                //{
+                //    case "norte":
+                //        rb.constraints = RigidbodyConstraints.None;
+                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                //        rb.velocity = transform.right * 5000 * Time.deltaTime;
+                //        break;
+                //    case "sul":
+                //        rb.constraints = RigidbodyConstraints.None;
+                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                //        rb.velocity = -transform.right * 5000 * Time.deltaTime;
+                //        break;
+                //    case "oeste":
+                //        rb.constraints = RigidbodyConstraints.None;
+                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                //        rb.velocity = -transform.forward * 5000 * Time.deltaTime;
+                //        break;
+                //    case "leste":
+                //        rb.constraints = RigidbodyConstraints.None;
+                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+                //        rb.velocity = transform.forward * 5000 * Time.deltaTime;
+                //        break;
+                //    case "":
+                //        break;
+                //    default:
+                //        break;
+
+                //}
             }
 
             if (dirf.Equals(directionForce.up))
@@ -98,7 +121,7 @@ public class ThrowContinuousBox : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("paraBloco"))
+        if (/*collision.gameObject.CompareTag("Player") ||*/ collision.gameObject.CompareTag("paraBloco"))
         {
             colidiu = true;
         }

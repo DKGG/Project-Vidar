@@ -18,14 +18,14 @@ public class LockB : MonoBehaviour
     public Transform posicao;
 
     // public bool isInside;
-    public bool locka = false;       
+    public bool locka = false;
     bool noNorte;
     bool noSul;
     bool noOeste;
     bool noLeste;
     public bool islocked;
 
-    public string side = "";
+    //public string side = "";
 
     public LayerMask Player;
 
@@ -51,57 +51,56 @@ public class LockB : MonoBehaviour
             if (noNorte)
             {
                 posicao = FaceNorte;
-                side = "norte";
-                Debug.Log("" + side);
+                PlayerEntity.setIslockedInNorth(true);
+                PlayerEntity.setIslockedInSouth(false);
+                PlayerEntity.setIslockedInWest(false);
+                PlayerEntity.setIslockedInEast(false);
+                //side = "norte";                
             }
 
             if (noSul)
             {
                 posicao = FaceSul;
-                side = "sul";
-                Debug.Log("" + side);
+                PlayerEntity.setIslockedInNorth(false);
+                PlayerEntity.setIslockedInSouth(true);
+                PlayerEntity.setIslockedInWest(false);
+                PlayerEntity.setIslockedInEast(false);
+                //side = "sul";                
             }
             if (noOeste)
             {
                 posicao = FaceOeste;
-                side = "oeste";
-                Debug.Log("" + side);
+                PlayerEntity.setIslockedInNorth(false);
+                PlayerEntity.setIslockedInSouth(false);
+                PlayerEntity.setIslockedInWest(true);
+                PlayerEntity.setIslockedInEast(false);
+                //side = "oeste";                
             }
             if (noLeste)
             {
                 posicao = FaceLeste;
-                side = "leste";
-                Debug.Log("" + side);
+                PlayerEntity.setIslockedInNorth(false);
+                PlayerEntity.setIslockedInSouth(false);
+                PlayerEntity.setIslockedInWest(false);
+                PlayerEntity.setIslockedInEast(true);
+                //side = "leste";                
             }
 
-            playerTransform.transform.parent = transform;
-            boxMovement.enabled = true;            
+            //playerTransform.transform.parent = transform;
+            playerTransform.transform.parent = PlayerEntity.getBoxLocked().transform;
+            boxMovement.enabled = true;
             islocked = true;
+            //PlayerEntity.setLocked(true);
         }
 
         if (!locka && PlayerEntity.getLocked())
         {
-            Debug.Log("NãoPodeLockar");
+            //Debug.Log("NãoPodeLockar");
             playerTransform.parent = null;
-            boxMovement.enabled = false;            
+            boxMovement.enabled = false;
             islocked = false;
+            //PlayerEntity.setLocked(false);
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        isInside = true;
-    //        Debug.Log("O player entrou");
-    //    }
-    //}
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Player"))
-    //    {
-    //        isInside = false;
-    //        Debug.Log("O player saiu");
-    //    }
-    //}
 }
