@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
+    [Header("Dash Settings")]
     [SerializeField] float DashDistance = 10f;
+    [SerializeField] float dashTimer = 1.0f;
     [SerializeField] int dragIntensity = 8;
     [SerializeField] GameObject cam;
 
@@ -12,7 +14,12 @@ public class Dash : MonoBehaviour
     Vector3 dashVelocity;
    
     Rigidbody rb;
-    WaitForSeconds dashDuration = new WaitForSeconds(1.0f);
+    WaitForSeconds dashDuration;
+
+    void Awake()
+    {
+        dashDuration = new WaitForSeconds(dashTimer);
+    }
 
     void Start()
     {
@@ -23,7 +30,7 @@ public class Dash : MonoBehaviour
     {
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
-            dashVariables();
+            DashVariables();
 
             StartCoroutine(DashReset());
         }
@@ -38,7 +45,7 @@ public class Dash : MonoBehaviour
         rb.drag = 0;
     }
 
-    private void dashVariables()
+    private void DashVariables()
     {
         rb.drag = dragIntensity;
 

@@ -52,14 +52,11 @@ public class OverTheShoulderCamera : MonoBehaviour
         {
             Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);
             playerTransForm = playerObject.transform.parent;
-            changeCam = true;
         }
 
         if (!PlayerEntity.getLocked())
         {
-            //Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, OldchangeTargetAxis, Time.deltaTime * 100);
             playerTransForm = playerFocus;
-            changeCam = false;
         }
     }
 
@@ -68,7 +65,7 @@ public class OverTheShoulderCamera : MonoBehaviour
         mouseX += PlayerEntity.checkMouseX() * rotationSpeed;
         mouseY -= PlayerEntity.checkMouseY() * rotationSpeed;
 
-        mouseY = Mathf.Clamp(mouseY, -80, 80);
+        mouseY = Mathf.Clamp(mouseY, -70, 70);
 
         cameraPivot.position = playerTransForm.position;
 

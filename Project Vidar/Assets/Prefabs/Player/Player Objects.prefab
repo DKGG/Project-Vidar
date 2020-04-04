@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 162486997490338818}
   m_Layer: 8
-  m_Name: Pivot
+  m_Name: CameraPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162486998418623493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0.75, z: -3.75}
+  m_LocalPosition: {x: 2.5, y: 1.75, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 162486997490338818}
@@ -166,7 +166,6 @@ MonoBehaviour:
   playerObject: {fileID: 2290456554499534623}
   zoomIn: {fileID: 2448022612843557640}
   zoomOut: {fileID: 3694907603332534752}
-  cameraPivot: {fileID: 0}
 --- !u!1 &165440998177660973
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,7 +192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165440998177660973}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 4787882802268091007}
@@ -437,9 +436,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.9
-  m_Height: 3
+  m_Height: 3.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &6936769715497373268
 Rigidbody:
   m_ObjectHideFlags: 0
