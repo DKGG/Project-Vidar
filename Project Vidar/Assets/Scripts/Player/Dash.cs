@@ -6,8 +6,8 @@ public class Dash : MonoBehaviour
 {
     [Header("Dash Settings")]
     [SerializeField] float DashDistance = 10f;
-    [SerializeField] float dashTimer = 1.0f;
-    [SerializeField] int dragIntensity = 8;
+    [SerializeField] float dashTimer = 0.9f;
+    [SerializeField] int dragIntensity = 7;
     [SerializeField] GameObject cam;
 
     Vector3 dashDirection;
