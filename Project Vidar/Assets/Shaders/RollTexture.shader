@@ -1,4 +1,4 @@
-﻿Shader "Custom/NewSurfaceShader"
+﻿Shader "BasicShaders/RollTexture"
 {
     Properties
     {
@@ -6,6 +6,7 @@
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
+        _ScrollSpeed ("Scroll Speed", Range(-5, 5)) = 1
     }
     SubShader
     {
@@ -29,6 +30,7 @@
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
+        float _ScrollSpeed;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -40,6 +42,7 @@
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
+            IN.uv_MainTex += _ScrollSpeed * _Time.w;
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
