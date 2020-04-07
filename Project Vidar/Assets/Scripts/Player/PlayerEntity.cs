@@ -26,7 +26,7 @@ public static class PlayerEntity
     
     private static bool isDashing;
     private static bool isLocked;
-    private static bool isWalking;    
+    private static bool isWalking;
     private static bool isJumping;
     
     #endregion
