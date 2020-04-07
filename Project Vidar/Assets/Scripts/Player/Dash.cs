@@ -27,8 +27,6 @@ public class Dash : MonoBehaviour
     {
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
-            //calculateDirection();
-            //rotate();
             dashVariables();
 
             StartCoroutine(DashReset());
@@ -48,6 +46,8 @@ public class Dash : MonoBehaviour
 
     private void dashVariables()
     {
+        calculateDirection();
+      //  rotate();
         rb.drag = dragIntensity;
 
         dashDirection = new Vector3(
@@ -55,10 +55,12 @@ public class Dash : MonoBehaviour
             0,                                                                                  // Y
             Mathf.Clamp(Mathf.Log(1f / (Time.deltaTime * rb.drag)) / Time.deltaTime, 0, 100)    // Z
         );
+
         dashVelocity = Vector3.Scale(
             cam.transform.forward,          // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
+
     }
 
     void calculateDirection()
@@ -67,9 +69,9 @@ public class Dash : MonoBehaviour
         angle = Mathf.Rad2Deg * angle;
         angle += cam2.eulerAngles.y;
     }
-    private void rotate()
-    {
-        targetRotation = Quaternion.Euler(0, angle, 0);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Movement.turnSpeed * Time.deltaTime);
-    }
+    //private void rotate()
+    //{
+    //    targetRotation = Quaternion.Euler(0, angle, 0);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Movement.turnSpeed * Time.deltaTime);
+    //}
 }
