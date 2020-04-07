@@ -35,7 +35,16 @@ public static class PlayerEntity
     private static bool isLocked;
     private static bool isWalking;    
     private static bool isJumping;
-    
+
+    #endregion
+
+    #region Animator States Variables
+
+    private static bool canPlayDashAnim;
+    private static bool canPlayWalkAnim;
+    private static bool canPlayJumpAnim;
+    private static bool canPlayIdleAnim;
+
     #endregion
 
     #region Player States Methods  
@@ -235,6 +244,46 @@ public static class PlayerEntity
     public static void setJumping(bool value)
     {
         isJumping = value; 
+    }
+    #endregion
+
+    #region Animator States Methods
+    public static bool getCanPlayDashAnim()
+    {
+        return canPlayDashAnim;
+    }
+
+    public static void setCanPlayDashAnim(bool value)
+    {
+        canPlayDashAnim = value;
+    }
+
+    public static bool getCanPlayWalkAnim()
+    {
+        return canPlayWalkAnim;
+    }
+
+    public static void setCanPlayWalkAnim(bool value)
+    {
+        canPlayWalkAnim = value;
+    }
+    public static bool getCanPlayJumpAnim()
+    {
+        return canPlayJumpAnim;
+    }
+
+    public static void setCanPlayJumpAnim(bool value)
+    {
+        canPlayJumpAnim = value;
+    }
+    public static bool getCanPlayIdleAnim()
+    {
+        return canPlayIdleAnim;
+    }
+
+    public static void setCanPlayIdleAnim(bool value)
+    {
+        canPlayIdleAnim = value;
     }
     #endregion
 

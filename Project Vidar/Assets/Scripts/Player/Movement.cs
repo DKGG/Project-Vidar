@@ -11,21 +11,28 @@ public class Movement : MonoBehaviour
     Vector2 input;
     float angle;
     Quaternion targetRotation;
-    Transform cam;    
+    Transform cam;
 
     private void Start()
     {
-        cam = Camera.main.transform;        
+        cam = Camera.main.transform;       
     }
 
     private void Update()
     {
+        
         getInput();
 
         if (Math.Abs(input.x) < 1 && Math.Abs(input.y)<1)
         {
+            PlayerEntity.setCanPlayWalkAnim(false);
+            PlayerEntity.setCanPlayIdleAnim(true);
             return;
         }
+
+        PlayerEntity.setCanPlayWalkAnim(true);
+        PlayerEntity.setCanPlayIdleAnim(false);
+        PlayerEntity.setCanPlayDashAnim(false);
         calculateDirection();
         rotate();
         move();
