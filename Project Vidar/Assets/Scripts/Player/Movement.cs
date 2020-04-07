@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
 
         PlayerEntity.setCanPlayWalkAnim(true);
         PlayerEntity.setCanPlayIdleAnim(false);
-        PlayerEntity.setCanPlayDashAnim(false);
+        //PlayerEntity.setCanPlayDashAnim(false);
         calculateDirection();
         rotate();
         move();
