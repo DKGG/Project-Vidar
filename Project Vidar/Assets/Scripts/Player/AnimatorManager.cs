@@ -44,6 +44,16 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isDashing", false);
         }
         #endregion
+        #region Animation Jump
+        if (PlayerEntity.getCanPlayJumpAnim())
+        {
+            AnimatorManager.setState("IsJumping", true);
+        }
+        if (!PlayerEntity.getCanPlayJumpAnim())
+        {
+            AnimatorManager.setState("IsJumping", false);
+        }
+        #endregion
     }
 
     public static void setState(String state, Boolean condition)

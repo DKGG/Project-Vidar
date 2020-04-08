@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class PlayerEntity
 {
+    //VARIABLES
     #region Player States Variables
     private static bool isAlive;
     private static bool isIdle;
@@ -46,6 +47,8 @@ public static class PlayerEntity
     private static bool canPlayIdleAnim;
 
     #endregion
+
+    //METHODS
 
     #region Player States Methods  
     public static bool getIsAlive()
@@ -287,6 +290,8 @@ public static class PlayerEntity
     }
     #endregion
 
+    //OBJECTS
+
     #region GameObjects
     public static GameObject getBoxLocked()
     {
@@ -298,6 +303,8 @@ public static class PlayerEntity
         BoxLocked = obj;
     }
     #endregion
+
+    //INPUTS
 
     #region Inputs
     public static bool getButtonJump()

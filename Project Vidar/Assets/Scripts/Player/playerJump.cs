@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerJump : MonoBehaviour
 {
     Rigidbody rb;    
-    public float jumpForce = 5f;    
+    public float jumpForce = 5f;
 
     private void Start()
     {        
@@ -24,8 +24,9 @@ public class playerJump : MonoBehaviour
             }
             else if (PlayerEntity.getCanDoubleJump())
             {
-                PlayerEntity.setCanDoubleJump(false);                
+                PlayerEntity.setCanDoubleJump(false);
                 Jump();
+                PlayerEntity.setCanDoubleJump(false);                ;
             }
         }
     }
@@ -38,15 +39,28 @@ public class playerJump : MonoBehaviour
         {
             PlayerEntity.setGrounded(true);
             PlayerEntity.setCanDoubleJump(true);
+           // PlayerEntity.setCanPlayJumpAnim(false);
+
         }
         else
         {
+            PlayerEntity.setCanPlayWalkAnim(false);
             PlayerEntity.setGrounded(false);
         }
     }
 
     private void Jump()
     {
+        PlayerEntity.setCanPlayJumpAnim(true);
+        Debug.Log("Pulei");
         rb.velocity = Vector3.up * Mathf.Sqrt(jumpForce * -1f * Physics.gravity.y);
+        StartCoroutine(Wait());
+    }
+    private IEnumerator Wait()
+    {
+        PlayerEntity.setCanPlayJumpAnim(true);
+        yield return 2;
+        PlayerEntity.setCanPlayJumpAnim(false);
+        yield return new WaitForSeconds(1);
     }
 }

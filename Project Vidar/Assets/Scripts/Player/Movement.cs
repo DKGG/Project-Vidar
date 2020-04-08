@@ -29,10 +29,8 @@ public class Movement : MonoBehaviour
             PlayerEntity.setCanPlayIdleAnim(true);
             return;
         }
-
         PlayerEntity.setCanPlayWalkAnim(true);
         PlayerEntity.setCanPlayIdleAnim(false);
-        //PlayerEntity.setCanPlayDashAnim(false);
         calculateDirection();
         rotate();
         move();
