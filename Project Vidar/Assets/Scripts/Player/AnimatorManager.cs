@@ -6,6 +6,15 @@ using UnityEngine.Animations;
 
 public class AnimatorManager : MonoBehaviour
 {
+    private enum AnimState
+    {
+        idle,
+        run,
+        jump,
+        dash
+    }
+
+    private static AnimState states;
     public static Animator control;
     // Start is called before the first frame update
     void Start()
@@ -13,6 +22,13 @@ public class AnimatorManager : MonoBehaviour
         control = GetComponent<Animator>();
     }
     private void Update()
+    {
+        updateAnim();
+        checkStates();
+    }
+
+
+    public static void updateAnim()
     {
         #region Animation Walk
         if (PlayerEntity.getCanPlayWalkAnim())
@@ -54,6 +70,61 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("IsJumping", false);
         }
         #endregion
+    }
+    #region Set states methods
+    public static void setStateIdle()
+    {
+        states = AnimState.idle;
+    }
+    public static void setStateJump()
+    {
+        states = AnimState.jump;
+    }
+    public static void setStateRun()
+    {
+        states = AnimState.run;
+    }
+    public static void setStateDash()
+    {
+        states = AnimState.dash;
+    }
+    #endregion
+
+    private void checkStates()
+    {
+        switch (states)
+        {
+            case AnimState.idle:
+                if (!PlayerEntity.getDashing())
+                {
+                    PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayIdleAnim(true);
+                }
+                break;
+            case AnimState.run:
+                if (!PlayerEntity.getDashing())
+                {
+                    PlayerEntity.setCanPlayIdleAnim(false);
+                    PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(true);
+                }
+                break;
+            case AnimState.jump:
+                PlayerEntity.setCanPlayIdleAnim(false);
+                PlayerEntity.setCanPlayDashAnim(false);
+                PlayerEntity.setCanPlayWalkAnim(false);
+                PlayerEntity.setCanPlayJumpAnim(true);
+                break;
+            case AnimState.dash:
+                PlayerEntity.setCanPlayIdleAnim(false);
+                PlayerEntity.setCanPlayWalkAnim(false);
+                PlayerEntity.setCanPlayJumpAnim(false);
+                PlayerEntity.setCanPlayDashAnim(true);
+                break;
+        }
     }
 
     public static void setState(String state, Boolean condition)

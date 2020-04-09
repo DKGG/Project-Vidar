@@ -199,6 +199,7 @@ public static class PlayerEntity
         isGrounded = value;
     }
 
+
     public static bool getDashing()
     {
         return isDashing;

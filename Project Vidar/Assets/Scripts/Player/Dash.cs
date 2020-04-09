@@ -36,11 +36,12 @@ public class Dash : MonoBehaviour
     private IEnumerator DashReset()
     {
         PlayerEntity.setDashing(true);
-        PlayerEntity.setCanPlayDashAnim(true);
+        AnimatorManager.setStateDash();
+        //PlayerEntity.setCanPlayDashAnim(true);
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
-        PlayerEntity.setCanPlayDashAnim(false);
+        //PlayerEntity.setCanPlayDashAnim(false);
         rb.drag = 0;
     }
 
@@ -69,9 +70,4 @@ public class Dash : MonoBehaviour
         angle = Mathf.Rad2Deg * angle;
         angle += cam2.eulerAngles.y;
     }
-    //private void rotate()
-    //{
-    //    targetRotation = Quaternion.Euler(0, angle, 0);
-    //    transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Movement.turnSpeed * Time.deltaTime);
-    //}
 }

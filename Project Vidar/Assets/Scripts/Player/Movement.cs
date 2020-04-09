@@ -23,14 +23,22 @@ public class Movement : MonoBehaviour
         
         getInput();
 
-        if (Math.Abs(input.x) < 1 && Math.Abs(input.y)<1)
+        if (Math.Abs(input.x) < 1 && Math.Abs(input.y) < 1)
         {
-            PlayerEntity.setCanPlayWalkAnim(false);
-            PlayerEntity.setCanPlayIdleAnim(true);
+            //PlayerEntity.setCanPlayWalkAnim(false);
+            //PlayerEntity.setCanPlayIdleAnim(true);
+            if (!PlayerEntity.getJumping())
+            {
+                AnimatorManager.setStateIdle();
+            }
             return;
         }
-        PlayerEntity.setCanPlayWalkAnim(true);
-        PlayerEntity.setCanPlayIdleAnim(false);
+        if (!PlayerEntity.getJumping())
+        {
+            AnimatorManager.setStateRun();
+        }
+        //PlayerEntity.setCanPlayWalkAnim(true);
+        //PlayerEntity.setCanPlayIdleAnim(false);
         calculateDirection();
         rotate();
         move();
