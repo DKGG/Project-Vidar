@@ -16,7 +16,7 @@ public class PController : MonoBehaviour
     }
 
     void Update()
-    {       
+    {
         #region interacaoCaixas
         if (caixa != null)
         {
@@ -39,52 +39,43 @@ public class PController : MonoBehaviour
             {
                 PlayerEntity.setLocked(true);
                 PlayerEntity.setIdle(false);
-                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5f);                
-                if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) < 0.1f)
+                transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5f);
+                if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) < 0.5f)
                 {
                     Debug.Log("TRUE KRL");
-                   
-                }
-                //PlayerEntity.setCanThrow(true);
+                    transform.position = caixa.GetComponent<LockB>().posicao.position;
+                }                
             }
-            else if(caixa.GetComponent<LockB>().islocked == false)
+            else if (caixa.GetComponent<LockB>().islocked == false)
             {
                 PlayerEntity.setLocked(false);
-                PlayerEntity.setIdle(true);               
-                //if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) > 1)
-                //{
-                //    PlayerEntity.setCanThrow(false);
-                //}
-
+                PlayerEntity.setIdle(true);
+            }
+           
+            if (PlayerEntity.getLocked() == true && PlayerEntity.getKeyQ() == true)
+            {
+                caixa.GetComponent<LockB>().locka = false;
+                if (PlayerEntity.getIsLockedInContinuous() == true)
+                {
+                    caixa.GetComponent<ThrowContinuousBox>().push = true;
+                }
 
             }
-            //if (PlayerEntity.getCanThrow() == true)
-            //{
-                if (PlayerEntity.getLocked() == true && PlayerEntity.getKeyQ() == true)
-                {                                  
-                    caixa.GetComponent<LockB>().locka = false;
-                    if (PlayerEntity.getIsLockedInContinuous() == true)
-                    {
-                        caixa.GetComponent<ThrowContinuousBox>().push = true;
-                    }
-
-                }
-                if (PlayerEntity.getKeyQHeld() == true)
+            if (PlayerEntity.getKeyQHeld() == true)
+            {
+                strength += 1f;
+                if (strength > 15f)
                 {
-                    strength += 1f;
-                    if (strength > 15f)
-                    {
-                        strength = 15f;
-                    }
-                    PlayerEntity.setWantToThrow(true);
+                    strength = 15f;
                 }
-                if (PlayerEntity.getKeyQHeld() == false && PlayerEntity.getWantToThrow() == true)
-                {
-                    caixa.GetComponent<ThrowBox>().strength = strength;
-                    caixa.GetComponent<ThrowBox>().push = true;
-                    PlayerEntity.setWantToThrow(false);
-                }
-            //}
+                PlayerEntity.setWantToThrow(true);
+            }
+            if (PlayerEntity.getKeyQHeld() == false && PlayerEntity.getWantToThrow() == true)
+            {
+                caixa.GetComponent<ThrowBox>().strength = strength;
+                caixa.GetComponent<ThrowBox>().push = true;
+                PlayerEntity.setWantToThrow(false);
+            }           
         }
         #endregion
 
@@ -100,7 +91,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = true;
             GetComponent<Dash>().enabled = true;
             GetComponent<RaycastShoot>().enabled = true;
-            rb.isKinematic = false;
+            //rb.isKinematic = false;
         }
 
         if (PlayerEntity.getLocked() == true)
@@ -109,7 +100,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = false;
             GetComponent<Dash>().enabled = false;
             GetComponent<RaycastShoot>().enabled = false;
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
         }
     }
 
@@ -117,7 +108,7 @@ public class PController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("ContinuosBox"))
-        {           
+        {
             PlayerEntity.setIsLockedInContinuous(true);
         }
 
@@ -130,7 +121,7 @@ public class PController : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("ContinuosBox"))
-        {           
+        {
             PlayerEntity.setIsLockedInContinuous(false);
         }
 
@@ -169,15 +160,12 @@ public class PController : MonoBehaviour
         if (other.gameObject.CompareTag("ContinuosBox"))
         {
             PlayerEntity.setIsLockedInContinuous(false);
-            PlayerEntity.setIsInside(false);
-            //caixa = null;
-            //Debug.Log("O player saiu no trigger que deveria");
+            PlayerEntity.setIsInside(false);           
         }
         if (other.gameObject.CompareTag("SimpleBox"))
         {
             PlayerEntity.setIsLockedInSimple(false);
-            PlayerEntity.setIsInside(false);
-            //caixa = null;
+            PlayerEntity.setIsInside(false);            
         }
     }
     #endregion

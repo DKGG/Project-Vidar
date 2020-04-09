@@ -7,6 +7,7 @@ TagManager:
   - paraBloco
   - ContinuosBox
   - SimpleBox
+  - stopPlat
   layers:
   - Default
   - TransparentFX
