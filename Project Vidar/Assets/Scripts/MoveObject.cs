@@ -20,4 +20,9 @@ public class MoveObject : MonoBehaviour
     {
         triggered = true;
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        triggered = false;
+    }
 }
