@@ -27,13 +27,13 @@ public class ThrowBox : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        lockSide = GetComponent<LockB>().side;
+        //lockSide = GetComponent<LockB>().side;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("strength no throwBox" + strength);
+        //Debug.Log("strength no throwBox" + strength);
         isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
         if (push == true)
         {
@@ -47,34 +47,61 @@ public class ThrowBox : MonoBehaviour
         push = false;
         if (dirf.Equals(directionForce.normal))
         {
-            switch (lockSide)
-            {
-                case "norte":
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = transform.right * strength;
-                    break;
-                case "sul":
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = -transform.right * strength;
-                    break;
-                case "oeste":
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = -transform.forward * strength;
-                    break;
-                case "leste":
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = transform.forward * strength;
-                    break;
-                case "":
-                    break;
-                default:
-                    break;
 
+            if (PlayerEntity.getIsLockedInNorth())
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.velocity = transform.right * strength;                
             }
+            if (PlayerEntity.getIsLockedInSouth())
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.velocity = -transform.right * strength;
+            }
+            if (PlayerEntity.getIsLockedInWest())
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.velocity = -transform.forward * strength;
+            }
+            if (PlayerEntity.getIsLockedInEast())
+            {
+                rb.constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+                rb.velocity = transform.forward * strength;
+            }
+
+
+            //switch (lockSide)
+            //{
+            //    case "norte":
+            //        rb.constraints = RigidbodyConstraints.None;
+            //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //        rb.velocity = transform.right * strength;
+            //        break;
+            //    case "sul":
+            //        rb.constraints = RigidbodyConstraints.None;
+            //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //        rb.velocity = -transform.right * strength;
+            //        break;
+            //    case "oeste":
+            //        rb.constraints = RigidbodyConstraints.None;
+            //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //        rb.velocity = -transform.forward * strength;
+            //        break;
+            //    case "leste":
+            //        rb.constraints = RigidbodyConstraints.None;
+            //        rb.constraints = RigidbodyConstraints.FreezeRotation;
+            //        rb.velocity = transform.forward * strength;
+            //        break;
+            //    case "":
+            //        break;
+            //    default:
+            //        break;
+
+            //}
         }
 
         if (dirf.Equals(directionForce.up))

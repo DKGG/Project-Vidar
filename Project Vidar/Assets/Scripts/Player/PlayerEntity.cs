@@ -12,6 +12,12 @@ public static class PlayerEntity
     private static bool wantToThrow;
     private static bool islockedInContinuous;
     private static bool islockedInSimple;
+    private static bool islockedInNorth;
+    private static bool islockedInSouth;
+    private static bool islockedInWest;
+    private static bool islockedInEast;
+
+    private static GameObject BoxLocked;
 
     #endregion
 
@@ -20,6 +26,7 @@ public static class PlayerEntity
     private static bool canDash;
     private static bool canDoubleJump;
     private static bool canFreeze;
+    private static bool canThrow;
     #endregion
 
     #region Movement States Variables
@@ -31,7 +38,7 @@ public static class PlayerEntity
     
     #endregion
 
-    #region Player States Methods
+    #region Player States Methods  
     public static bool getIsAlive()
     {
         return isAlive;
@@ -62,6 +69,16 @@ public static class PlayerEntity
     public static void setCanDash(bool value)
     {
         canDash = value;
+    }
+
+    public static bool getCanThrow()
+    {
+        return canThrow;
+    }
+
+    public static void setCanThrow(bool value)
+    {
+        canThrow = value;
     }
 
     public static bool getCanDoubleJump()
@@ -120,6 +137,43 @@ public static class PlayerEntity
     {
         islockedInSimple = value;
     }
+
+    public static bool getIsLockedInNorth()
+    {
+        return islockedInNorth;
+    }
+    public static void setIslockedInNorth(bool value)
+    {
+        islockedInNorth = value;
+    }
+
+    public static bool getIsLockedInSouth()
+    {
+        return islockedInSouth;
+    }
+    public static void setIslockedInSouth(bool value)
+    {
+        islockedInSouth = value;
+    }
+
+    public static bool getIsLockedInWest()
+    {
+        return islockedInWest;
+    }
+    public static void setIslockedInWest(bool value)
+    {
+        islockedInWest = value;
+    }
+
+    public static bool getIsLockedInEast()
+    {
+        return islockedInEast;
+    }
+    public static void setIslockedInEast(bool value)
+    {
+        islockedInEast = value;
+    }
+
     #endregion
 
     #region Movement States Methods
@@ -181,6 +235,18 @@ public static class PlayerEntity
     public static void setJumping(bool value)
     {
         isJumping = value; 
+    }
+    #endregion
+
+    #region GameObjects
+    public static GameObject getBoxLocked()
+    {
+        return BoxLocked;
+    }
+
+    public static void setBoxLocked(GameObject obj)
+    {
+        BoxLocked = obj;
     }
     #endregion
 

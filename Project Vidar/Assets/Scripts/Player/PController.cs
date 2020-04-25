@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PController : MonoBehaviour
-{    
+{
     float strength;
 
     GameObject caixa = null;
+    Rigidbody rb;
 
     void Start()
     {
         PlayerEntity.setIdle(true);
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
         #region interacaoCaixas
+
+        //if(caixa!= null)
+        //{
+        //    if(PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true)
+        //    {
+        //        PlayerEntity.
+        //    }
+        //}
         if (caixa != null)
         {
             if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getIdle() == true)
@@ -38,25 +48,21 @@ public class PController : MonoBehaviour
                 PlayerEntity.setLocked(true);
                 PlayerEntity.setIdle(false);
                 transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5f);
-                if (PlayerEntity.getIsLockedInContinuous() == true)
+                if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) < 1f)
                 {
-                    caixa.GetComponent<ThrowContinuousBox>().lockSide = caixa.GetComponent<LockB>().side;
-                }
-                if (PlayerEntity.getIsLockedInSimple() == true)
-                {
-                    caixa.GetComponent<ThrowBox>().lockSide = caixa.GetComponent<LockB>().side;
+                    Debug.Log("TRUE");
+                    transform.position = caixa.GetComponent<LockB>().posicao.position;
+                    //bool aqui
                 }
             }
-            else
+            else if (caixa.GetComponent<LockB>().islocked == false)
             {
                 PlayerEntity.setLocked(false);
                 PlayerEntity.setIdle(true);
             }
 
-            if (PlayerEntity.getLocked() == true && PlayerEntity.getKeyQ())
+            if (PlayerEntity.getLocked() == true && PlayerEntity.getKeyQ() == true)
             {
-                //Debug.Log("Entrei no  antes do if do que eu achei que n ia funcionar");                
-                //rb.velocity = Vector3.zero;               
                 caixa.GetComponent<LockB>().locka = false;
                 if (PlayerEntity.getIsLockedInContinuous() == true)
                 {
@@ -64,7 +70,6 @@ public class PController : MonoBehaviour
                 }
 
             }
-
             if (PlayerEntity.getKeyQHeld() == true)
             {
                 strength += 1f;
@@ -72,15 +77,14 @@ public class PController : MonoBehaviour
                 {
                     strength = 15f;
                 }
-                PlayerEntity.setWantToThrow(true);                
+                PlayerEntity.setWantToThrow(true);
             }
             if (PlayerEntity.getKeyQHeld() == false && PlayerEntity.getWantToThrow() == true)
             {
                 caixa.GetComponent<ThrowBox>().strength = strength;
                 caixa.GetComponent<ThrowBox>().push = true;
-                PlayerEntity.setWantToThrow(false);                
+                PlayerEntity.setWantToThrow(false);
             }
-
         }
         #endregion
 
@@ -96,6 +100,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = true;
             GetComponent<Dash>().enabled = true;
             GetComponent<RaycastShoot>().enabled = true;
+            rb.isKinematic = false;
         }
 
         if (PlayerEntity.getLocked() == true)
@@ -104,6 +109,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = false;
             GetComponent<Dash>().enabled = false;
             GetComponent<RaycastShoot>().enabled = false;
+            rb.isKinematic = true;
         }
     }
 
@@ -112,7 +118,12 @@ public class PController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ContinuosBox"))
         {
-            Debug.Log("O player entrou na colisão que deveria");
+            PlayerEntity.setIsLockedInContinuous(true);
+        }
+
+        if (collision.gameObject.CompareTag("SimpleBox"))
+        {
+            PlayerEntity.setIsLockedInSimple(true);
         }
     }
 
@@ -120,7 +131,12 @@ public class PController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("ContinuosBox"))
         {
-            Debug.Log("O player saiu da colisão que deveria");
+            PlayerEntity.setIsLockedInContinuous(false);
+        }
+
+        if (collision.gameObject.CompareTag("SimpleBox"))
+        {
+            PlayerEntity.setIsLockedInSimple(false);
         }
     }
     #endregion
@@ -134,6 +150,7 @@ public class PController : MonoBehaviour
             //se usar só "transform.position" vai mudar a posição de quem está com esse código no caso o player;
             //Debug.Log("O player entrou no trigger que deveria");            
             caixa = other.gameObject;
+            PlayerEntity.setBoxLocked(caixa);
             PlayerEntity.setIsLockedInContinuous(true);
             PlayerEntity.setIsInside(true);
         }
@@ -141,7 +158,8 @@ public class PController : MonoBehaviour
         if (other.gameObject.CompareTag("SimpleBox"))
         {
             caixa = other.gameObject;
-            PlayerEntity.setIsLockedInSimple(true);            
+            PlayerEntity.setBoxLocked(caixa);
+            PlayerEntity.setIsLockedInSimple(true);
             PlayerEntity.setIsInside(true);
         }
     }
@@ -151,13 +169,12 @@ public class PController : MonoBehaviour
         if (other.gameObject.CompareTag("ContinuosBox"))
         {
             PlayerEntity.setIsLockedInContinuous(false);
-            PlayerEntity.setIsInside(false);
-            //Debug.Log("O player saiu no trigger que deveria");
+            PlayerEntity.setIsInside(false);           
         }
         if (other.gameObject.CompareTag("SimpleBox"))
         {
             PlayerEntity.setIsLockedInSimple(false);
-            PlayerEntity.setIsInside(false);
+            PlayerEntity.setIsInside(false);            
         }
     }
     #endregion

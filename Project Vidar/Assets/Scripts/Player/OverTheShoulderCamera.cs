@@ -48,20 +48,30 @@ public class OverTheShoulderCamera : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, zoomOut.transform.position, Time.deltaTime * 5f);            
         }
 
-        if (PlayerEntity.getLocked())
+        if (PlayerEntity.getLocked() == true)
         {
-            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);
-            playerTransForm = playerObject.transform.parent;
+            //playerTransForm.position = playerObject.transform.parent.position;
+            playerTransForm = PlayerEntity.getBoxLocked().transform;
+            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);            
+            changeCam = true;
         }
 
-        if (!PlayerEntity.getLocked())
-        {
+        if (PlayerEntity.getLocked() == false)
+        {            
+            //Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, OldchangeTargetAxis, Time.deltaTime * 100);
             playerTransForm = playerFocus;
         }
+
+       
     }
 
     private void LateUpdate()
     {
+        if (cameraPivot.position == null)
+        {
+            playerTransForm = playerFocus;
+        }
+
         mouseX += PlayerEntity.checkMouseX() * rotationSpeed;
         mouseY -= PlayerEntity.checkMouseY() * rotationSpeed;
 
@@ -71,5 +81,7 @@ public class OverTheShoulderCamera : MonoBehaviour
 
         transform.LookAt(lookTarget);
         cameraPivot.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+
+        
     }
 }

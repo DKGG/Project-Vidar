@@ -35,33 +35,99 @@ public class boxMovement : MonoBehaviour
 
     private void move()
     {
-        Debug.Log("Y: " + input.y);
-//         Debug.Log("X: " + input.x);
 
-        // Debug.Log("Forward: " + transform.forward);
-
-        if (input.y > 0)
+        if (PlayerEntity.getIsLockedInNorth())
         {
-            transform.position += transform.forward * velocity * Time.deltaTime;
-            // boxPush = transform.forward;
-            Debug.Log(boxPush);
+            if (input.x > 0)
+            {
+                transform.position += transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.x < 0)
+            {
+                transform.position -= transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.y > 0)
+            {
+                transform.position -= transform.right * velocity * Time.deltaTime;
+            }
+
+            if (input.y < 0)
+            {
+                transform.position += transform.right * velocity * Time.deltaTime;
+            }
         }
-        
-        if (input.y < 0)
+
+        if (PlayerEntity.getIsLockedInSouth())
         {
-            transform.position -= transform.forward * velocity * Time.deltaTime;
+            if (input.x > 0)
+            {
+                transform.position -= transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.x < 0)
+            {
+                transform.position += transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.y > 0)
+            {
+                transform.position += transform.right * velocity * Time.deltaTime;
+            }
+
+            if (input.y < 0)
+            {
+                transform.position -= transform.right * velocity * Time.deltaTime;
+            }
         }
 
-        if (input.x > 0)
+        if (PlayerEntity.getIsLockedInWest())
         {
-            Debug.Log("X plus");
-            transform.position -= transform.right * velocity * Time.deltaTime;
+            if (input.y > 0)
+            {
+                transform.position += transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.y < 0)
+            {
+                transform.position -= transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.x > 0)
+            {
+
+                transform.position += transform.right * velocity * Time.deltaTime;
+            }
+
+            if (input.x < 0)
+            {
+
+                transform.position -= transform.right * velocity * Time.deltaTime;
+            }
         }
 
-        if (input.x < 0)
+        if (PlayerEntity.getIsLockedInEast())
         {
-            Debug.Log("X minus");
-            transform.position += transform.right * velocity * Time.deltaTime;
+            if (input.y > 0)
+            {
+                transform.position -= transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.y < 0)
+            {
+                transform.position += transform.forward * velocity * Time.deltaTime;
+            }
+
+            if (input.x > 0)
+            {
+                transform.position -= transform.right * velocity * Time.deltaTime;
+            }
+
+            if (input.x < 0)
+            {
+                transform.position += transform.right * velocity * Time.deltaTime;
+            }
         }
     }
 
@@ -73,8 +139,8 @@ public class boxMovement : MonoBehaviour
 
     private void getInput()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.y = Input.GetAxisRaw("Vertical");
+        input.x = PlayerEntity.checkInputHorizontal();
+        input.y = PlayerEntity.checkInputVertical();
     }
 
     void calculateDirection()
