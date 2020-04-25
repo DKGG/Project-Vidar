@@ -25,6 +25,7 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(PlayerEntity.getDashing());
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
             dashVariables();
@@ -35,12 +36,14 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashReset()
     {
+        PlayerEntity.setIsFalling(false);
         PlayerEntity.setDashing(true);
         AnimatorManager.setStateDash();
         //PlayerEntity.setCanPlayDashAnim(true);
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
+        
         //PlayerEntity.setCanPlayDashAnim(false);
         rb.drag = 0;
     }

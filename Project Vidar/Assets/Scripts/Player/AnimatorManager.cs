@@ -11,7 +11,8 @@ public class AnimatorManager : MonoBehaviour
         idle,
         run,
         jump,
-        dash
+        dash,
+        falling
     }
 
     private static AnimState states;
@@ -23,6 +24,7 @@ public class AnimatorManager : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log("state: "+states);
         updateAnim();
         checkStates();
     }
@@ -70,6 +72,16 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("IsJumping", false);
         }
         #endregion
+        #region Animation Falling
+        if (PlayerEntity.getCanPlayFallAnim())
+        {
+            AnimatorManager.setState("isFalling", true);
+        }
+        if (!PlayerEntity.getCanPlayFallAnim())
+        {
+            AnimatorManager.setState("isFalling", false);
+        }
+        #endregion
     }
     #region Set states methods
     public static void setStateIdle()
@@ -88,6 +100,10 @@ public class AnimatorManager : MonoBehaviour
     {
         states = AnimState.dash;
     }
+    public static void setStateFalling()
+    {
+        states = AnimState.falling;
+    }
     #endregion
 
     private void checkStates()
@@ -95,20 +111,22 @@ public class AnimatorManager : MonoBehaviour
         switch (states)
         {
             case AnimState.idle:
-                if (!PlayerEntity.getDashing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() ||!PlayerEntity.getDashing())
                 {
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(false);
                     PlayerEntity.setCanPlayIdleAnim(true);
                 }
                 break;
             case AnimState.run:
-                if (!PlayerEntity.getDashing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() || !PlayerEntity.getDashing())
                 {
                     PlayerEntity.setCanPlayIdleAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(true);
                 }
                 break;
@@ -116,13 +134,30 @@ public class AnimatorManager : MonoBehaviour
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayDashAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
+                PlayerEntity.setCanPlayFallAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(true);
                 break;
             case AnimState.dash:
+                if (!PlayerEntity.getIsFalling())
+                {
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
+                PlayerEntity.setCanPlayFallAnim(false);
                 PlayerEntity.setCanPlayDashAnim(true);
+                }
+                break;
+            case AnimState.falling:
+                if (!PlayerEntity.getGrounded())
+                {
+                    PlayerEntity.setJumping(false);
+                    PlayerEntity.setIsFalling(true);
+                    PlayerEntity.setCanPlayIdleAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(true);
+                }
                 break;
         }
     }

@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class playerJump : MonoBehaviour
 {
-    Rigidbody rb;    
+    Rigidbody rb;
+    
     public float jumpForce = 5f;
     public int jumpCounter = 1;
+    [SerializeField] private float dragDownForce = 5f;
+    [SerializeField] private float extraGravity = 1.6f;
+
+    [SerializeField] CapsuleCollider vidarSphere;
+    [SerializeField] LayerMask groundLayers;
+    bool isGround2;
 
     private void Start()
     {        
@@ -15,8 +22,8 @@ public class playerJump : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(PlayerEntity.getJumping());
         GroundCheck();
+        JumpBalance();
 
         if (PlayerEntity.getButtonJump())
         {
@@ -31,21 +38,37 @@ public class playerJump : MonoBehaviour
                 PlayerEntity.setCanDoubleJump(false);                ;
             }
         }
+
     }
 
     private void GroundCheck()
     {
-        Vector3 down = transform.TransformDirection(Vector3.down);
-
-        if (Physics.Raycast(transform.position, down, 2f))
+        PlayerEntity.setGrounded(Physics.CheckCapsule(vidarSphere.bounds.center, new Vector3(vidarSphere.bounds.center.x, vidarSphere.bounds.min.y, vidarSphere.bounds.center.z), vidarSphere.radius * .9f, groundLayers));
+    }
+    private void JumpBalance()
+    {
+        if (Mathf.Abs(rb.velocity.y) <= 1f && !PlayerEntity.getGrounded() && !PlayerEntity.getDashing())
         {
-            PlayerEntity.setGrounded(true);
-            jumpCounter = 1;
+            AnimatorManager.setStateFalling();
+            PlayerEntity.setIsFalling(true);
+            return;
 
         }
-        else
+        if (Mathf.Abs(rb.velocity.y) < 1)
         {
-            PlayerEntity.setGrounded(false);
+
+            rb.velocity += Vector3.up * Physics.gravity.y * (dragDownForce - 1) * Time.deltaTime;
+        }
+        else if (Mathf.Abs(rb.velocity.y) > 0 && !PlayerEntity.getButtonJump())
+        {
+
+            rb.velocity += Vector3.up * Physics.gravity.y * (extraGravity - 1) * Time.deltaTime;
+        }
+        if (PlayerEntity.getGrounded())
+        {
+            jumpCounter = 1;
+            PlayerEntity.setIsFalling(false);
+
         }
     }
 
@@ -55,7 +78,6 @@ public class playerJump : MonoBehaviour
         AnimatorManager.setStateJump();
         jumpCounter -= 1;
         //PlayerEntity.setCanPlayJumpAnim(true);
-        Debug.Log("Pulei");
         rb.velocity = Vector3.up * Mathf.Sqrt(jumpForce * -1f * Physics.gravity.y);
         StartCoroutine(Wait());
         StartCoroutine(secondJumpTimer());
@@ -64,12 +86,11 @@ public class playerJump : MonoBehaviour
     {
         yield return 1;
         PlayerEntity.setJumping(false);
-        // yield return new WaitForSeconds(1);
 
     }
     private IEnumerator secondJumpTimer()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.55f);
         PlayerEntity.setCanDoubleJump(true);
     }
 }

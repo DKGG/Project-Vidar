@@ -27,13 +27,13 @@ public class Movement : MonoBehaviour
         {
             //PlayerEntity.setCanPlayWalkAnim(false);
             //PlayerEntity.setCanPlayIdleAnim(true);
-            if (!PlayerEntity.getJumping())
+            if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling())
             {
                 AnimatorManager.setStateIdle();
             }
             return;
         }
-        if (!PlayerEntity.getJumping())
+        if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling())
         {
             AnimatorManager.setStateRun();
         }
