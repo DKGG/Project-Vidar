@@ -18,6 +18,14 @@ public class PController : MonoBehaviour
     void Update()
     {
         #region interacaoCaixas
+
+        //if(caixa!= null)
+        //{
+        //    if(PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true)
+        //    {
+        //        PlayerEntity.
+        //    }
+        //}
         if (caixa != null)
         {
             if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getIdle() == true)
@@ -40,18 +48,19 @@ public class PController : MonoBehaviour
                 PlayerEntity.setLocked(true);
                 PlayerEntity.setIdle(false);
                 transform.position = Vector3.Lerp(transform.position, caixa.GetComponent<LockB>().posicao.position, Time.deltaTime * 5f);
-                if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) < 0.5f)
+                if (Mathf.Abs(Vector3.Distance(transform.position, caixa.GetComponent<LockB>().posicao.position)) < 1f)
                 {
-                    Debug.Log("TRUE KRL");
+                    Debug.Log("TRUE");
                     transform.position = caixa.GetComponent<LockB>().posicao.position;
-                }                
+                    //bool aqui
+                }
             }
             else if (caixa.GetComponent<LockB>().islocked == false)
             {
                 PlayerEntity.setLocked(false);
                 PlayerEntity.setIdle(true);
             }
-           
+
             if (PlayerEntity.getLocked() == true && PlayerEntity.getKeyQ() == true)
             {
                 caixa.GetComponent<LockB>().locka = false;
@@ -75,7 +84,7 @@ public class PController : MonoBehaviour
                 caixa.GetComponent<ThrowBox>().strength = strength;
                 caixa.GetComponent<ThrowBox>().push = true;
                 PlayerEntity.setWantToThrow(false);
-            }           
+            }
         }
         #endregion
 
@@ -91,7 +100,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = true;
             GetComponent<Dash>().enabled = true;
             GetComponent<RaycastShoot>().enabled = true;
-            //rb.isKinematic = false;
+            rb.isKinematic = false;
         }
 
         if (PlayerEntity.getLocked() == true)
@@ -100,7 +109,7 @@ public class PController : MonoBehaviour
             GetComponent<playerJump>().enabled = false;
             GetComponent<Dash>().enabled = false;
             GetComponent<RaycastShoot>().enabled = false;
-            //rb.isKinematic = true;
+            rb.isKinematic = true;
         }
     }
 

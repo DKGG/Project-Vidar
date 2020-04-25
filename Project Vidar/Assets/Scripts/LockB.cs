@@ -41,7 +41,7 @@ public class LockB : MonoBehaviour
 
     void Update()
     {
-        if (locka && !PlayerEntity.getLocked())
+        if (locka && PlayerEntity.getLocked() == false)
         {
             noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
             noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
@@ -93,7 +93,7 @@ public class LockB : MonoBehaviour
             //PlayerEntity.setLocked(true);
         }
 
-        if (!locka && PlayerEntity.getLocked())
+        if (!locka && PlayerEntity.getLocked() ==  true) 
         {
             //Debug.Log("NãoPodeLockar");
             playerTransform.parent = null;

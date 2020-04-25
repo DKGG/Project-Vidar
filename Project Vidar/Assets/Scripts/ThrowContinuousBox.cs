@@ -121,7 +121,7 @@ public class ThrowContinuousBox : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (/*collision.gameObject.CompareTag("Player") ||*/ collision.gameObject.CompareTag("paraBloco"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("paraBloco"))
         {
             colidiu = true;
         }
