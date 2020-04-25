@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    [Header("Dash Settings")]
     [SerializeField] float DashDistance = 10f;
     float angle;
     [SerializeField] int dragIntensity = 8;
@@ -14,19 +13,14 @@ public class Dash : MonoBehaviour
 
     Vector3 dashDirection;
     Vector3 dashVelocity;
-   
-    Rigidbody rb;
-    WaitForSeconds dashDuration;
 
-    void Awake()
-    {
-        dashDuration = new WaitForSeconds(dashTimer);
-    }
+    Rigidbody rb;
+    WaitForSeconds dashDuration = new WaitForSeconds(1.0f);
 
     void Start()
     {
         cam2 = Camera.main.transform;
-        rb = GetComponent<Rigidbody>();        
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -34,7 +28,7 @@ public class Dash : MonoBehaviour
         //Debug.Log(PlayerEntity.getDashing());
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
-            DashVariables();
+            dashVariables();
 
             StartCoroutine(DashReset());
         }
@@ -49,15 +43,15 @@ public class Dash : MonoBehaviour
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
-        
+
         //PlayerEntity.setCanPlayDashAnim(false);
         rb.drag = 0;
     }
 
-    private void DashVariables()
+    private void dashVariables()
     {
         calculateDirection();
-      //  rotate();
+        //  rotate();
         rb.drag = dragIntensity;
 
         dashDirection = new Vector3(
