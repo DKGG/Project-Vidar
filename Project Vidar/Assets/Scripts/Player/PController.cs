@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PController : MonoBehaviour
 {
+
     float strength;
 
     GameObject caixa = null;
@@ -178,4 +179,5 @@ public class PController : MonoBehaviour
         }
     }
     #endregion
+
 }

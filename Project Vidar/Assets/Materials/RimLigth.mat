@@ -100,7 +100,7 @@ Material:
     - _WaveSpeed: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.6910958, b: 1, a: 0.99215686}
+    - _Color: {r: 1, g: 0, b: 0.047468662, a: 0.99215686}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.57638884, g: 0, b: 1, a: 1}
     - _SnowColor: {r: 1, g: 1, b: 1, a: 1}

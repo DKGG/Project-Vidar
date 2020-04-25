@@ -6,9 +6,11 @@ public class Dash : MonoBehaviour
 {
     [Header("Dash Settings")]
     [SerializeField] float DashDistance = 10f;
-    [SerializeField] float dashTimer = 0.9f;
-    [SerializeField] int dragIntensity = 7;
+    float angle;
+    [SerializeField] int dragIntensity = 8;
     [SerializeField] GameObject cam;
+    Transform cam2;
+    Quaternion targetRotation;
 
     Vector3 dashDirection;
     Vector3 dashVelocity;
@@ -23,11 +25,13 @@ public class Dash : MonoBehaviour
 
     void Start()
     {
+        cam2 = Camera.main.transform;
         rb = GetComponent<Rigidbody>();        
     }
 
     void Update()
     {
+        //Debug.Log(PlayerEntity.getDashing());
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
             DashVariables();
@@ -38,15 +42,22 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashReset()
     {
+        PlayerEntity.setIsFalling(false);
         PlayerEntity.setDashing(true);
+        AnimatorManager.setStateDash();
+        //PlayerEntity.setCanPlayDashAnim(true);
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
+        
+        //PlayerEntity.setCanPlayDashAnim(false);
         rb.drag = 0;
     }
 
     private void DashVariables()
     {
+        calculateDirection();
+      //  rotate();
         rb.drag = dragIntensity;
 
         dashDirection = new Vector3(
@@ -59,5 +70,13 @@ public class Dash : MonoBehaviour
             cam.transform.forward,          // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
+
+    }
+
+    void calculateDirection()
+    {
+        angle = Mathf.Atan2(PlayerEntity.checkInputHorizontal(), PlayerEntity.checkInputVertical());
+        angle = Mathf.Rad2Deg * angle;
+        angle += cam2.eulerAngles.y;
     }
 }

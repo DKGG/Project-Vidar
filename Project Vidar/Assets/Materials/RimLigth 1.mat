@@ -73,7 +73,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amplitude: 0.0282
-    - _AuraBehavior: 0.46
+    - _AuraBehavior: 1.26
     - _AuraBehavior2: 0.34
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -88,7 +88,7 @@ Material:
     - _Parallax: 0.02
     - _RampVal: -0.072
     - _RimPower: 4.72
-    - _RimValue: 1.33
+    - _RimValue: 1.02
     - _SmoothnessTextureChannel: 0
     - _SnowLevel: -1
     - _SpecularHighlights: 1
@@ -100,7 +100,7 @@ Material:
     - _WaveSpeed: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.05363454, b: 0, a: 0.99215686}
+    - _Color: {r: 0, g: 0.78807735, b: 1, a: 0.99215686}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 0.57638884, g: 0, b: 1, a: 1}
     - _SnowColor: {r: 1, g: 1, b: 1, a: 1}

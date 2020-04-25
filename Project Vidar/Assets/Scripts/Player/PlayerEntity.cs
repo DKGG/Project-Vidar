@@ -4,11 +4,13 @@ using UnityEngine;
 
 public static class PlayerEntity
 {
+    //VARIABLES
     #region Player States Variables
     private static bool isAlive;
     private static bool isIdle;
     private static bool isInside;
     private static bool isGrounded;
+    private static bool isFalling;
     private static bool wantToThrow;
     private static bool islockedInContinuous;
     private static bool islockedInSimple;
@@ -35,8 +37,20 @@ public static class PlayerEntity
     private static bool isLocked;
     private static bool isWalking;
     private static bool isJumping;
-    
+
     #endregion
+
+    #region Animator States Variables
+
+    private static bool canPlayDashAnim;
+    private static bool canPlayWalkAnim;
+    private static bool canPlayJumpAnim;
+    private static bool canPlayIdleAnim;
+    private static bool canPlayFallAnim;
+
+    #endregion
+
+    //METHODS
 
     #region Player States Methods  
     public static bool getIsAlive()
@@ -187,6 +201,16 @@ public static class PlayerEntity
         isGrounded = value;
     }
 
+    public static bool getIsFalling()
+    {
+        return isFalling;
+    }
+
+    public static void setIsFalling(bool value)
+    {
+        isFalling = value;
+    }
+
     public static bool getDashing()
     {
         return isDashing;
@@ -238,6 +262,58 @@ public static class PlayerEntity
     }
     #endregion
 
+    #region Animator States Methods
+    public static bool getCanPlayDashAnim()
+    {
+        return canPlayDashAnim;
+    }
+
+    public static void setCanPlayDashAnim(bool value)
+    {
+        canPlayDashAnim = value;
+    }
+
+    public static bool getCanPlayWalkAnim()
+    {
+        return canPlayWalkAnim;
+    }
+
+    public static void setCanPlayWalkAnim(bool value)
+    {
+        canPlayWalkAnim = value;
+    }
+    public static bool getCanPlayJumpAnim()
+    {
+        return canPlayJumpAnim;
+    }
+
+    public static void setCanPlayJumpAnim(bool value)
+    {
+        canPlayJumpAnim = value;
+    }
+    public static bool getCanPlayIdleAnim()
+    {
+        return canPlayIdleAnim;
+    }
+
+    public static void setCanPlayIdleAnim(bool value)
+    {
+        canPlayIdleAnim = value;
+    }
+
+    public static bool getCanPlayFallAnim()
+    {
+        return canPlayFallAnim;
+    }
+
+    public static void setCanPlayFallAnim(bool value)
+    {
+        canPlayFallAnim = value;
+    }
+    #endregion
+
+    //OBJECTS
+
     #region GameObjects
     public static GameObject getBoxLocked()
     {
@@ -249,6 +325,8 @@ public static class PlayerEntity
         BoxLocked = obj;
     }
     #endregion
+
+    //INPUTS
 
     #region Inputs
     public static bool getButtonJump()
