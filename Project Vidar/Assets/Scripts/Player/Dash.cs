@@ -15,7 +15,7 @@ public class Dash : MonoBehaviour
     Vector3 dashVelocity;
 
     Rigidbody rb;
-    WaitForSeconds dashDuration = new WaitForSeconds(1.0f);
+    WaitForSeconds dashDuration = new WaitForSeconds(0.7f);
 
     void Start()
     {
