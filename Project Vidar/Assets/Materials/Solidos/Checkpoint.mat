@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RedEnemy
+  m_Name: Checkpoint
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _EMISSIONMAP _LIGHTMAPPING_DYNAMIC_LIGHTMAPS _LIGHTMAPPING_REALTIME
     _UVSEC_UV1
@@ -89,5 +89,5 @@ Material:
     - _EmissionColor: {r: 1.3348337, g: 1.3348337, b: 1.3348337, a: 1.3348337}
     - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.9150943, g: 0.15107687, b: 0.15107687, a: 1}
+    - _SpecColor: {r: 0.2783019, g: 0.8126255, b: 1, a: 1}
     - _SpecularColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}

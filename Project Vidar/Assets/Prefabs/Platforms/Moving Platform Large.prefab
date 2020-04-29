@@ -339,8 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementEnabled: 1
   positiveDirection: 1
-  speed: 3
-  platformMovement: 0
+  speed: 5
+  platformMovement: 2
   platformPhysics: 0
 --- !u!54 &2594078775120196786
 Rigidbody:
@@ -354,7 +354,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
@@ -460,7 +460,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8709109319034430172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -34.8}
+  m_LocalPosition: {x: -0, y: 0, z: -45.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8709109317573012091}
