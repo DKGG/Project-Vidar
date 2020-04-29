@@ -16,13 +16,9 @@ public class MoveObject : MonoBehaviour
             toMove.transform.position = Vector3.Lerp(toMove.transform.position, moveTo.transform.position, Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        triggered = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        triggered = false;
+        if (Input.GetKeyDown(KeyCode.E))
+            triggered = !triggered;
     }
 }
