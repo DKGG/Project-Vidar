@@ -24,7 +24,7 @@ public class AnimatorManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("state: "+states);
+        //Debug.Log("state: "+states);
         updateAnim();
         checkStates();
     }
@@ -138,14 +138,14 @@ public class AnimatorManager : MonoBehaviour
                 PlayerEntity.setCanPlayJumpAnim(true);
                 break;
             case AnimState.dash:
-                if (!PlayerEntity.getIsFalling())
-                {
+                //if (!PlayerEntity.getIsFalling())
+                //{
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
                 PlayerEntity.setCanPlayDashAnim(true);
-                }
+                //}
                 break;
             case AnimState.falling:
                 if (!PlayerEntity.getGrounded())
