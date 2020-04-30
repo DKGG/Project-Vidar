@@ -15,7 +15,8 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        cam = Camera.main.transform;       
+        cam = Camera.main.transform;
+        //FindObjectOfType<AudioManager>().Play("testSound");
     }
 
     private void Update()
