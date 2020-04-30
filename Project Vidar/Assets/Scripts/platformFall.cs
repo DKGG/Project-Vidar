@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class platformFall : MonoBehaviour
 {
+    [SerializeField] float fallVel = 5f;
+    [SerializeField] float timer = 5.0f;
+
     bool isFalling;
     bool alreadyFall = false;
-    bool lostCollision = false;   
-    float downSpeed = 0;
-    float timer = 5.0f;
+    bool lostCollision = false;
+    float fallSpeed = 0;
     Vector3 startPosition;
 
     private void Start()
@@ -21,8 +23,8 @@ public class platformFall : MonoBehaviour
     {
         if (isFalling == true)
         {
-            downSpeed += Time.deltaTime / 20;
-            transform.position = new Vector3(transform.position.x, transform.position.y - downSpeed, transform.position.z);
+            fallSpeed += Time.deltaTime / fallVel;
+            transform.position = new Vector3(transform.position.x, transform.position.y - fallSpeed, transform.position.z);
             alreadyFall = true;
         }
 
@@ -31,12 +33,12 @@ public class platformFall : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0.0f)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y + downSpeed, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y + fallSpeed, transform.position.z);
                 isFalling = false;
                 if (Mathf.Abs(Vector3.Distance(transform.position, startPosition)) < 2)
                 {
                     transform.position = new Vector3(startPosition.x, startPosition.y, startPosition.z);
-                    downSpeed = 0;
+                    fallSpeed = 0;
                     alreadyFall = false;
                     timer = 5.0f;
                 }
