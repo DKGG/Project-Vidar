@@ -175,7 +175,7 @@ public class MovingPlatform : MonoBehaviour
             positiveDirection = !positiveDirection;
 
             // troca de direção aqui
-            // audio.Play();
+            // audio.Play();//teste
 
             StartCoroutine(Reset());
         }
