@@ -49,6 +49,13 @@ public static class PlayerEntity
     private static bool canPlayFallAnim;
 
     #endregion
+    #region sounds States Variables
+
+    private static bool isPlayingGrassStep;
+    private static bool isPlayingStoneStep;
+    private static bool isPlayingWaterStep;
+
+    #endregion
 
     //METHODS
 
@@ -262,7 +269,38 @@ public static class PlayerEntity
     }
     #endregion
 
+    #region Sounds States Methods
+    public static bool getisPlayingGrassStep()
+    {
+        return isPlayingGrassStep;
+    }
+
+    public static void setIsPlayingGrassStep(bool value)
+    {
+        isPlayingGrassStep = value;
+    }
+
+    public static bool getisPlayingStoneStep()
+    {
+        return isPlayingStoneStep;
+    }
+
+    public static void setisPlayingStoneStep(bool value)
+    {
+        isPlayingStoneStep = value;
+    }
+    public static bool getisPlayingWaterStep()
+    {
+        return isPlayingWaterStep;
+    }
+
+    public static void setisPlayingWaterStep(bool value)
+    {
+        isPlayingWaterStep = value;
+    }
     #region Animator States Methods
+
+    #endregion
     public static bool getCanPlayDashAnim()
     {
         return canPlayDashAnim;

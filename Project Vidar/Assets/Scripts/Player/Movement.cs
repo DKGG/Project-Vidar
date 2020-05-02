@@ -26,20 +26,18 @@ public class Movement : MonoBehaviour
 
         if (Math.Abs(input.x) < 1 && Math.Abs(input.y) < 1)
         {
-            //PlayerEntity.setCanPlayWalkAnim(false);
-            //PlayerEntity.setCanPlayIdleAnim(true);
             if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
             {
                 AnimatorManager.setStateIdle();
+                //FindObjectOfType<AudioManager>().Stop("grassStep");
             }
             return;
         }
         if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
         {
             AnimatorManager.setStateRun();
+            //FindObjectOfType<AudioManager>().Play("grassStep");
         }
-        //PlayerEntity.setCanPlayWalkAnim(true);
-        //PlayerEntity.setCanPlayIdleAnim(false);
         calculateDirection();
         rotate();
         move();

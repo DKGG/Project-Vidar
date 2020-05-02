@@ -75,6 +75,7 @@ public class playerJump : MonoBehaviour
     private void Jump()
     {
         PlayerEntity.setJumping(true);
+        FindObjectOfType<AudioManager>().Play("jump");
         AnimatorManager.setStateJump();
         jumpCounter -= 1;
         //PlayerEntity.setCanPlayJumpAnim(true);
