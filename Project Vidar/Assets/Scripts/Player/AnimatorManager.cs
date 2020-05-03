@@ -24,7 +24,6 @@ public class AnimatorManager : MonoBehaviour
     }
     private void Update()
     {
-        //Debug.Log("state: "+states);
         updateAnim();
         checkStates();
     }
@@ -113,6 +112,10 @@ public class AnimatorManager : MonoBehaviour
             case AnimState.idle:
                 if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() ||!PlayerEntity.getDashing())
                 {
+                    FindObjectOfType<AudioManager>().Stop("grassStep");
+                    PlayerEntity.setisPlayingStoneStep(false);
+                    PlayerEntity.setIsPlayingGrassStep(false);
+                    PlayerEntity.setisPlayingWaterStep(false);
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(false);
@@ -123,6 +126,11 @@ public class AnimatorManager : MonoBehaviour
             case AnimState.run:
                 if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() || !PlayerEntity.getDashing())
                 {
+                    if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
+                    {
+                        FindObjectOfType<AudioManager>().Play("grassStep");
+                        PlayerEntity.setIsPlayingGrassStep(true);
+                    }
                     PlayerEntity.setCanPlayIdleAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
@@ -131,6 +139,11 @@ public class AnimatorManager : MonoBehaviour
                 }
                 break;
             case AnimState.jump:
+                if (PlayerEntity.getisPlayingGrassStep())
+                {
+                    FindObjectOfType<AudioManager>().Stop("grassStep");
+                    PlayerEntity.setIsPlayingGrassStep(false);
+                }
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayDashAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
@@ -138,18 +151,25 @@ public class AnimatorManager : MonoBehaviour
                 PlayerEntity.setCanPlayJumpAnim(true);
                 break;
             case AnimState.dash:
-                //if (!PlayerEntity.getIsFalling())
-                //{
+                if (PlayerEntity.getisPlayingGrassStep())
+                {
+                    FindObjectOfType<AudioManager>().Stop("grassStep");
+                    PlayerEntity.setIsPlayingGrassStep(false);
+                }
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
                 PlayerEntity.setCanPlayDashAnim(true);
-                //}
                 break;
             case AnimState.falling:
                 if (!PlayerEntity.getGrounded())
                 {
+                    if (PlayerEntity.getisPlayingGrassStep())
+                    {
+                        FindObjectOfType<AudioManager>().Stop("grassStep");
+                        PlayerEntity.setIsPlayingGrassStep(false);
+                    }
                     PlayerEntity.setJumping(false);
                     PlayerEntity.setIsFalling(true);
                     PlayerEntity.setCanPlayIdleAnim(false);

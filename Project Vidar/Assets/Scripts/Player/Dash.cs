@@ -53,6 +53,7 @@ public class Dash : MonoBehaviour
         calculateDirection();
         //  rotate();
         rb.drag = dragIntensity;
+        FindObjectOfType<AudioManager>().Play("dash");
 
         dashDirection = new Vector3(
             Mathf.Clamp(Mathf.Log(1f / (Time.deltaTime * rb.drag)) / Time.deltaTime, 0, 100),   // X

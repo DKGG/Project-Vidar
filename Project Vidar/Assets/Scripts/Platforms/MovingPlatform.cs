@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    private bool isPlaying = false;
     enum Physics
     {
         Rigidbody,
@@ -71,10 +72,20 @@ public class MovingPlatform : MonoBehaviour
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + forward * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + back * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 
                 break;
@@ -85,10 +96,20 @@ public class MovingPlatform : MonoBehaviour
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + up * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + down * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 break;
             case PlatformMovement.right:
@@ -98,10 +119,20 @@ public class MovingPlatform : MonoBehaviour
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + right * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + left * Time.fixedDeltaTime);
+                    if (!isPlaying)
+                    {
+                        FindObjectOfType<AudioManager>().Play("movePlataform");
+                        isPlaying = true;
+                    }
                 }
                 break;
             default:
@@ -136,6 +167,7 @@ public class MovingPlatform : MonoBehaviour
 
         if (other.gameObject.CompareTag("PlatformCollider"))
         {
+            isPlaying = false;
             if (isColliding) return;
             isColliding = true;
 

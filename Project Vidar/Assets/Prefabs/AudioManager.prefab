@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1646002165208867066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646002165208867064}
+  - component: {fileID: 1646002165208867065}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646002165208867064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646002165208867066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 64.07665, y: 53.223816, z: 295.17642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646002165208867065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646002165208867066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622ad62259419594c98ba7834efbda60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: testSound
+    clip: {fileID: 8300000, guid: 3d366195c95bd874bbc4e0d4088ad394, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stoneStep
+    clip: {fileID: 8300000, guid: 8597b0e83d1d8c4499cc976db0915150, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: grassStep
+    clip: {fileID: 8300000, guid: d3e4e85b79034584ba6506f817693d49, type: 3}
+    volume: 0.88
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: jump
+    clip: {fileID: 8300000, guid: 8934998fb22fabe4c856d6a6096af423, type: 3}
+    volume: 0.523
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: dash
+    clip: {fileID: 8300000, guid: c3053c9be271da14c97183211f5c5db8, type: 3}
+    volume: 0.523
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: freeze
+    clip: {fileID: 8300000, guid: e93d0e42b98af2d4388add12c4fb7513, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: throw
+    clip: {fileID: 8300000, guid: 51a02980df5bd9f41b72a608307e8a39, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: throw2
+    clip: {fileID: 8300000, guid: e6416f9a4509400489691e1ef80c74c4, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: pushConcrete
+    clip: {fileID: 8300000, guid: 477f003c80dad544ca55b225b83151a6, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: waterStep
+    clip: {fileID: 8300000, guid: f2c5fc1b94973234dbf5570c6879b9bf, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0.589
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: pushGrass
+    clip: {fileID: 8300000, guid: 62caf2a79c1f3ee478f009914e0532e2, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 0.5
+    pitchVariance: 0.589
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: movePlataform
+    clip: {fileID: 8300000, guid: 6e82aefcb31fa8c459467a36f76bf1c4, type: 3}
+    volume: 0.523
+    volumeVariance: 0.486
+    pitch: 0.5
+    pitchVariance: 0.589
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
