@@ -8,6 +8,8 @@ TagManager:
   - ContinuosBox
   - SimpleBox
   - stopPlat
+  - PlatformCollider
+  - grabPos
   layers:
   - Default
   - TransparentFX
