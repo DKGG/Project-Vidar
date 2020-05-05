@@ -9,46 +9,23 @@ public class Explosão : MonoBehaviour
     private Collider[] hitColliders;
     public float blastRadius;
     public float explodionPower;
-    public LayerMask explosionLayers;
-    float timer = 5f;
-    bool startTimer = false;  
-        
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (startTimer == true)
-        //{
-        //    timer -= Time.deltaTime;
-        //}
-        //if (timer <= 0)
-        //{
-        //    Destroy(gameObject);
-        //}
-
-
-    }
+    public LayerMask explosionLayers;  
+  
 
     private void OnCollisionEnter(Collision col)
     {
-        ExplosionWorks(col.contacts[0].point);
-        startTimer = true;
-
+        ExplosionWorks(col.contacts[0].point);        
     }
 
     void ExplosionWorks(Vector3 explosionPoint)
     {
-        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
+        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);      
 
         foreach (Collider hitCol in hitColliders)
         {
             hitCol.GetComponent<Rigidbody>().isKinematic = false;
             hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
-            //Destroy(hitCol.gameObject);
-        }         
+            Destroy(hitCol.gameObject,10);
+        }
     }
 }
