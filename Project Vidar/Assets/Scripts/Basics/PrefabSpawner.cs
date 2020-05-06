@@ -12,7 +12,7 @@ public class PrefabSpawner : MonoBehaviour
     private float spawnCD = 5;
     [SerializeField]
     private bool spawnEnabled = true;
-
+    
     private void Update()
     {
         if (spawnEnabled && SpawnTime())
@@ -22,7 +22,11 @@ public class PrefabSpawner : MonoBehaviour
     private void Spawn()
     {
         nextSpawnTime = Time.time + spawnCD;
-        Instantiate(prefab, transform.position, transform.rotation);
+        Instantiate(
+            prefab,
+            new Vector3(transform.position.x, transform.position.y + 1, transform.position.z - 1),
+            transform.rotation
+        );
     }
 
     private bool SpawnTime()

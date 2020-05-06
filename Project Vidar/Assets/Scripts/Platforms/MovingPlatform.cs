@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private bool isPlaying = false;
     enum Physics
     {
         Rigidbody,
@@ -32,6 +31,7 @@ public class MovingPlatform : MonoBehaviour
 
     int direction = 1;
     bool isColliding = false;
+    private bool isPlaying = false;
     Rigidbody rb;
 
     Vector3 scaleVector = new Vector3(1, 1, 1);
