@@ -43,9 +43,7 @@ public class playerJump : MonoBehaviour
         PlayerEntity.setGrounded(
             Physics.CheckCapsule(
                 vidarSphere.bounds.center,
-                new Vector3(vidarSphere.bounds.center.x,
-                vidarSphere.bounds.min.y,
-                vidarSphere.bounds.center.z),
+                new Vector3(vidarSphere.bounds.center.x, vidarSphere.bounds.min.y, vidarSphere.bounds.center.z),
                 vidarSphere.radius * .9f,
                 groundLayers)
         );
