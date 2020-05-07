@@ -7,7 +7,7 @@ public class playerJump : MonoBehaviour
     Rigidbody rb;
     
     public float jumpForce = 5f;
-    public int jumpCounter = 1;
+    public int jumpCounter = 0;
     [SerializeField] private float dragDownForce = 5f;
     [SerializeField] private float extraGravity = 1.6f;
 
