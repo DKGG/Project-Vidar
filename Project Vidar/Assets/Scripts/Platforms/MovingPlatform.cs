@@ -59,6 +59,13 @@ public class MovingPlatform : MonoBehaviour
             default:
                 break;
         }
+
+        /* Must add Audio Manager to Game Object */
+        //if (!isPlaying)
+        //{
+        //    FindObjectOfType<AudioManager>().Play("movePlataform");
+        //    isPlaying = true;
+        //}
     }
 
     private void RigidbodyMovement()
@@ -68,71 +75,37 @@ public class MovingPlatform : MonoBehaviour
             case PlatformMovement.forward:
                 forward = new Vector3(speed, 0f, 0f);
                 back = new Vector3(-speed, 0f, 0f);
-
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + forward * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + back * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
-                
                 break;
             case PlatformMovement.up:
                 up = new Vector3(0f, speed, 0f);
                 down = new Vector3(0f, -speed, 0f);
-
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + up * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + down * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
                 break;
             case PlatformMovement.right:
                 right = new Vector3(0f, 0f, speed);
                 left = new Vector3(0f, 0f, -speed);
-
                 if (positiveDirection)
                 {
                     rb.MovePosition(transform.position + right * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
                 else
                 {
                     rb.MovePosition(transform.position + left * Time.fixedDeltaTime);
-                    if (!isPlaying)
-                    {
-                        FindObjectOfType<AudioManager>().Play("movePlataform");
-                        isPlaying = true;
-                    }
                 }
                 break;
             default:
