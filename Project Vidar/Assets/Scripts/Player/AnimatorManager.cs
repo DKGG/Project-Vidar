@@ -41,6 +41,7 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isWalking", false);
         }
         #endregion
+
         #region Animation Idle
         if (PlayerEntity.getCanPlayIdleAnim())
         {
@@ -51,6 +52,7 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isStoped", false);
         }
         #endregion
+
         #region Animation Dash
         if (PlayerEntity.getCanPlayDashAnim())
         {
@@ -61,6 +63,7 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isDashing", false);
         }
         #endregion
+
         #region Animation Jump
         if (PlayerEntity.getCanPlayJumpAnim())
         {
@@ -71,6 +74,7 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("IsJumping", false);
         }
         #endregion
+
         #region Animation Falling
         if (PlayerEntity.getCanPlayFallAnim())
         {
@@ -82,6 +86,7 @@ public class AnimatorManager : MonoBehaviour
         }
         #endregion
     }
+
     #region Set states methods
     public static void setStateIdle()
     {
@@ -112,7 +117,8 @@ public class AnimatorManager : MonoBehaviour
             case AnimState.idle:
                 if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() ||!PlayerEntity.getDashing())
                 {
-                    FindObjectOfType<AudioManager>().Stop("grassStep");
+                    /* Must add Audio Manager to Game Object */
+                    // FindObjectOfType<AudioManager>().Stop("grassStep");
                     PlayerEntity.setisPlayingStoneStep(false);
                     PlayerEntity.setIsPlayingGrassStep(false);
                     PlayerEntity.setisPlayingWaterStep(false);
