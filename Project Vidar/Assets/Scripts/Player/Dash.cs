@@ -25,10 +25,15 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(PlayerEntity.getDashing());
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
             dashVariables();
+
+            /* Audio/AudioManager not found breaks the code */
+            // FindObjectOfType<AudioManager>().Play("dash");
+
+            Debug.Log(PlayerEntity.getKeyLeftShift());
+            Debug.Log(PlayerEntity.getDashing());
 
             StartCoroutine(DashReset());
         }
@@ -40,20 +45,21 @@ public class Dash : MonoBehaviour
         PlayerEntity.setDashing(true);
         AnimatorManager.setStateDash();
         //PlayerEntity.setCanPlayDashAnim(true);
+
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
 
         //PlayerEntity.setCanPlayDashAnim(false);
+        Debug.Log(rb.drag);
         rb.drag = 0;
     }
 
     private void dashVariables()
     {
         calculateDirection();
-        //  rotate();
+        // rotate();
         rb.drag = dragIntensity;
-        FindObjectOfType<AudioManager>().Play("dash");
 
         dashDirection = new Vector3(
             Mathf.Clamp(Mathf.Log(1f / (Time.deltaTime * rb.drag)) / Time.deltaTime, 0, 100),   // X
@@ -65,7 +71,6 @@ public class Dash : MonoBehaviour
             cam.transform.forward,          // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
-
     }
 
     void calculateDirection()

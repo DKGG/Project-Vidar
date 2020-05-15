@@ -21,7 +21,6 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        
         getInput();
 
         if (Math.Abs(input.x) < 1 && Math.Abs(input.y) < 1)
@@ -33,20 +32,21 @@ public class Movement : MonoBehaviour
             }
             return;
         }
+
         if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
         {
+            // PlayerEntity.setWalking(true);
             AnimatorManager.setStateRun();
             //FindObjectOfType<AudioManager>().Play("grassStep");
         }
+
         calculateDirection();
         rotate();
         move();
     }
 
     private void move(){
-        
         transform.position += transform.forward * velocity * Time.deltaTime;
-        
     }
 
     private void rotate()

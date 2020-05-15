@@ -14,20 +14,20 @@ public class AnimatorManager : MonoBehaviour
         dash,
         falling
     }
-
     private static AnimState states;
+
     public static Animator control;
-    // Start is called before the first frame update
+
     void Start()
     {
         control = GetComponent<Animator>();
     }
+
     private void Update()
     {
         updateAnim();
         checkStates();
     }
-
 
     public static void updateAnim()
     {
@@ -115,73 +115,98 @@ public class AnimatorManager : MonoBehaviour
         switch (states)
         {
             case AnimState.idle:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() ||!PlayerEntity.getDashing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling())
                 {
                     /* Must add Audio Manager to Game Object */
                     // FindObjectOfType<AudioManager>().Stop("grassStep");
+
+                    /* Audio */
                     PlayerEntity.setisPlayingStoneStep(false);
                     PlayerEntity.setIsPlayingGrassStep(false);
                     PlayerEntity.setisPlayingWaterStep(false);
+
+                    /* Animations */
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
+
                     PlayerEntity.setCanPlayIdleAnim(true);
                 }
                 break;
             case AnimState.run:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() || !PlayerEntity.getDashing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling())
                 {
+                    /* Audio */
+                    /*
                     if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
                     {
                         FindObjectOfType<AudioManager>().Play("grassStep");
                         PlayerEntity.setIsPlayingGrassStep(true);
                     }
+                    */
+
+                    /* Animations */
                     PlayerEntity.setCanPlayIdleAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
+
                     PlayerEntity.setCanPlayWalkAnim(true);
                 }
                 break;
             case AnimState.jump:
+                /* Audio */
                 if (PlayerEntity.getisPlayingGrassStep())
                 {
                     FindObjectOfType<AudioManager>().Stop("grassStep");
                     PlayerEntity.setIsPlayingGrassStep(false);
                 }
+
+                /* Animations */
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayDashAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
+
                 PlayerEntity.setCanPlayJumpAnim(true);
                 break;
             case AnimState.dash:
+                /* Audio */
                 if (PlayerEntity.getisPlayingGrassStep())
                 {
                     FindObjectOfType<AudioManager>().Stop("grassStep");
                     PlayerEntity.setIsPlayingGrassStep(false);
                 }
+
+                /* Animations */
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
+
                 PlayerEntity.setCanPlayDashAnim(true);
                 break;
             case AnimState.falling:
                 if (!PlayerEntity.getGrounded())
                 {
+                    /* Audio */
                     if (PlayerEntity.getisPlayingGrassStep())
                     {
                         FindObjectOfType<AudioManager>().Stop("grassStep");
                         PlayerEntity.setIsPlayingGrassStep(false);
                     }
-                    PlayerEntity.setJumping(false);
-                    PlayerEntity.setIsFalling(true);
+
+                    /* Animations */
                     PlayerEntity.setCanPlayIdleAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
+
+                    /* States */
+                    PlayerEntity.setJumping(false);
+                    PlayerEntity.setIsFalling(true);
+
                     PlayerEntity.setCanPlayFallAnim(true);
                 }
                 break;

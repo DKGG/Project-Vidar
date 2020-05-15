@@ -27,6 +27,7 @@ public class PController : MonoBehaviour
         //        PlayerEntity.
         //    }
         //}
+
         if (caixa != null)
         {
             if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getIdle() == true)
@@ -94,8 +95,7 @@ public class PController : MonoBehaviour
 
     public void PlayerAction()
     {
-
-        if (PlayerEntity.getIdle() == true)
+        if (PlayerEntity.getIdle())
         {
             GetComponent<Movement>().enabled = true;
             GetComponent<playerJump>().enabled = true;
@@ -104,7 +104,7 @@ public class PController : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        if (PlayerEntity.getLocked() == true)
+        if (PlayerEntity.getLocked())
         {
             GetComponent<Movement>().enabled = false;
             GetComponent<playerJump>().enabled = false;

@@ -6,6 +6,7 @@ public static class PlayerEntity
 {
     //VARIABLES
     #region Player States Variables
+
     private static bool isAlive;
     private static bool isIdle;
     private static bool isInside;
@@ -24,11 +25,13 @@ public static class PlayerEntity
     #endregion
 
     #region Player Special Abilities Variables
+
     private static bool canForce;
     private static bool canDash = true;
     private static bool canDoubleJump = true;
     private static bool canFreeze;
     private static bool canThrow;
+
     #endregion
 
     #region Movement States Variables
@@ -49,6 +52,7 @@ public static class PlayerEntity
     private static bool canPlayFallAnim;
 
     #endregion
+
     #region sounds States Variables
 
     private static bool isPlayingGrassStep;
@@ -326,6 +330,7 @@ public static class PlayerEntity
     {
         canPlayWalkAnim = value;
     }
+
     public static bool getCanPlayJumpAnim()
     {
         return canPlayJumpAnim;
