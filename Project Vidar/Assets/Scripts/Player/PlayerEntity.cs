@@ -25,8 +25,8 @@ public static class PlayerEntity
 
     #region Player Special Abilities Variables
     private static bool canForce;
-    private static bool canDash;
-    private static bool canDoubleJump;
+    private static bool canDash = true;
+    private static bool canDoubleJump = true;
     private static bool canFreeze;
     private static bool canThrow;
     #endregion
@@ -82,16 +82,6 @@ public static class PlayerEntity
         canForce = value;
     }
 
-    public static bool getCanDash()
-    {
-        return canDash;
-    }
-
-    public static void setCanDash(bool value)
-    {
-        canDash = value;
-    }
-
     public static bool getCanThrow()
     {
         return canThrow;
@@ -100,6 +90,20 @@ public static class PlayerEntity
     public static void setCanThrow(bool value)
     {
         canThrow = value;
+    }
+
+    /*
+     * Player will start the game with these abilities
+     */
+
+    public static bool getCanDash()
+    {
+        return canDash;
+    }
+
+    public static void setCanDash(bool value)
+    {
+        canDash = value;
     }
 
     public static bool getCanDoubleJump()
@@ -111,6 +115,8 @@ public static class PlayerEntity
     {
         canDoubleJump = value;
     }
+
+    /********/
 
     public static bool getCanFreeze()
     {
