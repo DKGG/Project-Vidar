@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -104,13 +105,22 @@ public class PController : MonoBehaviour
             rb.isKinematic = false;
         }
 
-        if (PlayerEntity.getLocked())
+        if (PlayerEntity.getLocked() )
         {
             GetComponent<Movement>().enabled = false;
             GetComponent<playerJump>().enabled = false;
             GetComponent<Dash>().enabled = false;
             GetComponent<RaycastShoot>().enabled = false;
             rb.isKinematic = true;
+        }
+
+        if (PlayerEntity.getIsOnDialogue())
+        {
+            GetComponent<Movement>().enabled = false;
+            GetComponent<playerJump>().enabled = false;
+            GetComponent<Dash>().enabled = false;
+            GetComponent<RaycastShoot>().enabled = false;
+            rb.isKinematic = false;
         }
     }
 
@@ -145,6 +155,11 @@ public class PController : MonoBehaviour
     #region Triggers
     private void OnTriggerEnter(Collider other)
     {
+        if(other.GetComponent<DialogueTrigger>() || other.GetComponent<MessageTrigger>())
+        {
+            return;
+        }
+
         if (other.gameObject.CompareTag("ContinuosBox"))
         {
             // o other é o objeto o qual está sendo comparada a tag no caso a "ContinuousBox"

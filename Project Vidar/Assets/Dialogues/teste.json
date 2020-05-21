@@ -1,0 +1,37 @@
+{
+	"dialogues": [
+		{
+			"name": "Vidar",
+			"sentence": "PAAAAAAI"
+		},
+		{
+			"name": "Odin",
+			"sentence": "FILHOOOOOO]]~d~~~s!!@#@#ôõaá"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+		},
+				{
+			"name": "Vidar",
+			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+		},
+				{
+			"name": "Vidar",
+			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+		},
+				{
+			"name": "Vidar",
+			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+		},
+				{
+			"name": "Vidar",
+			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+		},
+		{
+			"name": "Odin",
+			"sentence": "FILHOOOOOO]]~d~~~s!!@#@#ôõaáFILHOOOOOO]]~d~~~s!!@#@#"
+		}
+	],
+	"sceneName": "Vidar conversa com Odin"
+}
