@@ -28,7 +28,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (PlayerEntity.getIsOnDialogue() && PlayerEntity.getButtonJump())
         {
-            Debug.Log("SOCORRO");
             DisplayNextSentence();
         }
     }
