@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-
 	public static AudioManager instance;
 
 	public AudioMixerGroup mixerGroup;
@@ -37,7 +36,6 @@ public class AudioManager : MonoBehaviour
 	{
 		Play("ambient");
 	}
-	
 
 	public void Play(string sound)
 	{
