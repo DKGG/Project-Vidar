@@ -26,11 +26,11 @@ public static class PlayerEntity
 
     #region Player Special Abilities Variables
 
-    private static bool canForce = true;
+    private static bool canForce;
     private static bool canDash = true;
     private static bool canDoubleJump = true;
     private static bool canFreeze;
-    private static bool canThrow = true;
+    private static bool canThrow;
 
     #endregion
 

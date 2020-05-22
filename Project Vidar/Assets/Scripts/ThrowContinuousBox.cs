@@ -34,7 +34,7 @@ public class ThrowContinuousBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        //isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
+        isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
 
         if (push == true && colidiu == false)
         {
