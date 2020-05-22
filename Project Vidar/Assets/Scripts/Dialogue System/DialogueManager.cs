@@ -36,7 +36,9 @@ public class DialogueManager : MonoBehaviour
     {
         // Lock player movement and by so make way to use Jump/Space bar key here
         PlayerEntity.setIsOnDialogue(true);
-        // PlayerEntity.setLocked(true);
+        PlayerEntity.setIdle(true);
+        PlayerEntity.setCanPlayIdleAnim(true);
+        AnimatorManager.setStateIdle();
 
         dialogues.Clear();
         currentScene = dialogueList.sceneName;
@@ -94,7 +96,6 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         PlayerEntity.setIsOnDialogue(false);
-        // PlayerEntity.setLocked(false);
 
         animator.SetBool("IsOpen", false);
     }

@@ -96,7 +96,7 @@ public class PController : MonoBehaviour
 
     public void PlayerAction()
     {
-        if (PlayerEntity.getIdle())
+        if (PlayerEntity.getIdle() && !PlayerEntity.getIsOnDialogue())
         {
             GetComponent<Movement>().enabled = true;
             GetComponent<playerJump>().enabled = true;

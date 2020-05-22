@@ -1,36 +1,44 @@
 {
 	"dialogues": [
 		{
-			"name": "Vidar",
-			"sentence": "PAAAAAAI"
-		},
-		{
-			"name": "Odin",
-			"sentence": "FILHOOOOOO]]~d~~~s!!@#@#ôõaá"
+			"name": "Liv",
+			"sentence": "Lembre-se, filho, devemos sempre viver uma vida justa e honrosa, sendo valentes, mas sábios. "
 		},
 		{
 			"name": "Vidar",
-			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
-		},
-				{
-			"name": "Vidar",
-			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
-		},
-				{
-			"name": "Vidar",
-			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
-		},
-				{
-			"name": "Vidar",
-			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
-		},
-				{
-			"name": "Vidar",
-			"sentence": "PAAAAAAIPAAAAAAIPAAAAAAIP"
+			"sentence": "Por que, mãe?"
 		},
 		{
-			"name": "Odin",
-			"sentence": "FILHOOOOOO]]~d~~~s!!@#@#ôõaáFILHOOOOOO]]~d~~~s!!@#@#"
+			"name": "Liv",
+			"sentence": "Para que os deuses sempre estejam ao nosso lado e nos protejam do mal, daqui até o Ragnrök."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "E o que é o Ragnarök?"
+		},
+		{
+			"name": "Liv",
+			"sentence": "Nada com que você precise se preocupar no momento, querido..."
+		},
+		{
+			"name": "Liv",
+			"sentence": "Agora, durma, temos muito a fazer amanhã."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Me conta uma história antes? "
+		},
+		{
+			"name": "Liv",
+			"sentence": "Qual?"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Aquela em que Thor se veste de noiva! "
+		},
+		{
+			"name": "Liv",
+			"sentence": "Tudo bem, vamos lá..."
 		}
 	],
 	"sceneName": "Vidar conversa com Odin"
