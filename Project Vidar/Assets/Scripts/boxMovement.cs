@@ -35,7 +35,6 @@ public class boxMovement : MonoBehaviour
 
     private void move()
     {
-
         if (PlayerEntity.getIsLockedInNorth())
         {
             if (input.x > 0)

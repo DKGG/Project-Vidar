@@ -35,7 +35,7 @@ public class LockB : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        boxMovement = GetComponent<boxMovement>();
+        //boxMovement = GetComponent<boxMovement>();
         posicao = FaceNorte;
     }
 
