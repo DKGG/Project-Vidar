@@ -58,6 +58,7 @@ public class PController1 : MonoBehaviour
             rb.isKinematic = true;
 
             transform.position = Vector3.Lerp(transform.position, PlayerEntity.getPositionToLock().position, Time.deltaTime * 5f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, PlayerEntity.getPositionToLock().rotation, Time.deltaTime * 5f);
             if (Mathf.Abs(Vector3.Distance(transform.position, PlayerEntity.getPositionToLock().position)) < 1f)
             {
                 Debug.Log("TRUE");
