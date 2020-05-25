@@ -12,6 +12,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         // Open a json.file on the provided path and put it on a DialogueCollection object
         // TODO use Application.dataPath?
+
         string dialoguePath = Directory.GetCurrentDirectory() + "/Assets/" + fileName;
         using (StreamReader stream = new StreamReader(dialoguePath))
         {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI dialogueText;
     [SerializeField]
+    private Image dialogueEmote;
+    [SerializeField]
     private Animator animator;
 
     private string currentScene;
@@ -18,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Dialogue oldDialogue;
     private Dialogue dialogue;
     private Queue<Dialogue> dialogues;
+    private Sprite dialogueEmoteSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +79,10 @@ public class DialogueManager : MonoBehaviour
         {
             dialogue = dialogues.Dequeue();
             nameText.text = dialogue.name;
+            string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
+            dialogueEmoteSprite = (Sprite) AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+            Debug.Log(dialogueEmoteSprite);
+            dialogueEmote.sprite = dialogueEmoteSprite;
             StartCoroutine(TypeSentence(dialogue.sentence));
         }
         oldDialogue = dialogue;

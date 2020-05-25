@@ -2,43 +2,53 @@
 	"dialogues": [
 		{
 			"name": "Liv",
-			"sentence": "Lembre-se, filho, devemos sempre viver uma vida justa e honrosa, sendo valentes, mas sábios. "
+			"sentence": "Lembre-se, filho, devemos sempre viver uma vida justa e honrosa, sendo valentes, mas sábios. ",
+			"emote": "happy"
 		},
 		{
 			"name": "Vidar",
-			"sentence": "Por que, mãe?"
+			"sentence": "Por que, mãe?",
+			"emote": "surprise"
 		},
 		{
 			"name": "Liv",
-			"sentence": "Para que os deuses sempre estejam ao nosso lado e nos protejam do mal, daqui até o Ragnrök."
+			"sentence": "Para que os deuses sempre estejam ao nosso lado e nos protejam do mal, daqui até o Ragnrök.",
+			"emote": "happy"
 		},
 		{
 			"name": "Vidar",
-			"sentence": "E o que é o Ragnarök?"
+			"sentence": "E o que é o Ragnarök?",
+			"emote": "surprise"
 		},
 		{
 			"name": "Liv",
-			"sentence": "Nada com que você precise se preocupar no momento, querido..."
+			"sentence": "Nada com que você precise se preocupar no momento, querido...",
+			"emote": "yellowsmile"
 		},
 		{
 			"name": "Liv",
-			"sentence": "Agora, durma, temos muito a fazer amanhã."
+			"sentence": "Agora, durma, temos muito a fazer amanhã.",
+			"emote": "happy"
 		},
 		{
 			"name": "Vidar",
-			"sentence": "Me conta uma história antes? "
+			"sentence": "Me conta uma história antes? ",
+			"emote": "eyestar"
 		},
 		{
 			"name": "Liv",
-			"sentence": "Qual?"
+			"sentence": "Qual?",
+			"emote": "surprise"
 		},
 		{
 			"name": "Vidar",
-			"sentence": "Aquela em que Thor se veste de noiva! "
+			"sentence": "Aquela em que Thor se veste de noiva! ",
+			"emote": "eyestar"
 		},
 		{
 			"name": "Liv",
-			"sentence": "Tudo bem, vamos lá..."
+			"sentence": "Tudo bem, vamos lá...",
+			"emote": "happy"
 		}
 	],
 	"sceneName": "Vidar conversa com Odin"
