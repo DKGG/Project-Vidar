@@ -26,6 +26,7 @@ public static class PlayerEntity
     private static Transform positionToLock;
 
     private static GameObject BoxLocked;
+    private static GameObject PlayerPrefab;
 
     #endregion
 
@@ -404,6 +405,16 @@ public static class PlayerEntity
     public static GameObject getBoxLocked()
     {
         return BoxLocked;
+    }
+
+    public static void setPlayerPrefab(GameObject obj)
+    {
+        PlayerPrefab = obj;
+    }
+
+    public static GameObject getPlayerPrefab()
+    {
+        return PlayerPrefab;
     }
 
     public static void setBoxLocked(GameObject obj)

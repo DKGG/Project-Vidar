@@ -8,7 +8,7 @@ public class MovingPlatform : MonoBehaviour
     {
         Rigidbody,
         Transform
-    }
+    };
 
     enum PlatformMovement
     {

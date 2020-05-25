@@ -30,6 +30,11 @@ public class PController1 : MonoBehaviour
             {               
                 PlayerEntity.setWantToLock(false);
             }
+
+            if(PlayerEntity.getBoxLocked() == true && caixa.gameObject.CompareTag("ContinuosBox") && PlayerEntity.getKeyQ() == true)
+            {
+                PlayerEntity.setWantToThrow(true);
+            }
             
         }
 
@@ -50,7 +55,7 @@ public class PController1 : MonoBehaviour
 
         if (PlayerEntity.getLocked() == true)
         {
-            PlayerEntity.setIdle(false);
+            //PlayerEntity.setIdle(false);
             GetComponent<Movement>().enabled = false;
             GetComponent<playerJump>().enabled = false;
             GetComponent<Dash>().enabled = false;
@@ -60,10 +65,8 @@ public class PController1 : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, PlayerEntity.getPositionToLock().position, Time.deltaTime * 5f);
             transform.rotation = Quaternion.Lerp(transform.rotation, PlayerEntity.getPositionToLock().rotation, Time.deltaTime * 5f);
             if (Mathf.Abs(Vector3.Distance(transform.position, PlayerEntity.getPositionToLock().position)) < 1f)
-            {
-                Debug.Log("TRUE");
-                transform.position = PlayerEntity.getPositionToLock().position;
-                //bool aqui
+            {               
+                transform.position = PlayerEntity.getPositionToLock().position;                
             }
         }
         else
@@ -99,12 +102,18 @@ public class PController1 : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("ContinuosBox"))
-        {            
+        {
+            //caixa = null;
+            //PlayerEntity.setBoxLocked(caixa);
+            PlayerEntity.setIsInside(false);
             PlayerEntity.setIsInsideOfContinuous(false);
         }
 
         if (other.gameObject.CompareTag("SimpleBox"))
-        {            
+        {
+            //caixa = null;
+            //PlayerEntity.setBoxLocked(caixa);
+            PlayerEntity.setIsInside(false);
             PlayerEntity.setIsInsideOfSimple(false);
         }
     }

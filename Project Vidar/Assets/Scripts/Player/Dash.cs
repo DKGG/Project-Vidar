@@ -30,10 +30,7 @@ public class Dash : MonoBehaviour
             dashVariables();
 
             /* Audio/AudioManager not found breaks the code */
-            // FindObjectOfType<AudioManager>().Play("dash");
-
-            Debug.Log(PlayerEntity.getKeyLeftShift());
-            Debug.Log(PlayerEntity.getDashing());
+            // FindObjectOfType<AudioManager>().Play("dash");           
 
             StartCoroutine(DashReset());
         }
@@ -50,8 +47,7 @@ public class Dash : MonoBehaviour
         yield return dashDuration;
         PlayerEntity.setDashing(false);
 
-        //PlayerEntity.setCanPlayDashAnim(false);
-        Debug.Log(rb.drag);
+        //PlayerEntity.setCanPlayDashAnim(false);       
         rb.drag = 0;
     }
 

@@ -22,14 +22,14 @@ public class LockB1 : MonoBehaviour
 
     public LayerMask Player;
 
-    boxMovement boxMove;
-    Rigidbody rb;
+    //boxMovement boxMove;
+    //Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        boxMove = GetComponent<boxMovement>();
-        rb = GetComponent<Rigidbody>();
+        //boxMove = GetComponent<boxMovement>();
+        //rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,6 @@ public class LockB1 : MonoBehaviour
         noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);
         noLeste = Physics.Linecast(ponto1.position, ponto3.position, Player);
-        Debug.Log(posicao);
 
         if (noNorte)
         {
@@ -48,8 +47,7 @@ public class LockB1 : MonoBehaviour
             PlayerEntity.setIslockedInSouth(false);
             PlayerEntity.setIslockedInWest(false);
             PlayerEntity.setIslockedInEast(false);
-            PlayerEntity.setPositionToLock(FaceNorte);
-            Debug.Log("Norte");
+            PlayerEntity.setPositionToLock(FaceNorte);            
         }
         if (noSul)
         {
@@ -57,8 +55,7 @@ public class LockB1 : MonoBehaviour
             PlayerEntity.setIslockedInSouth(true);
             PlayerEntity.setIslockedInWest(false);
             PlayerEntity.setIslockedInEast(false);
-            PlayerEntity.setPositionToLock(FaceSul);
-            Debug.Log("Sul");
+            PlayerEntity.setPositionToLock(FaceSul);            
         }
 
         if (noOeste)
@@ -67,8 +64,7 @@ public class LockB1 : MonoBehaviour
             PlayerEntity.setIslockedInSouth(false);
             PlayerEntity.setIslockedInWest(true);
             PlayerEntity.setIslockedInEast(false);
-            PlayerEntity.setPositionToLock(FaceOeste);
-            Debug.Log("Oeste");
+            PlayerEntity.setPositionToLock(FaceOeste);            
         }
 
         if (noLeste)
@@ -77,25 +73,43 @@ public class LockB1 : MonoBehaviour
             PlayerEntity.setIslockedInSouth(false);
             PlayerEntity.setIslockedInWest(false);
             PlayerEntity.setIslockedInEast(true);
-            PlayerEntity.setPositionToLock(FaceLeste);
-            Debug.Log("Leste");
+            PlayerEntity.setPositionToLock(FaceLeste);            
         }
 
-        if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false) 
+        if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false)
         {
-            playerTransform.parent = PlayerEntity.getBoxLocked().transform;
+            //playerTransform.parent = PlayerEntity.getBoxLocked().transform;
+            transform.parent = PlayerEntity.getBoxLocked().transform;
             PlayerEntity.setLocked(true);
-            boxMove.enabled = true;
-            rb.isKinematic = false;  
-                  
+            //boxMove.enabled = true;
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
+            //rb.isKinematic = false;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
+
         }
-        if(PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
+        if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true )
         {
-            playerTransform.parent = null;
+            //playerTransform.parent = null;
+            transform.parent = null;
             PlayerEntity.setLocked(false);
-            boxMove.enabled = false;
-            rb.isKinematic = true;
-        }      
-       
+            //boxMove.enabled = false;
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+            //rb.isKinematic = true;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
+        }
+
+        if (PlayerEntity.getWantToThrow() == true && PlayerEntity.getLocked() == true)
+        {
+            //playerTransform.parent = null;
+            transform.parent = null;
+            PlayerEntity.setLocked(false);
+            PlayerEntity.setWantToThrow(false);
+            PlayerEntity.setWantToLock(false);
+            //boxMove.enabled = false;
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+            //rb.isKinematic = true;           
+        }
+
     }
+   
 }
