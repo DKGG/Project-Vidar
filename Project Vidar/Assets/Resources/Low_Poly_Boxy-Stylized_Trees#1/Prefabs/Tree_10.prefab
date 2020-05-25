@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33000011107147014}
   - component: {fileID: 23000012327955952}
   - component: {fileID: 95000011440628144}
+  - component: {fileID: 1485703556426118651}
   m_Layer: 0
   m_Name: Tree_10
   m_TagString: Untagged
@@ -99,3 +100,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1485703556426118651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010785572432}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7242498, y: 2.9077535, z: 1.4484528}
+  m_Center: {x: 0.09388077, y: 1.4538767, z: -0.041412532}

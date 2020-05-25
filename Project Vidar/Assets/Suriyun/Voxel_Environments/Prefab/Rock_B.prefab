@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8593037651448990971}
   - component: {fileID: 8593037651447696603}
   - component: {fileID: 8593037651446697499}
-  - component: {fileID: 3767644340641772666}
-  - component: {fileID: 758612166824885579}
-  - component: {fileID: 7760140569928704723}
-  - component: {fileID: 8603440267319166042}
+  - component: {fileID: 3005562292934715039}
+  - component: {fileID: 6192001735954486089}
+  - component: {fileID: 9217835685015030977}
+  - component: {fileID: 3066816170360291599}
   m_Layer: 0
   m_Name: Rock_B
   m_TagString: Untagged
@@ -83,7 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3767644340641772666
+--- !u!65 &3005562292934715039
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.13906904, y: 0.14, z: 0.14257875}
-  m_Center: {x: 0.11046546, y: 0.07, z: 0.06871064}
---- !u!65 &758612166824885579
+  m_Size: {x: 0.13982797, y: 0.13472526, z: 0.13612731}
+  m_Center: {x: 0.11008608, y: 0.07263738, z: 0.07069468}
+--- !u!65 &6192001735954486089
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18274005, y: 0.10192919, z: 0.18202963}
-  m_Center: {x: 0.050084293, y: 0.050964594, z: -0.028985167}
---- !u!65 &7760140569928704723
+  m_Size: {x: 0.22279201, y: 0.10006167, z: 0.17251074}
+  m_Center: {x: 0.068604015, y: 0.050030835, z: -0.033744633}
+--- !u!65 &9217835685015030977
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,9 +120,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.079774, y: 0.060463905, z: 0.1417744}
-  m_Center: {x: -0.080112986, y: 0.030231953, z: -0.011094845}
---- !u!65 &8603440267319166042
+  m_Size: {x: 0.073566236, y: 0.056552064, z: 0.14336804}
+  m_Center: {x: -0.083216935, y: 0.028276032, z: -0.009980798}
+--- !u!65 &3066816170360291599
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,5 +133,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.07952195, y: 0.059711933, z: 0.06152153}
-  m_Center: {x: -0.00032005607, y: 0.029855967, z: 0.089865685}
+  m_Size: {x: 0.08218222, y: 0.06437241, z: 0.06267144}
+  m_Center: {x: 0.0019800782, y: 0.032186206, z: 0.091059774}
