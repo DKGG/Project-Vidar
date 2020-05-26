@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 151642159662756270}
   - component: {fileID: 1057793456611015500}
   - component: {fileID: 334439754612658751}
+  - component: {fileID: 2600237349352364499}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -140,10 +141,10 @@ BoxCollider:
   m_GameObject: {fileID: 155366}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 15.719716, y: 8, z: 15.552352}
-  m_Center: {x: 0.9769152, y: 2.0046277, z: 0.9392729}
+  m_Size: {x: 8.422692, y: 8, z: 8.579633}
+  m_Center: {x: 0.4056628, y: 2.0046277, z: -0.5070256}
 --- !u!65 &1057793456611015500
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,6 +173,23 @@ MonoBehaviour:
   isFrozen: 0
   freeze: 0
   rb: {fileID: 3008559121164253101}
+--- !u!114 &2600237349352364499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec344323051ec64c950940cce8e28e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blastRadius: 2
+  explodionPower: 99
+  explosionLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1001 &647951492239015179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453750, guid: 9fdd8407d18bcff4f8e6566ac95f7ecb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.48870924
+      value: -0.51
       objectReference: {fileID: 0}
     - target: {fileID: 453750, guid: 9fdd8407d18bcff4f8e6566ac95f7ecb, type: 3}
       propertyPath: m_LocalPosition.y
