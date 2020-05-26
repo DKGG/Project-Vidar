@@ -14,7 +14,11 @@ public class Explosão : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        ExplosionWorks(col.contacts[0].point);        
+        if (col.gameObject.layer == 9)
+        {
+            Debug.Log("Entrei");
+            ExplosionWorks(col.contacts[0].point);
+        }
     }
 
     void ExplosionWorks(Vector3 explosionPoint)
@@ -24,8 +28,10 @@ public class Explosão : MonoBehaviour
         foreach (Collider hitCol in hitColliders)
         {
             hitCol.GetComponent<Rigidbody>().isKinematic = false;
+            hitCol.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            //hitCol.GetComponent<MeshRenderer>().enabled = false;
             hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
-            Destroy(hitCol.gameObject,10);
+            Destroy(hitCol.gameObject,5);
         }
     }
 }
