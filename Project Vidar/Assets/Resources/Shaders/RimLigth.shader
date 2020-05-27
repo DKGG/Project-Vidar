@@ -4,7 +4,7 @@
         _MainTex("Base (RGB)", 2D) = "white" {}
         _RimValue("Rim value", Range(0, 5)) = 0.5
         _AuraBehavior("aura Behavior", Range(0, 5)) = 1.0
-        _Teste("teste", Range(0, 1)) = 1
+        _Teste("teste", Range(0, 5)) = 1
         _Color("Color", Color) = (1, 1, 1, 1)
     }
         SubShader{
@@ -34,8 +34,8 @@
                 float3 dir = normalize(IN.viewDir);
                 float val = _AuraBehavior - (abs(dot(dir, normal)));
                 float rim = val * val * _RimValue;
-                o.Alpha = c.a * _Teste; //aq pensar em algoritmo para ajudar na transparencia (subtr) calc o alfa
-                o.Emission = rim ;
+                o.Alpha = c.a; //aq pensar em algoritmo para ajudar na transparencia (subtr) calc o alfa
+                o.Emission = rim * _Teste;
                 //o.Alpha = c.a; colocar rimLigth no o.emission
                 //ver o outro rimLiogth
             }

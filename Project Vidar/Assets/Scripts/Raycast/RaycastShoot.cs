@@ -52,14 +52,16 @@ public class RaycastShoot : MonoBehaviour
                 {
                     if (box.isFrozen)
                     {
-                        Debug.Log("true");
+                        box.GetComponent<MeshRenderer>().enabled = true;
+                        Debug.Log("DesCongelou");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
                         box.rb.velocity = freezeSave;
                     }
                     else
                     {
-                        Debug.Log("false");
+                        box.GetComponent<MeshRenderer>().enabled = false;
+                        Debug.Log("Congelou");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
                         box.rb.constraints = RigidbodyConstraints.FreezeAll;
