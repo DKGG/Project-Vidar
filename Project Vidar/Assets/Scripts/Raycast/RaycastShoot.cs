@@ -52,16 +52,16 @@ public class RaycastShoot : MonoBehaviour
                 {
                     if (box.isFrozen)
                     {
-                        box.GetComponent<MeshRenderer>().enabled = true;
-                        Debug.Log("DesCongelou");
+                        FindObjectOfType<AudioManager>().Play("freeze");
+                        Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
                         box.rb.velocity = freezeSave;
                     }
                     else
                     {
-                        box.GetComponent<MeshRenderer>().enabled = false;
-                        Debug.Log("Congelou");
+                        FindObjectOfType<AudioManager>().Play("freeze");
+                        Debug.Log("false");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
                         box.rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -78,7 +78,7 @@ public class RaycastShoot : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
-        gunAudio.Play();
+        //gunAudio.Play();
 
         laserLine.enabled = true;
         yield return shotDuration;

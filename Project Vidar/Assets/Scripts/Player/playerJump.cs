@@ -73,6 +73,7 @@ public class playerJump : MonoBehaviour
 
     private void Jump()
     {
+        FindObjectOfType<AudioManager>().Play("jump");
         PlayerEntity.setJumping(true);
         rb.velocity = Vector3.up * Mathf.Sqrt(jumpForce * -1f * Physics.gravity.y);
         AnimatorManager.setStateJump();

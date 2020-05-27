@@ -45,8 +45,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 0}
   sounds:
-  - name: testSound
-    clip: {fileID: 8300000, guid: 3d366195c95bd874bbc4e0d4088ad394, type: 3}
+  - name: ambient
+    clip: {fileID: 8300000, guid: 1f78a6945e4225047a393885c1ba95af, type: 3}
+    volume: 0.195
+    volumeVariance: 0.486
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: wood
+    clip: {fileID: 8300000, guid: 3fd672dc382f0a344936a3c0f586f8ce, type: 3}
     volume: 0.523
     volumeVariance: 0.486
     pitch: 1
@@ -54,21 +63,12 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: stoneStep
-    clip: {fileID: 8300000, guid: 8597b0e83d1d8c4499cc976db0915150, type: 3}
-    volume: 0.523
-    volumeVariance: 0.486
-    pitch: 1
-    pitchVariance: 0.589
-    loop: 1
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: grassStep
+  - name: grass
     clip: {fileID: 8300000, guid: d3e4e85b79034584ba6506f817693d49, type: 3}
     volume: 0.88
     volumeVariance: 0
     pitch: 1
-    pitchVariance: 0.589
+    pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: dash
-    clip: {fileID: 8300000, guid: c3053c9be271da14c97183211f5c5db8, type: 3}
+    clip: {fileID: 8300000, guid: bd76f09d284549145abe5638205dfb1e, type: 3}
     volume: 0.523
     volumeVariance: 0
     pitch: 1
@@ -96,15 +96,15 @@ MonoBehaviour:
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0.589
-    loop: 1
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: throw
-    clip: {fileID: 8300000, guid: 51a02980df5bd9f41b72a608307e8a39, type: 3}
+    clip: {fileID: 8300000, guid: 2d11c8cc5736fa543bc0ca00e1989388, type: 3}
     volume: 0.523
     volumeVariance: 0.486
     pitch: 1
-    pitchVariance: 0.589
+    pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -126,13 +126,13 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: waterStep
-    clip: {fileID: 8300000, guid: f2c5fc1b94973234dbf5570c6879b9bf, type: 3}
+  - name: explosion
+    clip: {fileID: 8300000, guid: 550253c6e147b08499a091b606581b8a, type: 3}
     volume: 0.523
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0.589
-    loop: 1
+    loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: pushGrass
