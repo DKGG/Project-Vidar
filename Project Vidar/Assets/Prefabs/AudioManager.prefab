@@ -54,8 +54,8 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: stoneStep
-    clip: {fileID: 8300000, guid: 8597b0e83d1d8c4499cc976db0915150, type: 3}
+  - name: wood
+    clip: {fileID: 8300000, guid: 3fd672dc382f0a344936a3c0f586f8ce, type: 3}
     volume: 0.523
     volumeVariance: 0.486
     pitch: 1
@@ -63,7 +63,7 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: grassStep
+  - name: grass
     clip: {fileID: 8300000, guid: d3e4e85b79034584ba6506f817693d49, type: 3}
     volume: 0.88
     volumeVariance: 0

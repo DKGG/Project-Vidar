@@ -14,8 +14,10 @@ public class Movement : MonoBehaviour
     Transform cam;
     public bool grassStep;
     public bool woodStep;
+    public String sound;
     private void Start()
     {
+        sound = "grass";
         cam = Camera.main.transform;
     }
 
@@ -29,7 +31,7 @@ public class Movement : MonoBehaviour
             {
                 grassStep = false;
                 AnimatorManager.setStateIdle();
-                FindObjectOfType<AudioManager>().Stop("grassStep");
+                FindObjectOfType<AudioManager>().Stop(sound);
             }
             return;
         }
@@ -40,14 +42,14 @@ public class Movement : MonoBehaviour
             AnimatorManager.setStateRun();
             if (!grassStep && PlayerEntity.getGrounded())
             {
-                FindObjectOfType<AudioManager>().Play("grassStep");
+                FindObjectOfType<AudioManager>().Play(sound);
                 grassStep = true;
             }
         }
         if (!PlayerEntity.getGrounded())
         {
             grassStep = false;
-            FindObjectOfType<AudioManager>().Stop("grassStep");
+            FindObjectOfType<AudioManager>().Stop(sound);
         }
 
         calculateDirection();
@@ -77,4 +79,8 @@ public class Movement : MonoBehaviour
         angle = Mathf.Rad2Deg * angle;
         angle += cam.eulerAngles.y;
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    sound = collision.gameObject.tag;
+    //}
 }
