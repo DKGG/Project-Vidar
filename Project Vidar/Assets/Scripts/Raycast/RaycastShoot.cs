@@ -52,8 +52,6 @@ public class RaycastShoot : MonoBehaviour
                 {
                     if (box.isFrozen)
                     {
-                        //box.GetComponent<MeshRenderer>().enabled = false;
-                        //box.GetComponent<Animator>().SetBool("freeze", true);
                         Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
@@ -61,8 +59,6 @@ public class RaycastShoot : MonoBehaviour
                     }
                     else
                     {
-                       // box.GetComponent<Animator>().SetBool("freeze", false);
-                        //box.GetComponent<MeshRenderer>().enabled = true;
                         Debug.Log("false");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
