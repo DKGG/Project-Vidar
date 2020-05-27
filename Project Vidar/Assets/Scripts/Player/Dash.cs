@@ -29,8 +29,7 @@ public class Dash : MonoBehaviour
         {
             dashVariables();
 
-            /* Audio/AudioManager not found breaks the code */
-            // FindObjectOfType<AudioManager>().Play("dash");
+             FindObjectOfType<AudioManager>().Play("dash");
 
             Debug.Log(PlayerEntity.getKeyLeftShift());
             Debug.Log(PlayerEntity.getDashing());

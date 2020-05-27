@@ -9,7 +9,8 @@ public class Explosão : MonoBehaviour
     private Collider[] hitColliders;
     public float blastRadius;
     public float explodionPower;
-    public LayerMask explosionLayers;  
+    public LayerMask explosionLayers;
+    public bool stop = false;
   
 
     private void OnCollisionEnter(Collision col)
@@ -23,13 +24,16 @@ public class Explosão : MonoBehaviour
 
     void ExplosionWorks(Vector3 explosionPoint)
     {
-        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);      
-
+        hitColliders = Physics.OverlapSphere(explosionPoint, blastRadius, explosionLayers);
+        if (!stop)
+        {
+            FindObjectOfType<AudioManager>().Play("explosion");
+            stop = true;
+        }
         foreach (Collider hitCol in hitColliders)
         {
             hitCol.GetComponent<Rigidbody>().isKinematic = false;
             hitCol.gameObject.GetComponent<Animator>().SetBool("block",false);
-            //hitCol.GetComponent<MeshRenderer>().enabled = false;
             hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
             Destroy(hitCol.gameObject,5);
         }

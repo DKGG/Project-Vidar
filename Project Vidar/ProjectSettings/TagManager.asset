@@ -11,6 +11,7 @@ TagManager:
   - PlatformCollider
   - grabPos
   - killer
+  - wood
   layers:
   - Default
   - TransparentFX

@@ -12,11 +12,11 @@ public class Movement : MonoBehaviour
     float angle;
     Quaternion targetRotation;
     Transform cam;
-
+    public bool grassStep;
+    public bool woodStep;
     private void Start()
     {
         cam = Camera.main.transform;
-        //FindObjectOfType<AudioManager>().Play("testSound");
     }
 
     private void Update()
@@ -27,8 +27,9 @@ public class Movement : MonoBehaviour
         {
             if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
             {
+                grassStep = false;
                 AnimatorManager.setStateIdle();
-                //FindObjectOfType<AudioManager>().Stop("grassStep");
+                FindObjectOfType<AudioManager>().Stop("grassStep");
             }
             return;
         }
@@ -37,7 +38,16 @@ public class Movement : MonoBehaviour
         {
             // PlayerEntity.setWalking(true);
             AnimatorManager.setStateRun();
-            //FindObjectOfType<AudioManager>().Play("grassStep");
+            if (!grassStep && PlayerEntity.getGrounded())
+            {
+                FindObjectOfType<AudioManager>().Play("grassStep");
+                grassStep = true;
+            }
+        }
+        if (!PlayerEntity.getGrounded())
+        {
+            grassStep = false;
+            FindObjectOfType<AudioManager>().Stop("grassStep");
         }
 
         calculateDirection();

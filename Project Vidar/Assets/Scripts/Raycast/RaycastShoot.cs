@@ -52,6 +52,7 @@ public class RaycastShoot : MonoBehaviour
                 {
                     if (box.isFrozen)
                     {
+                        FindObjectOfType<AudioManager>().Play("freeze");
                         Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
@@ -59,6 +60,7 @@ public class RaycastShoot : MonoBehaviour
                     }
                     else
                     {
+                        FindObjectOfType<AudioManager>().Play("freeze");
                         Debug.Log("false");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
@@ -76,7 +78,7 @@ public class RaycastShoot : MonoBehaviour
 
     private IEnumerator ShotEffect()
     {
-        gunAudio.Play();
+        //gunAudio.Play();
 
         laserLine.enabled = true;
         yield return shotDuration;
