@@ -34,10 +34,7 @@ public class Explosão : MonoBehaviour
         {
             hitCol.GetComponent<Rigidbody>().isKinematic = false;
             hitCol.gameObject.GetComponent<Animator>().SetBool("block",false);
-<<<<<<< HEAD
-=======
             //hitCol.GetComponent<MeshRenderer>().enabled = false;
->>>>>>> parent of 8a1aadb... Fix commit
             hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
             Destroy(hitCol.gameObject,5);
         }
