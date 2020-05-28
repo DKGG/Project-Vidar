@@ -52,7 +52,10 @@ public class RaycastShoot : MonoBehaviour
                 {
                     if (box.isFrozen)
                     {
+<<<<<<< HEAD
                         FindObjectOfType<AudioManager>().Play("freeze");
+=======
+>>>>>>> parent of 8a1aadb... Fix commit
                         Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
@@ -60,7 +63,10 @@ public class RaycastShoot : MonoBehaviour
                     }
                     else
                     {
+<<<<<<< HEAD
                         FindObjectOfType<AudioManager>().Play("freeze");
+=======
+>>>>>>> parent of 8a1aadb... Fix commit
                         Debug.Log("false");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
