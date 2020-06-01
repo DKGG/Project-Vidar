@@ -22,6 +22,7 @@ public static class PlayerEntity
     private static bool islockedInWest;
     private static bool islockedInEast;
     private static bool wantToLock;
+    private static bool threwTheBox;
 
     private static Transform positionToLock;
 
@@ -184,9 +185,20 @@ public static class PlayerEntity
     {
         return wantToThrow;
     }
+
     public static void setWantToThrow(bool value)
     {
         wantToThrow = value;
+    }  
+
+    public static bool getThrewTheBox()
+    {
+        return threwTheBox;
+    }
+    
+    public static void setThrewTheBox(bool value)
+    {
+        threwTheBox = value;
     }
 
     public static bool getIsLockedInContinuous()

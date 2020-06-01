@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class PController1 : MonoBehaviour
@@ -7,20 +8,23 @@ public class PController1 : MonoBehaviour
     float strength;
 
     GameObject caixa = null;
+    [SerializeField]GameObject player;
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         //PlayerEntity.setIdle(true);
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();        
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {
+        //Debug.Log(PlayerEntity.getLocked()+"Locked");
+        //Debug.Log(PlayerEntity.getIsLockedInContinuous() + "LockedinContinuous");
 
-        if (caixa != null)
+        if (PlayerEntity.getBoxLocked() != null)
         {
             if(PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getLocked() == false)
             {                
@@ -31,9 +35,10 @@ public class PController1 : MonoBehaviour
                 PlayerEntity.setWantToLock(false);
             }
 
-            if(PlayerEntity.getBoxLocked() == true && caixa.gameObject.CompareTag("ContinuosBox") && PlayerEntity.getKeyQ() == true)
+            if(PlayerEntity.getLocked() == true && PlayerEntity.getIsLockedInContinuous() == true && PlayerEntity.getKeyQ() == true)
             {
-                PlayerEntity.setWantToThrow(true);
+                //Debug.Log("Entrei no if que muda o estado do wantToThrow");
+                PlayerEntity.setWantToThrow(true);                
             }
             
         }
@@ -81,40 +86,40 @@ public class PController1 : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("ContinuosBox"))
-        {
-            caixa = other.gameObject;
-            PlayerEntity.setBoxLocked(caixa);
-            PlayerEntity.setIsInside(true);
-            PlayerEntity.setIsInsideOfContinuous(true);
-        }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("ContinuosBox"))
+    //    {
+    //        caixa = other.gameObject;
+    //        PlayerEntity.setBoxLocked(caixa);
+    //        PlayerEntity.setIsInside(true);
+    //        PlayerEntity.setIsInsideOfContinuous(true);
+    //    }
 
-        if (other.gameObject.CompareTag("SimpleBox"))
-        {
-            caixa = other.gameObject;
-            PlayerEntity.setBoxLocked(caixa);
-            PlayerEntity.setIsInside(true);
-            PlayerEntity.setIsInsideOfSimple(true);
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("ContinuosBox"))
-        {
-            //caixa = null;
-            //PlayerEntity.setBoxLocked(caixa);
-            PlayerEntity.setIsInside(false);
-            PlayerEntity.setIsInsideOfContinuous(false);
-        }
+    //    if (other.gameObject.CompareTag("SimpleBox"))
+    //    {
+    //        caixa = other.gameObject;
+    //        PlayerEntity.setBoxLocked(caixa);
+    //        PlayerEntity.setIsInside(true);
+    //        PlayerEntity.setIsInsideOfSimple(true);
+    //    }
+    //}
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("ContinuosBox"))
+    //    {
+    //        caixa = null;
+    //        //PlayerEntity.setBoxLocked(caixa);
+    //        PlayerEntity.setIsInside(false);
+    //        PlayerEntity.setIsInsideOfContinuous(false);
+    //    }
 
-        if (other.gameObject.CompareTag("SimpleBox"))
-        {
-            //caixa = null;
-            //PlayerEntity.setBoxLocked(caixa);
-            PlayerEntity.setIsInside(false);
-            PlayerEntity.setIsInsideOfSimple(false);
-        }
-    }
+    //    if (other.gameObject.CompareTag("SimpleBox"))
+    //    {
+    //        caixa = null;
+    //        //PlayerEntity.setBoxLocked(caixa);
+    //        PlayerEntity.setIsInside(false);
+    //        PlayerEntity.setIsInsideOfSimple(false);
+    //    }
+    //}
 }
