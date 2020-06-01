@@ -1,128 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ThrowContinuousBox : MonoBehaviour
-{
-    enum directionForce
+{    
+
+    public enum DirectionForce
     {
-        up,
         normal,
-    }
+        up
+    };
 
-    public Transform checaChaoCenter;
-    public Transform checaChao;
 
-    [SerializeField] directionForce dirf;
+    bool colidiu;
 
-    bool readyToPush = false;
-    bool colidiu = false;
-    bool isGrounded;
-    public bool push = false;
-
-    public string lockSide = "";
-
-    Rigidbody rb;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        //lockSide = GetComponent<LockB>().side;
-    }
+    [SerializeField] DirectionForce dirf;
 
     // Update is called once per frame
     void Update()
-    {        
-        //isGrounded = Physics.Linecast(checaChaoCenter.position, checaChao.position);
+    {
+        //Debug.Log(PlayerEntity.getWantToThrow());
+        //if (PlayerEntity.getWantToThrow() == true && colidiu == false)
+        //{
+        //    //switch (dirf)
+        //    //{
+        //    //    case DirectionForce.normal:
+        //    //        Debug.Log("entrei no normal", transform);
+        //    //        break;
+        //    //    case DirectionForce.up:
+        //    //        Debug.Log("entrei no up", transform);
+        //    //        break;
+        //    //    default:
+        //    //        break;
+        //    //}
 
-        if (push == true && colidiu == false)
-        {
-            if (dirf.Equals(directionForce.normal))
-            {
+        //    if (dirf.Equals(DirectionForce.normal))
+        //    {
+        //        Debug.Log("normal");
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("up");
+        //    }
 
-                if (PlayerEntity.getIsLockedInNorth())
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = transform.right * 5000 * Time.deltaTime;
-                }
-                if (PlayerEntity.getIsLockedInSouth())
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = -transform.right * 5000 * Time.deltaTime;
-                }
-                if (PlayerEntity.getIsLockedInWest())
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = -transform.forward * 5000 * Time.deltaTime;
-                }
-                if (PlayerEntity.getIsLockedInEast())
-                {
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.constraints = RigidbodyConstraints.FreezeRotation;
-                    rb.velocity = transform.forward * 5000 * Time.deltaTime;
-                }
-
-                //switch (lockSide)
-                //{
-                //    case "norte":
-                //        rb.constraints = RigidbodyConstraints.None;
-                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                //        rb.velocity = transform.right * 5000 * Time.deltaTime;
-                //        break;
-                //    case "sul":
-                //        rb.constraints = RigidbodyConstraints.None;
-                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                //        rb.velocity = -transform.right * 5000 * Time.deltaTime;
-                //        break;
-                //    case "oeste":
-                //        rb.constraints = RigidbodyConstraints.None;
-                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                //        rb.velocity = -transform.forward * 5000 * Time.deltaTime;
-                //        break;
-                //    case "leste":
-                //        rb.constraints = RigidbodyConstraints.None;
-                //        rb.constraints = RigidbodyConstraints.FreezeRotation;
-                //        rb.velocity = transform.forward * 5000 * Time.deltaTime;
-                //        break;
-                //    case "":
-                //        break;
-                //    default:
-                //        break;
-
-                //}
-            }
-
-            if (dirf.Equals(directionForce.up))
-            {
-                rb.constraints = RigidbodyConstraints.None;
-                rb.constraints = RigidbodyConstraints.FreezeRotation;
-                rb.velocity = transform.up * 5000 * Time.deltaTime;
-            }
-        }
-        if (colidiu == true)
-        {
-            if (Mathf.Abs(rb.velocity.x) < 1 || Mathf.Abs(rb.velocity.y) < 1 || Mathf.Abs(rb.velocity.z) < 1)
-            {
-                Vector3 parar = new Vector3(0, Physics.gravity.y, 0);
-                rb.velocity = parar;
-                if (Mathf.Abs(rb.velocity.x) < 1 && Mathf.Abs(rb.velocity.y) < 1 && Mathf.Abs(rb.velocity.z) < 1)
-                {
-                    rb.velocity = Vector3.zero;
-                    push = false;
-                }
-
-            }
-        }
+        //    PlayerEntity.setWantToThrow(false);
+        //    PlayerEntity.setThrewTheBox(true);
+        //}
 
     }
 
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("paraBloco"))
+        if (/*collision.gameObject.CompareTag("Player") ||*/ collision.gameObject.CompareTag("paraBloco"))
         {
             colidiu = true;
         }
@@ -130,9 +61,11 @@ public class ThrowContinuousBox : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            colidiu = false;
-        }
+        //if (collision.gameObject.CompareTag("Player"))
+        //{
+        //    colidiu = false;
+        //}
     }
 }
+
+    
