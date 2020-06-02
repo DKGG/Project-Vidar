@@ -13,14 +13,21 @@ public static class PlayerEntity
     private static bool isGrounded;
     private static bool isFalling;
     private static bool wantToThrow;
+    private static bool isInsideOfContinuous;
+    private static bool isInsideOfSimple;
     private static bool islockedInContinuous;
     private static bool islockedInSimple;
     private static bool islockedInNorth;
     private static bool islockedInSouth;
     private static bool islockedInWest;
     private static bool islockedInEast;
+    private static bool wantToLock;
+    private static bool threwTheBox;
+
+    private static Transform positionToLock;
 
     private static GameObject BoxLocked;
+    private static GameObject PlayerPrefab;
 
     #endregion
 
@@ -35,7 +42,7 @@ public static class PlayerEntity
     #endregion
 
     #region Movement States Variables
-    
+
     private static bool isDashing;
     private static bool isLocked;
     private static bool isWalking;
@@ -64,6 +71,18 @@ public static class PlayerEntity
     //METHODS
 
     #region Player States Methods  
+
+
+    public static bool getWantToLock()
+    {
+        return wantToLock;
+    }
+
+    public static void setWantToLock(bool value)
+    {
+        wantToLock = value;
+    }
+
     public static bool getIsAlive()
     {
         return isAlive;
@@ -142,13 +161,44 @@ public static class PlayerEntity
         isInside = value;
     }
 
+    public static bool getIsInsideOfContinuous()
+    {
+        return isInsideOfContinuous;
+    }
+
+    public static void setIsInsideOfContinuous(bool value)
+    {
+        isInsideOfContinuous = value;
+    }
+
+    public static bool getIsInsideOfSimple()
+    {
+        return isInsideOfSimple;
+    }
+
+    public static void setIsInsideOfSimple(bool value)
+    {
+        isInsideOfSimple = value;
+    }
+
     public static bool getWantToThrow()
     {
         return wantToThrow;
     }
+
     public static void setWantToThrow(bool value)
     {
         wantToThrow = value;
+    }
+
+    public static bool getThrewTheBox()
+    {
+        return threwTheBox;
+    }
+
+    public static void setThrewTheBox(bool value)
+    {
+        threwTheBox = value;
     }
 
     public static bool getIsLockedInContinuous()
@@ -275,7 +325,7 @@ public static class PlayerEntity
 
     public static void setJumping(bool value)
     {
-        isJumping = value; 
+        isJumping = value;
     }
     #endregion
 
@@ -369,9 +419,31 @@ public static class PlayerEntity
         return BoxLocked;
     }
 
+    public static void setPlayerPrefab(GameObject obj)
+    {
+        PlayerPrefab = obj;
+    }
+
+    public static GameObject getPlayerPrefab()
+    {
+        return PlayerPrefab;
+    }
+
     public static void setBoxLocked(GameObject obj)
     {
         BoxLocked = obj;
+    }
+    #endregion
+
+    #region Transform
+    public static Transform getPositionToLock()
+    {
+        return positionToLock;
+    }
+
+    public static void setPositionToLock(Transform pos)
+    {
+        positionToLock = pos;
     }
     #endregion
 
