@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class PController : MonoBehaviour
 
     public void PlayerStatus()
     {     
-        if (PlayerEntity.getLocked() == true)
+        if (PlayerEntity.getLocked() == true && !PlayerEntity.getIsOnDialogue())
         {
             //PlayerEntity.setIdle(false);
             GetComponent<Movement>().enabled = false;
@@ -59,6 +60,13 @@ public class PController : MonoBehaviour
             {               
                 transform.position = PlayerEntity.getPositionToLock().position;                
             }
+        } else if (PlayerEntity.getIsOnDialogue())
+        {
+            GetComponent<Movement>().enabled = false;
+            GetComponent<playerJump>().enabled = false;
+            GetComponent<Dash>().enabled = false;
+            GetComponent<RaycastShoot>().enabled = false;
+            rb.isKinematic = false;
         }
         else
         {

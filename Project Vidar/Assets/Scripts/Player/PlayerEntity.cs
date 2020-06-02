@@ -25,6 +25,7 @@ public static class PlayerEntity
     private static bool threwTheBox;
 
     private static Transform positionToLock;
+    private static bool isOnDialogue;
 
     private static GameObject BoxLocked;
     private static GameObject PlayerPrefab;
@@ -91,6 +92,16 @@ public static class PlayerEntity
     public static void setIsAlive(bool value)
     {
         isAlive = value;
+    }
+
+    public static bool getIsOnDialogue()
+    {
+        return isOnDialogue;
+    }
+
+    public static void setIsOnDialogue(bool value)
+    {
+        isOnDialogue = value;
     }
     #endregion
 
