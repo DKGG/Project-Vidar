@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TreeEditor;
 using UnityEngine;
 
 public class LockB : MonoBehaviour
 {
-    public Transform checaChao;
-    public Transform checaChaoCenter;
-    public Transform playerTransform;
+    //public Transform playerTransform;
+    public Transform playerGameObject;
     public Transform ponto1;
     public Transform ponto2;
     public Transform ponto3;
@@ -17,90 +18,202 @@ public class LockB : MonoBehaviour
     public Transform FaceLeste;
     public Transform posicao;
 
-    // public bool isInside;
-    public bool locka = false;
+    GameObject caixa;
+
     bool noNorte;
     bool noSul;
     bool noOeste;
     bool noLeste;
-    public bool islocked;
-
-    //public string side = "";
+    bool insideMe;
 
     public LayerMask Player;
 
-    Rigidbody rb;
-    boxMovement boxMovement;
-
-    void Start()
+    public enum DirecaoForca
     {
-        rb = GetComponent<Rigidbody>();
-        boxMovement = GetComponent<boxMovement>();
-        posicao = FaceNorte;
+        normal,
+        cima
+    };
+
+    //boxMovement boxMove;
+    //Rigidbody rb;
+
+    public DirecaoForca movimento;
+
+    // Start is called before the first frame update
+    private void Awake()
+    {
+        playerGameObject = GameObject.FindWithTag("Player").transform.parent;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (locka && PlayerEntity.getLocked() == false)
+
+        //Debug.Log(gameObject.GetComponent<LockB1>().movimento == DirecaoForca.normal, transform);
+        if (insideMe == true)
         {
-            noNorte = Physics.Linecast(ponto1.position, ponto4.position, Player);
-            noSul = Physics.Linecast(ponto2.position, ponto3.position, Player);
-            noOeste = Physics.Linecast(ponto1.position, ponto2.position, Player);
-            noLeste = Physics.Linecast(ponto3.position, ponto4.position, Player);
+            if (PlayerEntity.getWantToThrow() == true)
+            {
+                if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
+                {
 
-            if (noNorte)
-            {
-                posicao = FaceNorte;
-                PlayerEntity.setIslockedInNorth(true);
-                PlayerEntity.setIslockedInSouth(false);
-                PlayerEntity.setIslockedInWest(false);
-                PlayerEntity.setIslockedInEast(false);
-                //side = "norte";                
+                    if (PlayerEntity.getIsLockedInNorth())
+                    {
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 5000 * Time.deltaTime;
+                    }
+                    if (PlayerEntity.getIsLockedInSouth())
+                    {
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 5000 * Time.deltaTime;
+                    }
+                    if (PlayerEntity.getIsLockedInWest())
+                    {
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 5000 * Time.deltaTime;
+                    }
+                    if (PlayerEntity.getIsLockedInEast())
+                    {
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 5000 * Time.deltaTime;
+                    }
+                    PlayerEntity.setWantToThrow(false);
+                    PlayerEntity.setThrewTheBox(true);
+                }
+                else
+                {
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 5000 * Time.deltaTime;
+                    PlayerEntity.setWantToThrow(false);
+                    PlayerEntity.setThrewTheBox(true);
+                }
             }
-
-            if (noSul)
-            {
-                posicao = FaceSul;
-                PlayerEntity.setIslockedInNorth(false);
-                PlayerEntity.setIslockedInSouth(true);
-                PlayerEntity.setIslockedInWest(false);
-                PlayerEntity.setIslockedInEast(false);
-                //side = "sul";                
-            }
-            if (noOeste)
-            {
-                posicao = FaceOeste;
-                PlayerEntity.setIslockedInNorth(false);
-                PlayerEntity.setIslockedInSouth(false);
-                PlayerEntity.setIslockedInWest(true);
-                PlayerEntity.setIslockedInEast(false);
-                //side = "oeste";                
-            }
-            if (noLeste)
-            {
-                posicao = FaceLeste;
-                PlayerEntity.setIslockedInNorth(false);
-                PlayerEntity.setIslockedInSouth(false);
-                PlayerEntity.setIslockedInWest(false);
-                PlayerEntity.setIslockedInEast(true);
-                //side = "leste";                
-            }
-
-            //playerTransform.transform.parent = transform;
-            playerTransform.transform.parent = PlayerEntity.getBoxLocked().transform;
-            boxMovement.enabled = true;
-            islocked = true;
-            //PlayerEntity.setLocked(true);
         }
 
-        if (!locka && PlayerEntity.getLocked() ==  true) 
+        noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
+        noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
+        noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);
+        noLeste = Physics.Linecast(ponto1.position, ponto3.position, Player);
+
+        if (noNorte)
         {
-            //Debug.Log("NãoPodeLockar");
-            playerTransform.parent = null;
-            boxMovement.enabled = false;
-            islocked = false;
-            //PlayerEntity.setLocked(false);
+            PlayerEntity.setIslockedInNorth(true);
+            PlayerEntity.setIslockedInSouth(false);
+            PlayerEntity.setIslockedInWest(false);
+            PlayerEntity.setIslockedInEast(false);
+            PlayerEntity.setPositionToLock(FaceNorte);
+        }
+        if (noSul)
+        {
+            PlayerEntity.setIslockedInNorth(false);
+            PlayerEntity.setIslockedInSouth(true);
+            PlayerEntity.setIslockedInWest(false);
+            PlayerEntity.setIslockedInEast(false);
+            PlayerEntity.setPositionToLock(FaceSul);
+        }
+
+        if (noOeste)
+        {
+            PlayerEntity.setIslockedInNorth(false);
+            PlayerEntity.setIslockedInSouth(false);
+            PlayerEntity.setIslockedInWest(true);
+            PlayerEntity.setIslockedInEast(false);
+            PlayerEntity.setPositionToLock(FaceOeste);
+        }
+
+        if (noLeste)
+        {
+            PlayerEntity.setIslockedInNorth(false);
+            PlayerEntity.setIslockedInSouth(false);
+            PlayerEntity.setIslockedInWest(false);
+            PlayerEntity.setIslockedInEast(true);
+            PlayerEntity.setPositionToLock(FaceLeste);
+        }
+
+        if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false)
+        {
+            playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
+            PlayerEntity.setLocked(true);
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            if (PlayerEntity.getIsInsideOfContinuous() == true)
+            {
+                PlayerEntity.setIsLockedInContinuous(true);
+            }
+
+            if (PlayerEntity.getIsInsideOfSimple() == true)
+            {
+                PlayerEntity.setIsLockedInSimple(true);
+            }
+
+        }
+        if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
+        {
+
+            playerGameObject.SetParent(null);
+            PlayerEntity.setLocked(false);
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
+            PlayerEntity.setIsInsideOfSimple(false);
+            PlayerEntity.setIsInsideOfContinuous(false);
+            if (PlayerEntity.getIsInsideOfContinuous() == false)
+            {
+                PlayerEntity.setIsLockedInContinuous(false);
+            }
+
+            if (PlayerEntity.getIsInsideOfSimple() == false)
+            {
+                PlayerEntity.setIsLockedInSimple(false);
+            }
+        }
+
+        if (PlayerEntity.getLocked() == true && PlayerEntity.getThrewTheBox() == true)
+        {
+
+            playerGameObject.SetParent(null);
+            PlayerEntity.setLocked(false);
+            PlayerEntity.setWantToThrow(false);
+            PlayerEntity.setWantToLock(false);
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+            PlayerEntity.setThrewTheBox(false);
+
         }
     }
 
+    //verificar aqui se o player está dentro dela
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Estou dentro da caixa", transform);
+            caixa = gameObject;
+            PlayerEntity.setBoxLocked(caixa);
+            insideMe = true;
+            //Destroy(PlayerEntity.getBoxLocked());
+            PlayerEntity.setIsInside(true);
+            if (caixa.CompareTag("ContinuosBox"))
+            {
+                PlayerEntity.setIsInsideOfContinuous(true);
+            }
+            if (caixa.CompareTag("SimpleBox"))
+            {
+                PlayerEntity.setIsInsideOfSimple(true);
+            }
+
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        caixa = null;
+        insideMe = false;
+        PlayerEntity.setBoxLocked(caixa);
+        PlayerEntity.setIsInside(false);
+    }
 }
