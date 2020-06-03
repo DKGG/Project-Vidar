@@ -11,7 +11,7 @@ public class FreezableBox : MonoBehaviour
 	public void Start()
 	{
 		anim = GetComponent<Animator>();
-		rb = GetComponent<Rigidbody>();
+		rb = GetComponentInParent<Rigidbody>();
 		anim.SetBool("freeze", true);
 	}
 	public void Update()
