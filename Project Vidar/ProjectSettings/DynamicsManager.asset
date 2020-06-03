@@ -6,9 +6,9 @@ PhysicsManager:
   serializedVersion: 13
   m_Gravity: {x: 0, y: -19.62, z: 0}
   m_DefaultMaterial: {fileID: 0}
-  m_BounceThreshold: 8
-  m_SleepThreshold: 0.005
-  m_DefaultContactOffset: 0.01
+  m_BounceThreshold: 9
+  m_SleepThreshold: 0.0005
+  m_DefaultContactOffset: 0.0001
   m_DefaultSolverIterations: 6
   m_DefaultSolverVelocityIterations: 1
   m_QueriesHitBackfaces: 0

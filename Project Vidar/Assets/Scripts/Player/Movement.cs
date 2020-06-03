@@ -29,7 +29,8 @@ public class Movement : MonoBehaviour
         {
             if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
             {
-                grassStep = false;
+                PlayerEntity.setIsPlayingGrassStep(false);
+                //grassStep = false;
                 AnimatorManager.setStateIdle();
                 FindObjectOfType<AudioManager>().Stop(sound);
             }
@@ -40,15 +41,17 @@ public class Movement : MonoBehaviour
         {
             // PlayerEntity.setWalking(true);
             AnimatorManager.setStateRun();
-            if (!grassStep && PlayerEntity.getGrounded())
+            if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
             {
                 FindObjectOfType<AudioManager>().Play(sound);
-                grassStep = true;
+                PlayerEntity.setIsPlayingGrassStep(true);
+                //grassStep = true;
             }
         }
         if (!PlayerEntity.getGrounded())
         {
-            grassStep = false;
+            PlayerEntity.setIsPlayingGrassStep(false);
+            //grassStep = false;d   
             FindObjectOfType<AudioManager>().Stop(sound);
         }
 
