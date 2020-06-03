@@ -41,9 +41,11 @@ public class DialogueManager : MonoBehaviour
     {
         // Lock player movement and by so make way to use Jump/Space bar key here
         PlayerEntity.setIsOnDialogue(true);
-        //PlayerEntity.setLocked(true);
         PlayerEntity.setCanPlayIdleAnim(true);
         AnimatorManager.setStateIdle();
+        FindObjectOfType<AudioManager>().Stop("grass");
+        FindObjectOfType<AudioManager>().Stop("wood");
+
 
         dialogues.Clear();
         currentScene = dialogueList.sceneName;
@@ -80,7 +82,7 @@ public class DialogueManager : MonoBehaviour
             dialogue = dialogues.Dequeue();
             nameText.text = dialogue.name;
             string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
-            dialogueEmoteSprite = (Sprite) AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+            dialogueEmoteSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
             Debug.Log(dialogueEmoteSprite);
             dialogueEmote.sprite = dialogueEmoteSprite;
             StartCoroutine(TypeSentence(dialogue.sentence));
@@ -98,7 +100,7 @@ public class DialogueManager : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.01f);
         }
-        
+
         crIsRunning = false;
     }
 
