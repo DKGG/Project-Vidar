@@ -8,42 +8,42 @@ public class PController : MonoBehaviour
     float strength;
 
     GameObject caixa = null;
-    [SerializeField]GameObject player;
+    [SerializeField] GameObject player;
     Rigidbody rb;
-   
+
     void Start()
-    {        
-        rb = GetComponent<Rigidbody>();        
+    {
+        rb = GetComponent<Rigidbody>();
     }
 
-    
+
     void Update()
     {
-        
+
 
         if (PlayerEntity.getBoxLocked() != null)
         {
-            if(PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getLocked() == false)
-            {                
-                PlayerEntity.setWantToLock(true);               
+            if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getLocked() == false)
+            {
+                PlayerEntity.setWantToLock(true);
             }
-            if(PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getLocked() == true)
-            {               
+            if (PlayerEntity.getIsInside() == true && PlayerEntity.getKeyE() == true && PlayerEntity.getLocked() == true)
+            {
                 PlayerEntity.setWantToLock(false);
             }
 
-            if(PlayerEntity.getLocked() == true && PlayerEntity.getIsLockedInContinuous() == true && PlayerEntity.getKeyQ() == true)
-            {                
-                PlayerEntity.setWantToThrow(true);                
+            if (PlayerEntity.getLocked() == true && PlayerEntity.getIsLockedInContinuous() == true && PlayerEntity.getKeyQ() == true)
+            {
+                PlayerEntity.setWantToThrow(true);
             }
-            
+
         }
 
         PlayerStatus();
     }
 
     public void PlayerStatus()
-    {     
+    {
         if (PlayerEntity.getLocked() == true)
         {
             //PlayerEntity.setIdle(false);
@@ -56,9 +56,17 @@ public class PController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, PlayerEntity.getPositionToLock().position, Time.deltaTime * 5f);
             transform.rotation = Quaternion.Lerp(transform.rotation, PlayerEntity.getPositionToLock().rotation, Time.deltaTime * 5f);
             if (Mathf.Abs(Vector3.Distance(transform.position, PlayerEntity.getPositionToLock().position)) < 0.1f)
-            {               
-                transform.position = PlayerEntity.getPositionToLock().position;                
+            {
+                transform.position = PlayerEntity.getPositionToLock().position;
             }
+        }
+        else if (PlayerEntity.getIsOnDialogue())
+        {
+            GetComponent<Movement>().enabled = false;
+            GetComponent<playerJump>().enabled = false;
+            GetComponent<Dash>().enabled = false;
+            GetComponent<RaycastShoot>().enabled = false;
+            rb.isKinematic = false;
         }
         else
         {
@@ -70,5 +78,5 @@ public class PController : MonoBehaviour
             rb.isKinematic = false;
         }
 
-    }    
+    }
 }
