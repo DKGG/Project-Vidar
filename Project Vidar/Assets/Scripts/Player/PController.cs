@@ -4,11 +4,8 @@ using System.Linq.Expressions;
 using UnityEngine;
 
 public class PController : MonoBehaviour
-{
-    float strength;
-
-    GameObject caixa = null;
-    [SerializeField] GameObject player;
+{  
+    GameObject caixa = null;    
     Rigidbody rb;
 
     void Start()
