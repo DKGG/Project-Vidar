@@ -343,7 +343,7 @@ MonoBehaviour:
   positiveDirection: 1
   speed: 5
   platformMovement: 2
-  platformPhysics: 1
+  platformPhysics: 0
 --- !u!1 &7289791077520106965
 GameObject:
   m_ObjectHideFlags: 0
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7289791077925088626}
   m_Layer: 0
-  m_Name: Moving Platform Push
+  m_Name: Moving Platform Push Thick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
