@@ -34,6 +34,7 @@ public class OverTheShoulderCamera : MonoBehaviour
 
     private void Update()
     {
+        
         if (PlayerEntity.getKeyX())
         {
             moveCam = !moveCam;
@@ -50,7 +51,7 @@ public class OverTheShoulderCamera : MonoBehaviour
 
         if (PlayerEntity.getLocked() == true)
         {
-            //playerTransForm.position = playerObject.transform.parent.position;
+            //playerTransForm.position = playerObject.transform.parent.position;            
             playerTransForm = PlayerEntity.getBoxLocked().transform;
             Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);            
             changeCam = true;

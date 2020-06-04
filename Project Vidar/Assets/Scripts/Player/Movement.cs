@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -8,12 +9,16 @@ public class Movement : MonoBehaviour
     public float velocity = 5f;
     public float turnSpeed = 100f;
 
+    public Transform verificaFrente;
+
     Vector2 input;
     float angle;
     Quaternion targetRotation;
     Transform cam;
+    RaycastHit objectHit;
     public bool grassStep;
     public bool woodStep;
+    bool somethingInFrontOfPlayer;
     public String sound;
     private void Start()
     {
@@ -23,13 +28,28 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        //linecastall
+        //raycasthit
+        //noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
+        //objectHit = Physics.Linecast(gameObject.transform.position, verificaFrente.position);
+        somethingInFrontOfPlayer = Physics.Linecast(gameObject.transform.position,verificaFrente.position);
+
+        //if(somethingInFrontOfPlayer == true)
+        //{
+        //    Debug.Log("Tem algo na frente");
+        //    input.x = PlayerEntity.checkInputHorizontal() * 0;
+        //    input.y = PlayerEntity.checkInputVertical() * 0;
+
+        //}      
+
         getInput();
 
         if (Math.Abs(input.x) < 1 && Math.Abs(input.y) < 1)
         {
             if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
             {
-                grassStep = false;
+                PlayerEntity.setIsPlayingGrassStep(false);
+                //grassStep = false;
                 AnimatorManager.setStateIdle();
                 FindObjectOfType<AudioManager>().Stop(sound);
             }
@@ -40,21 +60,28 @@ public class Movement : MonoBehaviour
         {
             // PlayerEntity.setWalking(true);
             AnimatorManager.setStateRun();
-            if (!grassStep && PlayerEntity.getGrounded())
+            if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
             {
                 FindObjectOfType<AudioManager>().Play(sound);
-                grassStep = true;
+                PlayerEntity.setIsPlayingGrassStep(true);
+                //grassStep = true;
             }
         }
         if (!PlayerEntity.getGrounded())
         {
-            grassStep = false;
+            PlayerEntity.setIsPlayingGrassStep(false);
+            //grassStep = false;d   
             FindObjectOfType<AudioManager>().Stop(sound);
         }
 
         calculateDirection();
         rotate();
-        move();
+
+        if (somethingInFrontOfPlayer == false)
+        {
+            move();
+            
+        }        
     }
 
     private void move(){

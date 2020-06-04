@@ -23,6 +23,7 @@ public static class PlayerEntity
     private static bool islockedInEast;
     private static bool wantToLock;
     private static bool threwTheBox;
+    private static bool isOnDialogue;
 
     private static Transform positionToLock;
 
@@ -91,6 +92,16 @@ public static class PlayerEntity
     public static void setIsAlive(bool value)
     {
         isAlive = value;
+    }
+
+    public static bool getIsOnDialogue()
+    {
+        return isOnDialogue;
+    }
+
+    public static void setIsOnDialogue(bool value)
+    {
+        isOnDialogue = value;
     }
     #endregion
 

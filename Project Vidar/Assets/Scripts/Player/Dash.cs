@@ -30,6 +30,8 @@ public class Dash : MonoBehaviour
             dashVariables();
 
              FindObjectOfType<AudioManager>().Play("dash");
+             FindObjectOfType<AudioManager>().Stop("grass");
+            PlayerEntity.setIsPlayingGrassStep(false);
 
             Debug.Log(PlayerEntity.getKeyLeftShift());
             Debug.Log(PlayerEntity.getDashing());
