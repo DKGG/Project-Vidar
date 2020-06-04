@@ -104,6 +104,8 @@ public class LockB : MonoBehaviour
                 PlayerEntity.setIsLockedInSimple(true);
             }
 
+            caixa = gameObject;
+            PlayerEntity.setBoxLocked(caixa);
         }
         if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
         {
@@ -189,18 +191,16 @@ public class LockB : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {            
-            caixa = gameObject;
-            PlayerEntity.setBoxLocked(caixa);
             insideMe = true;            
             PlayerEntity.setIsInside(true);
-            if (caixa.CompareTag("ContinuosBox"))
-            {
-                PlayerEntity.setIsInsideOfContinuous(true);
-            }
-            if (caixa.CompareTag("SimpleBox"))
-            {
-                PlayerEntity.setIsInsideOfSimple(true);
-            }
+            //if (caixa.CompareTag("ContinuosBox"))
+            //{
+            //    PlayerEntity.setIsInsideOfContinuous(true);
+            //}
+            //if (caixa.CompareTag("SimpleBox"))
+            //{
+            //    PlayerEntity.setIsInsideOfSimple(true);
+            //}
 
         }
     }
@@ -208,7 +208,7 @@ public class LockB : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            caixa = null;
+            //caixa = null;
             insideMe = false;
             PlayerEntity.setBoxLocked(caixa);
             PlayerEntity.setIsInside(false);
