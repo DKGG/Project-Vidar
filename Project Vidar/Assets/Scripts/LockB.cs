@@ -104,8 +104,6 @@ public class LockB : MonoBehaviour
                 PlayerEntity.setIsLockedInSimple(true);
             }
 
-            caixa = gameObject;
-            PlayerEntity.setBoxLocked(caixa);
         }
         if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
         {
@@ -150,25 +148,25 @@ public class LockB : MonoBehaviour
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 350 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 5000 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInSouth())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 350 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 5000 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInWest())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 350 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 5000 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInEast())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 350 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 5000 * Time.deltaTime;
                     }
                     PlayerEntity.setWantToThrow(false);
                     PlayerEntity.setThrewTheBox(true);
@@ -177,7 +175,7 @@ public class LockB : MonoBehaviour
                 {
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 350 * Time.deltaTime;
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 5000 * Time.deltaTime;
                     PlayerEntity.setWantToThrow(false);
                     PlayerEntity.setThrewTheBox(true);
                 }
@@ -191,16 +189,18 @@ public class LockB : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {            
+            caixa = gameObject;
+            PlayerEntity.setBoxLocked(caixa);
             insideMe = true;            
             PlayerEntity.setIsInside(true);
-            //if (caixa.CompareTag("ContinuosBox"))
-            //{
-            //    PlayerEntity.setIsInsideOfContinuous(true);
-            //}
-            //if (caixa.CompareTag("SimpleBox"))
-            //{
-            //    PlayerEntity.setIsInsideOfSimple(true);
-            //}
+            if (caixa.CompareTag("ContinuosBox"))
+            {
+                PlayerEntity.setIsInsideOfContinuous(true);
+            }
+            if (caixa.CompareTag("SimpleBox"))
+            {
+                PlayerEntity.setIsInsideOfSimple(true);
+            }
 
         }
     }
@@ -208,7 +208,7 @@ public class LockB : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //caixa = null;
+            caixa = null;
             insideMe = false;
             PlayerEntity.setBoxLocked(caixa);
             PlayerEntity.setIsInside(false);
