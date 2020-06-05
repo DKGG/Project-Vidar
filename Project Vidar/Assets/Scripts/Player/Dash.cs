@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Dash : MonoBehaviour
 {
-    public float dashCooldown = 0;
     [SerializeField] float DashDistance = 10f;
     float angle;
     [SerializeField] int dragIntensity = 8;
@@ -26,7 +25,7 @@ public class Dash : MonoBehaviour
 
     void Update()
     {
-        if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing() && dashCooldown == 0)
+        if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing())
         {
             dashVariables();
 
@@ -36,18 +35,8 @@ public class Dash : MonoBehaviour
 
             Debug.Log(PlayerEntity.getKeyLeftShift());
             Debug.Log(PlayerEntity.getDashing());
-            dashCooldown = 2.0f;
 
             StartCoroutine(DashReset());
-        }
-
-        if(dashCooldown != 0)
-        {
-            dashCooldown -= Time.deltaTime;
-            if (dashCooldown < 0)
-            {
-                dashCooldown = 0;
-            }
         }
     }
 
