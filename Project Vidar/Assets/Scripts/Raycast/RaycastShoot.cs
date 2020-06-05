@@ -48,7 +48,7 @@ public class RaycastShoot : MonoBehaviour
 
                 FreezableBox box = hit.collider.GetComponent<FreezableBox>();
 
-                if (hit.rigidbody != null)
+                if (box != null && hit.rigidbody != null)
                 {
                     if (box.isFrozen)
                     {

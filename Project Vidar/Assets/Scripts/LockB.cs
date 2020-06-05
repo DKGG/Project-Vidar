@@ -86,6 +86,8 @@ public class LockB : MonoBehaviour
         }
         else
         {
+            // FIX ME
+            // Box face is memoized on the next interection
             return;
         }
 
@@ -190,7 +192,7 @@ public class LockB : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !PlayerEntity.getIsInside())
         {
             caixa = gameObject;
             PlayerEntity.setBoxLocked(caixa);
@@ -209,7 +211,7 @@ public class LockB : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && caixa != null)
         {
             caixa = null;
             insideMe = false;
