@@ -6,15 +6,19 @@ public class FreezableBox : MonoBehaviour
 	public bool isFrozen = false;
 	public bool freeze;
 	public Rigidbody rb;
-	Animator anim;
+	//Renderer rnd;
+	//public Material[] material;
+	//Animator anim;
+	public GameObject boxWithShader;
+
+	Mesh initialMesh;
+	Mesh swapMesh;
 
 	public void Start()
-	{
-		anim = GetComponent<Animator>();
-		rb = GetComponentInParent<Rigidbody>();
-		anim.SetBool("freeze", true);
+	{		
+		//rnd = gameObject.GetComponent<Renderer>();
+		//rnd.sharedMaterial = material[0];	
 	}
-
 	public void Update()
 	{
 		changeAnimState();
@@ -23,10 +27,15 @@ public class FreezableBox : MonoBehaviour
 	{
 		if (!isFrozen)
 		{
-			anim.SetBool("freeze", true);
-		} else
+			//anim.SetBool("freeze", true);			
+			//rnd.sharedMaterial = material[0];
+			boxWithShader.SetActive(false);
+		}
+		else
 		{
-			anim.SetBool("freeze", false);
+			//anim.SetBool("freeze", false);
+			//rnd.sharedMaterial = material[1];
+			boxWithShader.SetActive(true);
 		}
 	}
 }
