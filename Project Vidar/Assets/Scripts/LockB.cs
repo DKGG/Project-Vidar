@@ -15,7 +15,7 @@ public class LockB : MonoBehaviour
     public Transform FaceNorte;
     public Transform FaceSul;
     public Transform FaceOeste;
-    public Transform FaceLeste;    
+    public Transform FaceLeste;
 
     GameObject caixa;
 
@@ -60,7 +60,7 @@ public class LockB : MonoBehaviour
             PlayerEntity.setIslockedInEast(false);
             PlayerEntity.setPositionToLock(FaceNorte);
         }
-        if (noSul)
+        else if (noSul)
         {
             PlayerEntity.setIslockedInNorth(false);
             PlayerEntity.setIslockedInSouth(true);
@@ -68,8 +68,7 @@ public class LockB : MonoBehaviour
             PlayerEntity.setIslockedInEast(false);
             PlayerEntity.setPositionToLock(FaceSul);
         }
-
-        if (noOeste)
+        else if (noOeste)
         {
             PlayerEntity.setIslockedInNorth(false);
             PlayerEntity.setIslockedInSouth(false);
@@ -77,14 +76,17 @@ public class LockB : MonoBehaviour
             PlayerEntity.setIslockedInEast(false);
             PlayerEntity.setPositionToLock(FaceOeste);
         }
-
-        if (noLeste)
+        else if (noLeste)
         {
             PlayerEntity.setIslockedInNorth(false);
             PlayerEntity.setIslockedInSouth(false);
             PlayerEntity.setIslockedInWest(false);
             PlayerEntity.setIslockedInEast(true);
             PlayerEntity.setPositionToLock(FaceLeste);
+        }
+        else
+        {
+            return;
         }
 
         if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false)
@@ -105,6 +107,7 @@ public class LockB : MonoBehaviour
             }
 
         }
+
         if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
         {
 
@@ -188,10 +191,10 @@ public class LockB : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {            
+        {
             caixa = gameObject;
             PlayerEntity.setBoxLocked(caixa);
-            insideMe = true;            
+            insideMe = true;
             PlayerEntity.setIsInside(true);
             if (caixa.CompareTag("ContinuosBox"))
             {
@@ -212,6 +215,6 @@ public class LockB : MonoBehaviour
             insideMe = false;
             PlayerEntity.setBoxLocked(caixa);
             PlayerEntity.setIsInside(false);
-        }      
+        }
     }
 }
