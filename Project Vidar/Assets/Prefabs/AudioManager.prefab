@@ -108,8 +108,8 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: throw2
-    clip: {fileID: 8300000, guid: e6416f9a4509400489691e1ef80c74c4, type: 3}
+  - name: channeling
+    clip: {fileID: 8300000, guid: 3dc78b23d8362384396da1001a3b5257, type: 3}
     volume: 0.523
     volumeVariance: 0.486
     pitch: 1

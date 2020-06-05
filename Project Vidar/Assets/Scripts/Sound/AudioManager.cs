@@ -70,5 +70,14 @@ public class AudioManager : MonoBehaviour
 
 		s.source.Stop();
 	}
+	public void stopAll()
+	{
+		foreach (var item in sounds)
+		{
+			if (!item.name.Equals("ambient")) {
+				Stop(item.name);
+			}
+		}
+	}
 
 }

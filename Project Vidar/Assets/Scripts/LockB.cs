@@ -47,6 +47,7 @@ public class LockB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(PlayerEntity.getLocked());
         noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);
@@ -95,6 +96,7 @@ public class LockB : MonoBehaviour
         {
             playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
             PlayerEntity.setLocked(true);
+            FindObjectOfType<AudioManager>().Play("channeling");
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
@@ -115,6 +117,7 @@ public class LockB : MonoBehaviour
 
             playerGameObject.SetParent(null);
             PlayerEntity.setLocked(false);
+            FindObjectOfType<AudioManager>().stopAll();
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
             PlayerEntity.setIsInsideOfSimple(false);
@@ -146,6 +149,7 @@ public class LockB : MonoBehaviour
         {
             if (PlayerEntity.getWantToThrow() == true)
             {
+                FindObjectOfType<AudioManager>().stopAll();
                 if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
                 {
 
