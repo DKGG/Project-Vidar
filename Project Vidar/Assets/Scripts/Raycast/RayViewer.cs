@@ -11,7 +11,7 @@ public class RayViewer : MonoBehaviour
     void Update()
     {
         Vector3 lineOrigin = fpsCam.ViewportToWorldPoint(new Vector3(.5f, .5f, 0));
-        Debug.DrawRay(lineOrigin, fpsCam.transform.forward * weaponRange, Color.green);
-        Debug.DrawRay(lineOrigin, lookAt.forward * weaponRange, Color.red);
+        //Debug.DrawRay(lineOrigin, fpsCam.transform.forward * weaponRange, Color.green);
+        //Debug.DrawRay(lineOrigin, lookAt.forward * weaponRange, Color.red);
     }
 }

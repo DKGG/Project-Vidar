@@ -30,6 +30,8 @@ public static class PlayerEntity
     private static GameObject BoxLocked;
     private static GameObject PlayerPrefab;
 
+    private static Vector3 spawnPoint;
+
     #endregion
 
     #region Player Special Abilities Variables
@@ -287,6 +289,16 @@ public static class PlayerEntity
     public static void setIsFalling(bool value)
     {
         isFalling = value;
+    }
+
+    public static Vector3 getSpawnPoint()
+    {
+        return spawnPoint;
+    }
+
+    public static void setSpawnPoint(Vector3 value)
+    {
+        spawnPoint = value;
     }
 
     public static bool getDashing()
