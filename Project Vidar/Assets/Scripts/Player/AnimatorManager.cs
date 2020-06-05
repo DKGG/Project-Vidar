@@ -12,7 +12,8 @@ public class AnimatorManager : MonoBehaviour
         run,
         jump,
         dash,
-        falling
+        falling,
+        freezing
     }
     private static AnimState states;
 
@@ -85,6 +86,16 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isFalling", false);
         }
         #endregion
+        #region Animation Freezing
+        if (PlayerEntity.getCanPlayFreezeAnim())
+        {
+            AnimatorManager.setState("isFreezing", true);
+        }
+        if (!PlayerEntity.getCanPlayFreezeAnim())
+        {
+            AnimatorManager.setState("isFreezing", false);
+        }
+        #endregion
     }
 
     #region Set states methods
@@ -108,6 +119,10 @@ public class AnimatorManager : MonoBehaviour
     {
         states = AnimState.falling;
     }
+    public static void setStateFreezing()
+    {
+        states = AnimState.freezing;
+    }
     #endregion
 
     private void checkStates()
@@ -115,7 +130,7 @@ public class AnimatorManager : MonoBehaviour
         switch (states)
         {
             case AnimState.idle:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing())
                 {
                     /* Must add Audio Manager to Game Object */
                     // FindObjectOfType<AudioManager>().Stop("grassStep");
@@ -130,12 +145,13 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayWalkAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
+                    PlayerEntity.setCanPlayFreezeAnim(false);
 
                     PlayerEntity.setCanPlayIdleAnim(true);
                 }
                 break;
             case AnimState.run:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing())
                 {
                     /* Audio */
                     /*
@@ -151,6 +167,7 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
+                    PlayerEntity.setCanPlayFreezeAnim(false);
 
                     PlayerEntity.setCanPlayWalkAnim(true);
                 }
@@ -168,6 +185,7 @@ public class AnimatorManager : MonoBehaviour
                 PlayerEntity.setCanPlayDashAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
+                PlayerEntity.setCanPlayFreezeAnim(false);
 
                 PlayerEntity.setCanPlayJumpAnim(true);
                 break;
@@ -184,6 +202,7 @@ public class AnimatorManager : MonoBehaviour
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
+                PlayerEntity.setCanPlayFreezeAnim(false);
 
                 PlayerEntity.setCanPlayDashAnim(true);
                 break;
@@ -202,6 +221,7 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayWalkAnim(false);
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayFreezeAnim(false);
 
                     /* States */
                     PlayerEntity.setJumping(false);
@@ -209,6 +229,15 @@ public class AnimatorManager : MonoBehaviour
 
                     PlayerEntity.setCanPlayFallAnim(true);
                 }
+                break;
+            case AnimState.freezing:
+                PlayerEntity.setCanPlayIdleAnim(false);
+                PlayerEntity.setCanPlayWalkAnim(false);
+                PlayerEntity.setCanPlayJumpAnim(false);
+                PlayerEntity.setCanPlayFallAnim(false);
+                PlayerEntity.setCanPlayDashAnim(false);
+
+                PlayerEntity.setCanPlayFreezeAnim(true);
                 break;
         }
     }

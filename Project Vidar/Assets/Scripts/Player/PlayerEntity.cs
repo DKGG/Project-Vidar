@@ -12,6 +12,7 @@ public static class PlayerEntity
     private static bool isInside;
     private static bool isGrounded;
     private static bool isFalling;
+    private static bool isFreezing;
     private static bool wantToThrow;
     private static bool isInsideOfContinuous;
     private static bool isInsideOfSimple;
@@ -58,6 +59,7 @@ public static class PlayerEntity
     private static bool canPlayJumpAnim;
     private static bool canPlayIdleAnim;
     private static bool canPlayFallAnim;
+    private static bool canPlayFreezeAnim;
 
     #endregion
 
@@ -265,6 +267,14 @@ public static class PlayerEntity
     {
         islockedInEast = value;
     }
+    public static bool getIsFreezing()
+    {
+        return isFreezing;
+    }
+    public static void setIsFreezing(bool value)
+    {
+        isFreezing = value;
+    }
 
     #endregion
 
@@ -419,6 +429,16 @@ public static class PlayerEntity
     public static void setCanPlayFallAnim(bool value)
     {
         canPlayFallAnim = value;
+    }
+
+    public static bool getCanPlayFreezeAnim()
+    {
+        return canPlayFreezeAnim;
+    }
+
+    public static void setCanPlayFreezeAnim(bool value)
+    {
+        canPlayFreezeAnim = value;
     }
     #endregion
 

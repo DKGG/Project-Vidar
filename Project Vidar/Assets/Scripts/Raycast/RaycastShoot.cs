@@ -26,6 +26,7 @@ public class RaycastShoot : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("congelando"+PlayerEntity.getIsFreezing());
         if (PlayerEntity.getKeyQ() == true && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -47,21 +48,27 @@ public class RaycastShoot : MonoBehaviour
                 laserLine.SetPosition(1, hit.point);
 
                 FreezableBox box = hit.collider.GetComponent<FreezableBox>();
+                AnimatorManager.setStateFreezing();
 
                 if (box != null && hit.rigidbody != null)
                 {
                     if (box.isFrozen)
                     {
                         FindObjectOfType<AudioManager>().Play("freeze");
-                        Debug.Log("true");
+                        AnimatorManager.setStateFreezing();
+                        PlayerEntity.setIsFreezing(true);
+                        //AnimatorManager.setState("isFreezing", true);
+                        //Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
                         box.rb.velocity = freezeSave;
                     }
                     else
                     {
+                        PlayerEntity.setIsFreezing(true);
                         FindObjectOfType<AudioManager>().Play("freeze");
-                        Debug.Log("false");
+                        //AnimatorManager.setStateFreezing();
+                        //Debug.Log("false");
                         box.isFrozen = true;
                         freezeSave = box.rb.velocity;
                         box.rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -83,5 +90,7 @@ public class RaycastShoot : MonoBehaviour
         laserLine.enabled = true;
         yield return shotDuration;
         laserLine.enabled = false;
+        yield return 1.1;
+        PlayerEntity.setIsFreezing(false);
     }
 }
