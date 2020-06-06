@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RespawnController : MonoBehaviour
 {
-    public Vector3 spawnPoint;
+    private Vector3 spawnPoint;
 
     private void Start()
     {

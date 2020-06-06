@@ -21,15 +21,15 @@ public class PickUp : MonoBehaviour
     {
         GetComponent<Rigidbody>().useGravity = false;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
-        this.transform.position = grabPos.position;
-        this.transform.parent = GameObject.FindGameObjectWithTag("grabPos").transform;
+        transform.position = grabPos.position;
+        transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
         grab = true;
         yield return new WaitForEndOfFrame();
     }
 
     IEnumerator DropAction()
     {
-        this.transform.parent = null;
+        transform.parent = null;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         grab = false;

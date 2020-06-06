@@ -30,7 +30,7 @@ public static class PlayerEntity
     private static GameObject BoxLocked;
     private static GameObject PlayerPrefab;
 
-    private static Vector3 spawnPoint;
+    private static Vector3 spawnPoint = new Vector3(170.55f, 45, 135.3f);
 
     #endregion
 
