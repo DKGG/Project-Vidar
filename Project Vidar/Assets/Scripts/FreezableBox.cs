@@ -29,13 +29,23 @@ public class FreezableBox : MonoBehaviour
 		{
 			//anim.SetBool("freeze", true);			
 			//rnd.sharedMaterial = material[0];
-			boxWithShader.SetActive(false);
+			freezeEffect();
+			//boxWithShader.SetActive(false);
+			boxWithShader.GetComponent<Animator>().SetBool("freeze", true);
 		}
 		else
 		{
 			//anim.SetBool("freeze", false);
 			//rnd.sharedMaterial = material[1];
-			boxWithShader.SetActive(true);
+			freezeEffect();
+			//boxWithShader.SetActive(true);
+			boxWithShader.GetComponent<Animator>().SetBool("freeze", false);
 		}
+	}
+	private IEnumerator freezeEffect()
+	{
+		//gunAudio.Play();
+
+		yield return 1.0;
 	}
 }

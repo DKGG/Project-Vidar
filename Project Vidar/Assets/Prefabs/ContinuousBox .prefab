@@ -191,13 +191,14 @@ GameObject:
   - component: {fileID: 9131567444126884509}
   - component: {fileID: 4426779965478944732}
   - component: {fileID: 2123484881167981447}
+  - component: {fileID: 4166265227916650578}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9131567444126884509
 Transform:
   m_ObjectHideFlags: 0
@@ -259,6 +260,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &4166265227916650578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6938102335726945262}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1877c3691c235e34e81a713054acc2bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7465085980190211737
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +494,7 @@ GameObject:
   - component: {fileID: 5555648903658103571}
   - component: {fileID: 1221557645141772754}
   - component: {fileID: 5569106615392424039}
+  - component: {fileID: 1232294358424067779}
   m_Layer: 0
   m_Name: 'ContinuousBox '
   m_TagString: ContinuosBox
@@ -560,3 +581,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1232294358424067779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184353717782366727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec344323051ec64c950940cce8e28e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blastRadius: 50
+  explodionPower: 50
+  explosionLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  stop: 0

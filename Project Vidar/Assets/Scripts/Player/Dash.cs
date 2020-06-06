@@ -29,9 +29,9 @@ public class Dash : MonoBehaviour
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing() && dashCooldown == 0)
         {
             dashVariables();
-
+            FindObjectOfType<AudioManager>().stopAll();
              FindObjectOfType<AudioManager>().Play("dash");
-             FindObjectOfType<AudioManager>().Stop("grass");
+             //FindObjectOfType<AudioManager>().Stop("grass");
             PlayerEntity.setIsPlayingGrassStep(false);
 
             Debug.Log(PlayerEntity.getKeyLeftShift());
