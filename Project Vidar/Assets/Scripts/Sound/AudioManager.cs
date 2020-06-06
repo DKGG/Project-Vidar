@@ -77,6 +77,7 @@ public class AudioManager : MonoBehaviour
 			if (!item.name.Equals("ambient")) {
 				Stop(item.name);
 			}
+			PlayerEntity.setIsPlayingGrassStep(false);
 		}
 	}
 

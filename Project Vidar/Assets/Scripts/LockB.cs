@@ -96,6 +96,7 @@ public class LockB : MonoBehaviour
         {
             playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
             PlayerEntity.setLocked(true);
+            AnimatorManager.setStateChanneling();
             FindObjectOfType<AudioManager>().Play("channeling");
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;

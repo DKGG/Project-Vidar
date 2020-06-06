@@ -13,7 +13,8 @@ public class AnimatorManager : MonoBehaviour
         jump,
         dash,
         falling,
-        freezing
+        freezing,
+        channeling
     }
     private static AnimState states;
 
@@ -96,6 +97,16 @@ public class AnimatorManager : MonoBehaviour
             AnimatorManager.setState("isFreezing", false);
         }
         #endregion
+        #region Animation Channeling
+        if (PlayerEntity.getCanPlayChannelingAnim())
+        {
+            AnimatorManager.setState("isChanneling", true);
+        }
+        if (!PlayerEntity.getCanPlayChannelingAnim())
+        {
+            AnimatorManager.setState("isChanneling", false);
+        }
+        #endregion
     }
 
     #region Set states methods
@@ -123,6 +134,10 @@ public class AnimatorManager : MonoBehaviour
     {
         states = AnimState.freezing;
     }
+    public static void setStateChanneling()
+    {
+        states = AnimState.channeling;
+    }
     #endregion
 
     private void checkStates()
@@ -130,7 +145,7 @@ public class AnimatorManager : MonoBehaviour
         switch (states)
         {
             case AnimState.idle:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing() && !PlayerEntity.getLocked())
                 {
                     /* Must add Audio Manager to Game Object */
                     // FindObjectOfType<AudioManager>().Stop("grassStep");
@@ -146,12 +161,13 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayWalkAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
                     PlayerEntity.setCanPlayFreezeAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
 
                     PlayerEntity.setCanPlayIdleAnim(true);
                 }
                 break;
             case AnimState.run:
-                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing())
+                if (!PlayerEntity.getDashing() && !PlayerEntity.getIsFalling() && !PlayerEntity.getIsFreezing() && !PlayerEntity.getLocked())
                 {
                     /* Audio */
                     /*
@@ -168,46 +184,55 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayFallAnim(false);
                     PlayerEntity.setCanPlayFreezeAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
 
                     PlayerEntity.setCanPlayWalkAnim(true);
                 }
                 break;
             case AnimState.jump:
                 /* Audio */
-                if (PlayerEntity.getisPlayingGrassStep())
+                if(!PlayerEntity.getLocked())
                 {
-                    FindObjectOfType<AudioManager>().Stop("grassStep");
-                    PlayerEntity.setIsPlayingGrassStep(false);
+                    if (PlayerEntity.getisPlayingGrassStep())
+                    {
+                        FindObjectOfType<AudioManager>().Stop("grassStep");
+                        PlayerEntity.setIsPlayingGrassStep(false);
+                    }
+
+                    /* Animations */
+                    PlayerEntity.setCanPlayIdleAnim(false);
+                    PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(false);
+                    PlayerEntity.setCanPlayFreezeAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
+
+                    PlayerEntity.setCanPlayJumpAnim(true);
                 }
-
-                /* Animations */
-                PlayerEntity.setCanPlayIdleAnim(false);
-                PlayerEntity.setCanPlayDashAnim(false);
-                PlayerEntity.setCanPlayWalkAnim(false);
-                PlayerEntity.setCanPlayFallAnim(false);
-                PlayerEntity.setCanPlayFreezeAnim(false);
-
-                PlayerEntity.setCanPlayJumpAnim(true);
                 break;
             case AnimState.dash:
-                /* Audio */
-                if (PlayerEntity.getisPlayingGrassStep())
+                if (!PlayerEntity.getLocked())
                 {
-                    FindObjectOfType<AudioManager>().Stop("grassStep");
-                    PlayerEntity.setIsPlayingGrassStep(false);
+                    /* Audio */
+                    if (PlayerEntity.getisPlayingGrassStep())
+                    {
+                        FindObjectOfType<AudioManager>().Stop("grassStep");
+                        PlayerEntity.setIsPlayingGrassStep(false);
+                    }
+
+                    /* Animations */
+                    PlayerEntity.setCanPlayIdleAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(false);
+                    PlayerEntity.setCanPlayFreezeAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
+
+                    PlayerEntity.setCanPlayDashAnim(true);
                 }
-
-                /* Animations */
-                PlayerEntity.setCanPlayIdleAnim(false);
-                PlayerEntity.setCanPlayWalkAnim(false);
-                PlayerEntity.setCanPlayJumpAnim(false);
-                PlayerEntity.setCanPlayFallAnim(false);
-                PlayerEntity.setCanPlayFreezeAnim(false);
-
-                PlayerEntity.setCanPlayDashAnim(true);
                 break;
             case AnimState.falling:
-                if (!PlayerEntity.getGrounded())
+                if (!PlayerEntity.getGrounded() && !PlayerEntity.getLocked())
                 {
                     /* Audio */
                     if (PlayerEntity.getisPlayingGrassStep())
@@ -222,6 +247,7 @@ public class AnimatorManager : MonoBehaviour
                     PlayerEntity.setCanPlayJumpAnim(false);
                     PlayerEntity.setCanPlayDashAnim(false);
                     PlayerEntity.setCanPlayFreezeAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
 
                     /* States */
                     PlayerEntity.setJumping(false);
@@ -231,13 +257,27 @@ public class AnimatorManager : MonoBehaviour
                 }
                 break;
             case AnimState.freezing:
+                if (!PlayerEntity.getLocked())
+                {
+                    PlayerEntity.setCanPlayIdleAnim(false);
+                    PlayerEntity.setCanPlayWalkAnim(false);
+                    PlayerEntity.setCanPlayJumpAnim(false);
+                    PlayerEntity.setCanPlayFallAnim(false);
+                    PlayerEntity.setCanPlayDashAnim(false);
+                    PlayerEntity.setCanPlayChannelingAnim(false);
+
+                    PlayerEntity.setCanPlayFreezeAnim(true);
+                }
+                break;
+            case AnimState.channeling:
                 PlayerEntity.setCanPlayIdleAnim(false);
                 PlayerEntity.setCanPlayWalkAnim(false);
                 PlayerEntity.setCanPlayJumpAnim(false);
                 PlayerEntity.setCanPlayFallAnim(false);
                 PlayerEntity.setCanPlayDashAnim(false);
+                PlayerEntity.setCanPlayFreezeAnim(false);
 
-                PlayerEntity.setCanPlayFreezeAnim(true);
+                PlayerEntity.setCanPlayChannelingAnim(true);
                 break;
         }
     }

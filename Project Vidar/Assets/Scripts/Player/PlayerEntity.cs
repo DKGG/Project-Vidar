@@ -60,6 +60,7 @@ public static class PlayerEntity
     private static bool canPlayIdleAnim;
     private static bool canPlayFallAnim;
     private static bool canPlayFreezeAnim;
+    private static bool canPlayChannelingAnim;
 
     #endregion
 
@@ -439,6 +440,15 @@ public static class PlayerEntity
     public static void setCanPlayFreezeAnim(bool value)
     {
         canPlayFreezeAnim = value;
+    }
+    public static bool getCanPlayChannelingAnim()
+    {
+        return canPlayChannelingAnim;
+    }
+
+    public static void setCanPlayChannelingAnim(bool value)
+    {
+        canPlayChannelingAnim = value;
     }
     #endregion
 
