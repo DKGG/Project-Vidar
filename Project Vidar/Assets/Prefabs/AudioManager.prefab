@@ -110,7 +110,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: channeling
     clip: {fileID: 8300000, guid: 3dc78b23d8362384396da1001a3b5257, type: 3}
-    volume: 0.523
+    volume: 0.197
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0.589
