@@ -106,19 +106,19 @@ public class Movement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         sound = collision.gameObject.tag;
-        if (collision.gameObject.tag.Equals("wood") && !PlayerEntity.getisPlayingWoodStep())
+        if (collision.gameObject.tag.Equals("wood") && !PlayerEntity.getisPlayingWoodStep() && !PlayerEntity.getDashing() && !PlayerEntity.getIsOnDialogue())
         {
             FindObjectOfType<AudioManager>().stopAll();
             FindObjectOfType<AudioManager>().Play(sound);
             PlayerEntity.setisPlayingWoodStep(true);
         }
-        else if (collision.gameObject.tag.Equals("grass") && !PlayerEntity.getisPlayingGrassStep())
+        else if (collision.gameObject.tag.Equals("grass") && !PlayerEntity.getisPlayingGrassStep() && !PlayerEntity.getDashing() && !PlayerEntity.getIsOnDialogue())
         {
             FindObjectOfType<AudioManager>().stopAll();
             FindObjectOfType<AudioManager>().Play(sound);
             PlayerEntity.setIsPlayingGrassStep(true);
         }
-        else if (collision.gameObject.tag.Equals("stone") && !PlayerEntity.getisPlayingStoneStep())
+        else if (collision.gameObject.tag.Equals("stone") && !PlayerEntity.getisPlayingStoneStep() && !PlayerEntity.getDashing() && !PlayerEntity.getIsOnDialogue())
         {
             FindObjectOfType<AudioManager>().stopAll();
             FindObjectOfType<AudioManager>().Play(sound);
