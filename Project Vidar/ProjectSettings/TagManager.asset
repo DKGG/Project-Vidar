@@ -13,6 +13,7 @@ TagManager:
   - killer
   - wood
   - grass
+  - stone
   layers:
   - Default
   - TransparentFX

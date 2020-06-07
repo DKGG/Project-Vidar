@@ -153,7 +153,7 @@ public class AnimatorManager : MonoBehaviour
                     /* Audio */
                     PlayerEntity.setisPlayingStoneStep(false);
                     PlayerEntity.setIsPlayingGrassStep(false);
-                    PlayerEntity.setisPlayingWaterStep(false);
+                    PlayerEntity.setisPlayingWoodStep(false);
 
                     /* Animations */
                     PlayerEntity.setCanPlayDashAnim(false);

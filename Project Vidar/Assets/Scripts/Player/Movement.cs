@@ -24,7 +24,7 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        sound = "grass";
+        //sound = "grass";
         cam = Camera.main.transform;
     }
 
@@ -44,7 +44,8 @@ public class Movement : MonoBehaviour
             if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
             {
                 PlayerEntity.setIsPlayingGrassStep(false);
-                //grassStep = false;
+                PlayerEntity.setisPlayingStoneStep(false);
+                PlayerEntity.setisPlayingWoodStep(false);;
                 AnimatorManager.setStateIdle();
                 FindObjectOfType<AudioManager>().Stop(sound);
             }
@@ -53,20 +54,20 @@ public class Movement : MonoBehaviour
 
         if (!PlayerEntity.getJumping() && !PlayerEntity.getIsFalling() && !PlayerEntity.getDashing())
         {
-            // PlayerEntity.setWalking(true);
             AnimatorManager.setStateRun();
-            if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
-            {
-                FindObjectOfType<AudioManager>().Play(sound);
-                PlayerEntity.setIsPlayingGrassStep(true);
-                //grassStep = true;
-            }
+            //if (!PlayerEntity.getisPlayingGrassStep() && PlayerEntity.getGrounded())
+            //{
+            //    //FindObjectOfType<AudioManager>().Play(sound);
+            //    //PlayerEntity.setIsPlayingGrassStep(true);
+            //    //grassStep = true;
+            //}
         }
 
         if (!PlayerEntity.getGrounded())
         {
             PlayerEntity.setIsPlayingGrassStep(false);
-            //grassStep = false;d   
+            PlayerEntity.setisPlayingStoneStep(false);
+            PlayerEntity.setisPlayingWoodStep(false); 
             FindObjectOfType<AudioManager>().Stop(sound);
         }
 
@@ -102,8 +103,26 @@ public class Movement : MonoBehaviour
         angle += cam.eulerAngles.y;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    sound = collision.gameObject.tag;
-    //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        sound = collision.gameObject.tag;
+        if (collision.gameObject.tag.Equals("wood") && !PlayerEntity.getisPlayingWoodStep())
+        {
+            FindObjectOfType<AudioManager>().stopAll();
+            FindObjectOfType<AudioManager>().Play(sound);
+            PlayerEntity.setisPlayingWoodStep(true);
+        }
+        else if (collision.gameObject.tag.Equals("grass") && !PlayerEntity.getisPlayingGrassStep())
+        {
+            FindObjectOfType<AudioManager>().stopAll();
+            FindObjectOfType<AudioManager>().Play(sound);
+            PlayerEntity.setIsPlayingGrassStep(true);
+        }
+        else if (collision.gameObject.tag.Equals("stone") && !PlayerEntity.getisPlayingStoneStep())
+        {
+            FindObjectOfType<AudioManager>().stopAll();
+            FindObjectOfType<AudioManager>().Play(sound);
+            PlayerEntity.setisPlayingStoneStep(true);
+        }
+    }
 }

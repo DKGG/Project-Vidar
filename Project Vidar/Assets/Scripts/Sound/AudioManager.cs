@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
 	public Sound[] sounds;
 
+	public String currentSong;
+
 	void Awake()
 	{
 		if (instance != null)
@@ -39,6 +41,7 @@ public class AudioManager : MonoBehaviour
 
 	public void Play(string sound)
 	{
+		currentSong = sound;
 		Sound s = Array.Find(sounds, item => item.name == sound);
 		if (s == null)
 		{

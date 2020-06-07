@@ -62,6 +62,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        //FindObjectOfType<AudioManager>().Play("popUp");
         // End dialogue if there is no coroutines and no dialogues
         if (dialogues.Count == 0 && !crIsRunning)
         {
@@ -93,13 +94,21 @@ public class DialogueManager : MonoBehaviour
     // TODO animate on a more efficient way?
     IEnumerator TypeSentence(string sentence)
     {
+        //FindObjectOfType<AudioManager>().Play("typing");
         crIsRunning = true;
         dialogueText.text = "";
+        int i = 0;
         foreach (char letter in sentence.ToCharArray())
         {
+            if(i % 4 == 0)
+            {
+                FindObjectOfType<AudioManager>().Play("typing");
+            }
+            i++;
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.01f);
         }
+        //FindObjectOfType<AudioManager>().Stop("typing");
 
         crIsRunning = false;
     }
