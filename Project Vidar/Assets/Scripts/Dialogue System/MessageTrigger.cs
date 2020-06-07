@@ -88,8 +88,9 @@ public class MessageTrigger : MonoBehaviour
         messageManager.DismissMessage();
     }
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(MessageTrigger))]
-    public class MessageTriggerEditor : Editor
+    public class MessageTriggerEditor : UnityEditor.Editor
     {
         override public void OnInspectorGUI()
         {
@@ -131,4 +132,5 @@ public class MessageTrigger : MonoBehaviour
             EditorUtility.SetDirty(messageTrigger);
         }
     }
+    #endif
 }

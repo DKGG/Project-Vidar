@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using TreeEditor;
 using UnityEngine;
 
 public class LockB : MonoBehaviour
