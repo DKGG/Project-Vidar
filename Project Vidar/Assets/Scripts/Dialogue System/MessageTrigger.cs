@@ -60,8 +60,9 @@ public class MessageTrigger : MonoBehaviour
     {
         DismissMessage();
         // Give time to MessageManager execute animation
-        yield return new WaitForSeconds(0.3f);
+        // yield return new WaitForSeconds(0.3f);
         TriggerMessage();
+        yield return null;
     }
 
     IEnumerator DismissMessageAfterSeconds()
