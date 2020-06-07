@@ -32,7 +32,6 @@ public class PauseController : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("resume");
         Cursor.visible = false;
         // Cursor.lockState = CursorLockMode.Locked;
 
@@ -43,8 +42,6 @@ public class PauseController : MonoBehaviour
 
     void Pause()
     {
-        Debug.Log("pause");
-
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -60,8 +57,6 @@ public class PauseController : MonoBehaviour
 
     public void QuitMenu()
     {
-        Debug.Log("sair");
-
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
