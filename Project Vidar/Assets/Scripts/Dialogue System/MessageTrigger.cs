@@ -15,26 +15,29 @@ public class MessageTrigger : MonoBehaviour
     public bool dismissAfterSeconds;
     public float dismissSeconds;
 
-    private MessageManager messageController;
+    private MessageManager messageManager;
 
     void Start()
     {
         // TODO use singleton?
-        messageController = FindObjectOfType<MessageManager>();
+        messageManager = FindObjectOfType<MessageManager>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (displayMessage && !dismissCurrentMessage && !dismissAfterSeconds)
+            if (dismissCurrentMessage)
             {
-                TriggerMessage();
+                if (messageManager.message == message)
+                {
+                    dismissCurrentMessage = false;
+                }
             }
-            else if (displayMessage && dismissAfterSeconds)
+
+            if (displayMessage && !dismissCurrentMessage)
             {
                 TriggerMessage();
-                StartCoroutine("DismissMessageAfterSeconds");
             }
             else if (displayMessage && dismissCurrentMessage)
             {
@@ -44,6 +47,11 @@ public class MessageTrigger : MonoBehaviour
             {
                 StopAllCoroutines();
                 DismissMessage();
+            }
+
+            if (dismissAfterSeconds)
+            {
+                StartCoroutine("DismissMessageAfterSeconds");
             }
         }
     }
@@ -66,17 +74,17 @@ public class MessageTrigger : MonoBehaviour
     {
         if (displayHelperMessage)
         {
-            messageController.DisplayMessage(message, helperMessage, helperSeconds);
+            messageManager.DisplayMessage(message, helperMessage, helperSeconds);
         }
         else
         {
-            messageController.DisplayMessage(message);
+            messageManager.DisplayMessage(message);
         }
     }
 
     public void DismissMessage()
     {
-        messageController.DismissMessage();
+        messageManager.DismissMessage();
     }
 
     [CustomEditor(typeof(MessageTrigger))]
