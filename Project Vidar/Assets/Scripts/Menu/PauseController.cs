@@ -9,11 +9,7 @@ public class PauseController : MonoBehaviour
     public GameObject pauseMenuUI;
 
     public RectTransform ResumeButton;
-
-    private void Start()
-    {
-        Cursor.visible = false;
-    }
+    public Texture2D cursorSprite;
 
     void Update()
     {
@@ -46,6 +42,8 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
+        Cursor.SetCursor(cursorSprite, Vector2.zero, CursorMode.ForceSoftware);
+
         // Cursor.lockState = CursorLockMode.None;
     }
 
