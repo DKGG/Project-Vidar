@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Dialogue oldDialogue;
     private Dialogue dialogue;
     private Queue<Dialogue> dialogues;
-    private Sprite dialogueEmoteSprite;
+    //private Sprite dialogueEmoteSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -80,12 +80,14 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            // TODO use Resources.Load
+            //string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
+            //dialogueEmoteSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+            //Debug.Log(dialogueEmoteSprite);
+            //dialogueEmote.sprite = dialogueEmoteSprite;
+
             dialogue = dialogues.Dequeue();
             nameText.text = dialogue.name;
-            string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
-            dialogueEmoteSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
-            Debug.Log(dialogueEmoteSprite);
-            dialogueEmote.sprite = dialogueEmoteSprite;
             StartCoroutine(TypeSentence(dialogue.sentence));
         }
         oldDialogue = dialogue;
