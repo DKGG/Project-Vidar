@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using TreeEditor;
 using UnityEngine;
 
 public class LockB : MonoBehaviour
@@ -96,8 +98,8 @@ public class LockB : MonoBehaviour
             PlayerEntity.setLocked(true);
             AnimatorManager.setStateChanneling();
             FindObjectOfType<AudioManager>().Play("channeling");
-            //GameObject obj = GameObject.FindGameObjectWithTag("charge");
-            //obj.GetComponent<Animator>().SetBool("charge", true);
+            GameObject obj = GameObject.FindGameObjectWithTag("charge");
+            obj.GetComponent<Animator>().SetBool("charge", true);
 
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
@@ -119,8 +121,8 @@ public class LockB : MonoBehaviour
 
             playerGameObject.SetParent(null);
             PlayerEntity.setLocked(false);
-            //GameObject obj = GameObject.FindGameObjectWithTag("charge");
-            //obj.GetComponent<Animator>().SetBool("charge", false);
+            GameObject obj = GameObject.FindGameObjectWithTag("charge");
+            obj.GetComponent<Animator>().SetBool("charge", false);
             FindObjectOfType<AudioManager>().stopAll();
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
@@ -146,6 +148,8 @@ public class LockB : MonoBehaviour
             PlayerEntity.setWantToLock(false);
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.setThrewTheBox(false);
+            GameObject obj = GameObject.FindGameObjectWithTag("charge");
+            obj.GetComponent<Animator>().SetBool("charge", false);
 
         }
 
