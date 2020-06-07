@@ -94,6 +94,7 @@ public class LockB : MonoBehaviour
 
         if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false)
         {
+            FindObjectOfType<AudioManager>().stopAll();
             playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
             PlayerEntity.setLocked(true);
             AnimatorManager.setStateChanneling();
@@ -118,7 +119,7 @@ public class LockB : MonoBehaviour
 
             playerGameObject.SetParent(null);
             PlayerEntity.setLocked(false);
-            FindObjectOfType<AudioManager>().stopAll();
+            //FindObjectOfType<AudioManager>().stopAll();
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
             PlayerEntity.setIsInsideOfSimple(false);
@@ -150,7 +151,7 @@ public class LockB : MonoBehaviour
         {
             if (PlayerEntity.getWantToThrow() == true)
             {
-                FindObjectOfType<AudioManager>().stopAll();
+                //FindObjectOfType<AudioManager>().stopAll();
                 if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
                 {
 
