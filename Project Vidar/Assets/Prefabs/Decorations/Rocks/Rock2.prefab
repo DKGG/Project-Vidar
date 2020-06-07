@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2737729270884133336}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,12 @@ PrefabInstance:
     - target: {fileID: 8889104340870229419, guid: 9ebd68c0a442a4264905ac2f4ab342c6,
         type: 3}
       propertyPath: m_Name
-      value: Rock2 (13)
+      value: Rock2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8889104340870229419, guid: 9ebd68c0a442a4264905ac2f4ab342c6,
+        type: 3}
+      propertyPath: m_TagString
+      value: stone
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6180810125586667421, guid: 9ebd68c0a442a4264905ac2f4ab342c6, type: 3}
