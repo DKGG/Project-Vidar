@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RespawnAssistant : MonoBehaviour
 {
+    [SerializeField] float spawnHeight = 0;
+    [SerializeField] float cameraHeight = 0;
+
     Camera m_MainCamera;
     OverTheShoulderCamera cameraScript;
 
@@ -16,20 +19,26 @@ public class RespawnAssistant : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < 0)
+        if (spawnHeight > 0)
+            spawnHeight = 0;
+
+        if (transform.position.y < cameraHeight)
         {
             // Fade Out when falling
             cameraScript.enabled = false;
-            // ==
-
-            // Move Player to Respawn Point
-            // Debug.Log(PlayerEntity.getSpawnPoint());
-            transform.position = PlayerEntity.getSpawnPoint();
             // ==
         }
         else if (!cameraScript.enabled)
         {
             cameraScript.enabled = true;
+        }
+
+        if (transform.position.y < spawnHeight)
+        {
+            // Move Player to Respawn Point
+            // Debug.Log(PlayerEntity.getSpawnPoint());
+            transform.position = PlayerEntity.getSpawnPoint();
+            // ==
         }
     }
 }
