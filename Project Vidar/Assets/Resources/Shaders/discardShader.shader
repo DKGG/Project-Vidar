@@ -29,7 +29,7 @@
                 //fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
                 half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * 0.1);
  
-                if(c.r < _Value)
+                if(c.r > _Value)
                 {
                     discard;
                 }
@@ -58,7 +58,7 @@
                 //fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
                 half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * 0.1);
  
-                if(c.r < _Value)
+                if(c.r > _Value)
                 {
                     discard;
                 }

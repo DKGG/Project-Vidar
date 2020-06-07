@@ -98,6 +98,9 @@ public class LockB : MonoBehaviour
             PlayerEntity.setLocked(true);
             AnimatorManager.setStateChanneling();
             FindObjectOfType<AudioManager>().Play("channeling");
+            //GameObject obj = GameObject.FindGameObjectWithTag("charge");
+            //obj.GetComponent<Animator>().SetBool("charge", true);
+
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
@@ -118,6 +121,8 @@ public class LockB : MonoBehaviour
 
             playerGameObject.SetParent(null);
             PlayerEntity.setLocked(false);
+            //GameObject obj = GameObject.FindGameObjectWithTag("charge");
+            //obj.GetComponent<Animator>().SetBool("charge", false);
             FindObjectOfType<AudioManager>().stopAll();
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
