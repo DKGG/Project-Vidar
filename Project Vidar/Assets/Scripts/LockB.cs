@@ -46,8 +46,7 @@ public class LockB : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log(PlayerEntity.getLocked());
+    {        
         noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);

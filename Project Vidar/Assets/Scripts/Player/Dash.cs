@@ -25,17 +25,16 @@ public class Dash : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing() && dashCooldown == 0)
         {
-            dashVariables();
+            dashVariables();                   
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cam.transform.rotation.eulerAngles.y, 0), 5f);            
             FindObjectOfType<AudioManager>().stopAll();
-             FindObjectOfType<AudioManager>().Play("dash");
+            FindObjectOfType<AudioManager>().Play("dash");
              //FindObjectOfType<AudioManager>().Stop("grass");
             PlayerEntity.setIsPlayingGrassStep(false);
-
-            Debug.Log(PlayerEntity.getKeyLeftShift());
-            Debug.Log(PlayerEntity.getDashing());
+           
             dashCooldown = 2.0f;
 
             StartCoroutine(DashReset());
@@ -62,8 +61,7 @@ public class Dash : MonoBehaviour
         yield return dashDuration;
         PlayerEntity.setDashing(false);
 
-        //PlayerEntity.setCanPlayDashAnim(false);
-        Debug.Log(rb.drag);
+        //PlayerEntity.setCanPlayDashAnim(false);       
         rb.drag = 0;
     }
 
@@ -80,7 +78,7 @@ public class Dash : MonoBehaviour
         );
 
         dashVelocity = Vector3.Scale(
-            cam.transform.forward,          // Coloca o dash para a frente do player
+            cam2.transform.forward,          // Coloca o dash para a frente do player
             DashDistance * dashDirection    // Força do dash vezes a direção
         );
     }
