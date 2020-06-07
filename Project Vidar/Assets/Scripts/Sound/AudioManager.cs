@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour
 	{
 		foreach (var item in sounds)
 		{
-			if (!item.name.Equals("ambient")) {
+			if (!item.name.Equals("ambient") && !item.name.Equals("throw")) {
 				Stop(item.name);
 			}
 			PlayerEntity.setIsPlayingGrassStep(false);

@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: ambient
     clip: {fileID: 8300000, guid: 1f78a6945e4225047a393885c1ba95af, type: 3}
-    volume: 0.195
+    volume: 0.15
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0
@@ -55,18 +55,18 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: wood
-    clip: {fileID: 8300000, guid: 3fd672dc382f0a344936a3c0f586f8ce, type: 3}
-    volume: 0.523
-    volumeVariance: 0.486
-    pitch: 1
-    pitchVariance: 0.589
+    clip: {fileID: 8300000, guid: 651eedfddf2657d4fa4c3b2b41d257b2, type: 3}
+    volume: 0.1
+    volumeVariance: 0.32
+    pitch: 0.75
+    pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: grass
     clip: {fileID: 8300000, guid: d3e4e85b79034584ba6506f817693d49, type: 3}
-    volume: 0.88
-    volumeVariance: 0
+    volume: 0.4
+    volumeVariance: 0.17
     pitch: 1
     pitchVariance: 0
     loop: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: jump
     clip: {fileID: 8300000, guid: 8934998fb22fabe4c856d6a6096af423, type: 3}
-    volume: 0.523
+    volume: 0.32
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: dash
     clip: {fileID: 8300000, guid: bd76f09d284549145abe5638205dfb1e, type: 3}
-    volume: 0.523
+    volume: 0.3
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: freeze
     clip: {fileID: 8300000, guid: e93d0e42b98af2d4388add12c4fb7513, type: 3}
-    volume: 0.523
+    volume: 0.33
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0.589
@@ -101,7 +101,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: throw
     clip: {fileID: 8300000, guid: 2d11c8cc5736fa543bc0ca00e1989388, type: 3}
-    volume: 0.523
+    volume: 0.33
     volumeVariance: 0.486
     pitch: 1
     pitchVariance: 0
@@ -109,11 +109,11 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: channeling
-    clip: {fileID: 8300000, guid: 3dc78b23d8362384396da1001a3b5257, type: 3}
-    volume: 0.523
-    volumeVariance: 0.486
-    pitch: 1
-    pitchVariance: 0.589
+    clip: {fileID: 8300000, guid: 5028005caf169f74486eb006cb1e5c32, type: 3}
+    volume: 0.56
+    volumeVariance: 0.17
+    pitch: 0.9
+    pitchVariance: 0
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -135,12 +135,12 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: pushGrass
-    clip: {fileID: 8300000, guid: 62caf2a79c1f3ee478f009914e0532e2, type: 3}
-    volume: 0.523
-    volumeVariance: 0.486
+  - name: typing
+    clip: {fileID: 8300000, guid: 74223c0d8eb0e5c48a58b4a61542bade, type: 3}
+    volume: 0.15
+    volumeVariance: 0
     pitch: 0.5
-    pitchVariance: 0.589
+    pitchVariance: 0
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
@@ -153,3 +153,31 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: popUp
+    clip: {fileID: 8300000, guid: d8abeff01f10dc440b6fa98adb7d9931, type: 3}
+    volume: 1
+    volumeVariance: 0.486
+    pitch: 0.5
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: stone
+    clip: {fileID: 8300000, guid: 6ffdbe7e500d30148a72cc55be20a0d9, type: 3}
+    volume: 0.5
+    volumeVariance: 0.486
+    pitch: 1.1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: throw
+    clip: {fileID: 8300000, guid: 3f0510ce35cf21241b70a821ec14fa9c, type: 3}
+    volume: 0.8
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  currentSong: 
