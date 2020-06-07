@@ -29,9 +29,15 @@ public class playerJump : MonoBehaviour
         {
             if (PlayerEntity.getGrounded() || jumpCounter > 0)
             {
+                if (PlayerEntity.getDashing())
+                {
+                    rb.drag = 0;
+                }
+
                 jumpCounter -= 1;
                 Jump();
             }
+
         }
     }
 
