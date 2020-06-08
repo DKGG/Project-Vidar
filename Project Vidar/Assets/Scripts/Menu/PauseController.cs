@@ -6,23 +6,31 @@ using UnityEngine.SceneManagement;
 public class PauseController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+    [SerializeField]
+    private GameObject optionsMenuUI;
+    [SerializeField]
+    private GameObject pauseMenuUI;
 
     public RectTransform ResumeButton;
     public Texture2D cursorSprite;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeSelf)
         {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            HandleInput();
+        }
+    }
+
+    public void HandleInput()
+    {
+        if (GameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
         }
     }
 
@@ -32,6 +40,7 @@ public class PauseController : MonoBehaviour
         // Cursor.lockState = CursorLockMode.Locked;
 
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
         Time.timeScale = 1.3f;
         GameIsPaused = false;
     }
@@ -51,6 +60,12 @@ public class PauseController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void LoadOptions()
+    {
+        pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(true);
     }
 
     public void QuitMenu()

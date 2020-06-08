@@ -7,7 +7,7 @@ public class OverTheShoulderCamera : MonoBehaviour
 {
     [Header("Look Properties")]
     [SerializeField] Transform playerTransForm, lookTarget;
-    [SerializeField] float rotationSpeed = 5.0f;
+    public float rotationSpeed = 10.0f;
     [SerializeField] GameObject playerObject;
     [SerializeField] int mouseMax = 70;
     [SerializeField] int mouseMin = -70;
