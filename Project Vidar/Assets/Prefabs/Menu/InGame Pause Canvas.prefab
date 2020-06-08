@@ -400,7 +400,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2205201811828120258}
-  ResumeButton: {fileID: 2205201811979435712}
+  ResumeButton: {fileID: 2205201812253266175}
+  cursorSprite: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
 --- !u!1 &2205201811600717157
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2205201811828120259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -914,13 +915,13 @@ MonoBehaviour:
   m_margin: {x: -26.505377, y: 6.423645, z: -31.561127, w: 6.509369}
   m_textInfo:
     textComponent: {fileID: 2205201811979435713}
-    characterCount: 10
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 1
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
