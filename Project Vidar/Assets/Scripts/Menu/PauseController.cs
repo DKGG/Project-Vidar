@@ -14,6 +14,11 @@ public class PauseController : MonoBehaviour
     public RectTransform ResumeButton;
     public Texture2D cursorSprite;
 
+    private void Awake()
+    {
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !optionsMenuUI.activeSelf)
