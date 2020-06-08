@@ -17,7 +17,6 @@ public class Explosão : MonoBehaviour
     {
         if (col.gameObject.layer == 9)
         {
-            Debug.Log("Entrei");
             ExplosionWorks(col.contacts[0].point);
         }
     }
