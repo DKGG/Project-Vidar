@@ -22,12 +22,14 @@ public class DialogueManager : MonoBehaviour
     private Dialogue oldDialogue;
     private Dialogue dialogue;
     private Queue<Dialogue> dialogues;
-    private Sprite dialogueEmoteSprite;
+    private AudioManager audioManager;
+    //private Sprite dialogueEmoteSprite;
 
     // Start is called before the first frame update
     void Start()
     {
         dialogues = new Queue<Dialogue>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
     void Update()
     {
@@ -43,8 +45,8 @@ public class DialogueManager : MonoBehaviour
         PlayerEntity.setIsOnDialogue(true);
         PlayerEntity.setCanPlayIdleAnim(true);
         AnimatorManager.setStateIdle();
-        FindObjectOfType<AudioManager>().Stop("grass");
-        FindObjectOfType<AudioManager>().Stop("wood");
+        audioManager.Stop("grass");
+        audioManager.Stop("wood");
 
 
         dialogues.Clear();
@@ -62,6 +64,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
+        //audioManager.Play("popUp");
         // End dialogue if there is no coroutines and no dialogues
         if (dialogues.Count == 0 && !crIsRunning)
         {
@@ -79,12 +82,14 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            // TODO use Resources.Load
+            //string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
+            //dialogueEmoteSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
+            //Debug.Log(dialogueEmoteSprite);
+            //dialogueEmote.sprite = dialogueEmoteSprite;
+
             dialogue = dialogues.Dequeue();
             nameText.text = dialogue.name;
-            string path = "Assets/Resources/Emotes/" + dialogue.emote + ".png";
-            dialogueEmoteSprite = (Sprite)AssetDatabase.LoadAssetAtPath(path, typeof(Sprite));
-            Debug.Log(dialogueEmoteSprite);
-            dialogueEmote.sprite = dialogueEmoteSprite;
             StartCoroutine(TypeSentence(dialogue.sentence));
         }
         oldDialogue = dialogue;
@@ -93,13 +98,21 @@ public class DialogueManager : MonoBehaviour
     // TODO animate on a more efficient way?
     IEnumerator TypeSentence(string sentence)
     {
+        //audioManager.Play("typing");
         crIsRunning = true;
         dialogueText.text = "";
+        int i = 0;
         foreach (char letter in sentence.ToCharArray())
         {
+            if (i % 5 == 0)
+            {
+                audioManager.Play("typing");
+            }
+            i++;
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.01f);
         }
+        //audioManager.Stop("typing");
 
         crIsRunning = false;
     }

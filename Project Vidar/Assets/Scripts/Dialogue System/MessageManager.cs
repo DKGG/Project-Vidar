@@ -14,6 +14,13 @@ public class MessageManager : MonoBehaviour
     private Animator helperAnimator;
 
     private bool messageDisplayed = false;
+    public string message = "";
+    private AudioManager audioManager;
+
+    private void Start()
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
 
     public void DisplayMessage(string message, string helperMessage = "", float helperSeconds = 0)
     {
@@ -21,8 +28,13 @@ public class MessageManager : MonoBehaviour
         if (!messageDisplayed)
         {
             messageDisplayed = true;
+            this.message = message;
+
             messageAnimator.SetBool("IsOpen", true);
+            audioManager.Play("popUp");
+           
             StartCoroutine(TypeMessage(message, messageText));
+            
             if (!helperMessage.Equals("") && helperSeconds > 0)
             {
                 StartCoroutine(HandleHelperMessage(helperMessage, helperSeconds));
@@ -34,6 +46,7 @@ public class MessageManager : MonoBehaviour
     IEnumerator TypeMessage(string message, TextMeshProUGUI textElement)
     {
         textElement.text = "";
+
         foreach (char letter in message.ToCharArray())
         {
             textElement.text += letter;
@@ -44,15 +57,20 @@ public class MessageManager : MonoBehaviour
     IEnumerator HandleHelperMessage(string helperMessage, float helperSeconds)
     {
         yield return new WaitForSeconds(helperSeconds);
+        
         helperAnimator.SetBool("IsOpen", true);
+        audioManager.Play("popUp");
+        
         StartCoroutine(TypeMessage(helperMessage, helperText));
     }
 
     public void DismissMessage()
     {
         messageDisplayed = false;
+        
         messageAnimator.SetBool("IsOpen", false);
         helperAnimator.SetBool("IsOpen", false);
+        
         StopAllCoroutines();
     }
 }

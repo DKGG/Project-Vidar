@@ -70,7 +70,7 @@ public static class PlayerEntity
 
     private static bool isPlayingGrassStep;
     private static bool isPlayingStoneStep;
-    private static bool isPlayingWaterStep;
+    private static bool isPlayingWoodStep;
 
     #endregion
 
@@ -383,14 +383,14 @@ public static class PlayerEntity
     {
         isPlayingStoneStep = value;
     }
-    public static bool getisPlayingWaterStep()
+    public static bool getisPlayingWoodStep()
     {
-        return isPlayingWaterStep;
+        return isPlayingWoodStep;
     }
 
-    public static void setisPlayingWaterStep(bool value)
+    public static void setisPlayingWoodStep(bool value)
     {
-        isPlayingWaterStep = value;
+        isPlayingWoodStep = value;
     }
     #region Animator States Methods
 

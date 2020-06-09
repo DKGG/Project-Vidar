@@ -25,8 +25,7 @@ public class RaycastShoot : MonoBehaviour
     }
 
     void Update()
-    {
-        Debug.Log("congelando"+PlayerEntity.getIsFreezing());
+    {        
         if (PlayerEntity.getKeyQ() == true && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;

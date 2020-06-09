@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 489574}
   m_Layer: 0
   m_Name: Fence_type1_03
-  m_TagString: Untagged
+  m_TagString: wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2204804076177451322}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: wood
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

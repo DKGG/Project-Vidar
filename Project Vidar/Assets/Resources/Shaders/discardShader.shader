@@ -6,6 +6,7 @@
         _Value ("Value", Range(0, 1)) = 0.0
         _ColorInside ("Color inside", Color) = (1, 1, 1, 1)
         _ColorOutside ("Color outside", Color) = (1, 1, 1, 1)
+         _Teste("opacidade", Range(0, 1)) = 1
     }
  
     SubShader
@@ -22,9 +23,11 @@
             float _Value;
             fixed4 _ColorOutside;
             sampler2D _MainTex;
+            fixed _Teste;
  
             void surf(Input IN, inout SurfaceOutput o) {
-                fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
+                //fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
+                half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * 0.1);
  
                 if(c.r > _Value)
                 {
@@ -32,7 +35,7 @@
                 }
  
                 o.Albedo = _ColorOutside;
-                o.Alpha = 1;
+                o.Alpha = c.a - _Teste;
             }
  
             ENDCG
@@ -49,9 +52,11 @@
             fixed4 _ColorInside;
             float _Value;
             sampler2D _MainTex;
+            fixed _Teste;
  
             void surf(Input IN, inout SurfaceOutput o) {
-                fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
+                //fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
+                half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * 0.1);
  
                 if(c.r > _Value)
                 {
@@ -59,7 +64,7 @@
                 }
  
                 o.Albedo = _ColorInside;
-                o.Alpha = 1;
+                o.Alpha = c.a - _Teste;
             }
  
             ENDCG

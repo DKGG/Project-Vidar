@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: terrainShader
-  m_Shader: {fileID: 4800000, guid: 1dddd2d7e991b7840adc3eaf0862f1dc, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3b32e5b5993aa154e81b89c267487eb7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 19f6a1d21d2271b46a6f15c9ffdbea9b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2dac58ef83dc2e7489e562ce3145daf7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -79,9 +79,13 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Teste: 0
     - _TexVal: 40
     - _UVSec: 0
+    - _Value: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorInside: {r: 0, g: 0, b: 0, a: 0}
+    - _ColorOutside: {r: 0, g: 0.830497, b: 0.990566, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

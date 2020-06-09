@@ -15,26 +15,29 @@ public class MessageTrigger : MonoBehaviour
     public bool dismissAfterSeconds;
     public float dismissSeconds;
 
-    private MessageManager messageController;
+    private MessageManager messageManager;
 
     void Start()
     {
         // TODO use singleton?
-        messageController = FindObjectOfType<MessageManager>();
+        messageManager = FindObjectOfType<MessageManager>();
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (displayMessage && !dismissCurrentMessage && !dismissAfterSeconds)
+            if (dismissCurrentMessage)
             {
-                TriggerMessage();
+                if (messageManager.message == message)
+                {
+                    dismissCurrentMessage = false;
+                }
             }
-            else if (displayMessage && dismissAfterSeconds)
+
+            if (displayMessage && !dismissCurrentMessage)
             {
                 TriggerMessage();
-                StartCoroutine("DismissMessageAfterSeconds");
             }
             else if (displayMessage && dismissCurrentMessage)
             {
@@ -45,6 +48,11 @@ public class MessageTrigger : MonoBehaviour
                 StopAllCoroutines();
                 DismissMessage();
             }
+
+            if (dismissAfterSeconds)
+            {
+                StartCoroutine("DismissMessageAfterSeconds");
+            }
         }
     }
 
@@ -52,8 +60,9 @@ public class MessageTrigger : MonoBehaviour
     {
         DismissMessage();
         // Give time to MessageManager execute animation
-        yield return new WaitForSeconds(0.3f);
+        // yield return new WaitForSeconds(0.3f);
         TriggerMessage();
+        yield return null;
     }
 
     IEnumerator DismissMessageAfterSeconds()
@@ -66,21 +75,22 @@ public class MessageTrigger : MonoBehaviour
     {
         if (displayHelperMessage)
         {
-            messageController.DisplayMessage(message, helperMessage, helperSeconds);
+            messageManager.DisplayMessage(message, helperMessage, helperSeconds);
         }
         else
         {
-            messageController.DisplayMessage(message);
+            messageManager.DisplayMessage(message);
         }
     }
 
     public void DismissMessage()
     {
-        messageController.DismissMessage();
+        messageManager.DismissMessage();
     }
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(MessageTrigger))]
-    public class MessageTriggerEditor : Editor
+    public class MessageTriggerEditor : UnityEditor.Editor
     {
         override public void OnInspectorGUI()
         {
@@ -122,4 +132,5 @@ public class MessageTrigger : MonoBehaviour
             EditorUtility.SetDirty(messageTrigger);
         }
     }
+    #endif
 }
