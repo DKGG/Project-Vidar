@@ -12,27 +12,29 @@ public class PickUp : MonoBehaviour
     {
         // Can be through trigger
         if (Input.GetKeyDown(KeyCode.E) && !grab)
-            StartCoroutine(GrabAction()); // PickUpObject();
+            GrabAction(); // PickUpObject();
         else if (Input.GetKeyDown(KeyCode.E) && grab)
-            StartCoroutine(DropAction()); // DropObject();
+            DropAction(); // DropObject();
     }
 
-    IEnumerator GrabAction()
+    private void GrabAction()
     {
+        
         GetComponent<Rigidbody>().useGravity = false;
-        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         transform.position = grabPos.position;
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
         grab = true;
-        yield return new WaitForEndOfFrame();
+        
     }
 
-    IEnumerator DropAction()
+    private void DropAction()
     {
+        
         transform.parent = null;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         grab = false;
-        yield return new WaitForEndOfFrame();
+
     }
 }

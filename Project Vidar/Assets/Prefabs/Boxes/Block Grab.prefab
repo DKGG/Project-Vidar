@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2127946874504679028}
   - component: {fileID: 2127946874504679038}
   - component: {fileID: 2127946874504679037}
-  - component: {fileID: -2215270737010085203}
   m_Layer: 0
   m_Name: Block Grab
   m_TagString: grabPos
@@ -63,7 +62,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2127946874504679038
 MonoBehaviour:
@@ -91,24 +90,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2215270737010085203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2127946874504679029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec344323051ec64c950940cce8e28e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blastRadius: 50
-  explodionPower: 50
-  explosionLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  stop: 0
 --- !u!1001 &2133266369568547568
 PrefabInstance:
   m_ObjectHideFlags: 0
