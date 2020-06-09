@@ -86,6 +86,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorInside: {r: 0, g: 0, b: 0, a: 0}
-    - _ColorOutside: {r: 0, g: 0.830497, b: 0.990566, a: 0}
+    - _ColorInside: {r: 0.4745098, g: 0.19607845, b: 0.19607845, a: 0}
+    - _ColorOutside: {r: 0.7529412, g: 0.19607843, b: 0.19607843, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
