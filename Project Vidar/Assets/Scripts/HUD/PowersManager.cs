@@ -34,21 +34,29 @@ public class PowersManager : MonoBehaviour
 
     void Update()
     {
+        if(PlayerEntity.getDashing() && !dashCorroutineStarted)
+        {
+            StartCoroutine(IncreaseAlpha(dashCanvas));
+        } else if (!PlayerEntity.getDashing() && dashCorroutineStarted)
+        {
+            StartCoroutine(DecreaseAlpha(dashCanvas));
+        }
+
         if (!PlayerEntity.getGrounded() && PlayerEntity.getJumping() && !PlayerEntity.getIsOnDialogue() && !doubleJumpCorroutineStarted)
         {
-            Debug.Log("mano socorro");
             StartCoroutine(IncreaseAlpha(doubleJumpCanvas));
         }
         else if (PlayerEntity.getGrounded() && !PlayerEntity.getJumping())
         {
-            Debug.Log("por favor");
             StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
         }
     }
 
     IEnumerator IncreaseAlpha(CanvasGroup canvas)
     {
+        Debug.Log("dasshhhh");
         doubleJumpCorroutineStarted = true;
+        dashCorroutineStarted = true;
         while (canvas.alpha < 1)
         {
             canvas.alpha += 0.1f;
@@ -58,12 +66,14 @@ public class PowersManager : MonoBehaviour
 
     IEnumerator DecreaseAlpha(CanvasGroup canvas)
     {
+        Debug.Log("!!!dasshhhh");
         while (canvas.alpha > 0.5f)
         {
             canvas.alpha -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         doubleJumpCorroutineStarted = false;
+        dashCorroutineStarted = false;
 
     }
 }
