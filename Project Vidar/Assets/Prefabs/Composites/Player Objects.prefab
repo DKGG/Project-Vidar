@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141396234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.36, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 3.760207, y: 3.760207, z: 3.760207}
   m_Children: []
   m_Father: {fileID: 8158909530390343039}
@@ -259,12 +259,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -317,12 +317,12 @@ MonoBehaviour:
     m_Bits: 1024
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
-  antialiasingMode: 1
+  antialiasingMode: 3
   temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
+    jitterSpread: 0.932
+    sharpness: 0.19
+    stationaryBlending: 0.99
+    motionBlending: 0.905
   subpixelMorphologicalAntialiasing:
     quality: 2
   fastApproximateAntialiasing:
@@ -704,7 +704,7 @@ PrefabInstance:
     - target: {fileID: 5148898291400622930, guid: 7dca39b1ad961f9468a35f6510d45392,
         type: 3}
       propertyPath: weaponRange
-      value: 20
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5148898291400622930, guid: 7dca39b1ad961f9468a35f6510d45392,
         type: 3}
