@@ -15,6 +15,7 @@ TagManager:
   - grass
   - stone
   - charge
+  - freezeAim
   layers:
   - Default
   - TransparentFX
