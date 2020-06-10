@@ -22,15 +22,18 @@ public class RespawnAssistant : MonoBehaviour
         if (spawnHeight > 0)
             spawnHeight = 0;
 
-        if (transform.position.y < cameraHeight)
+        if (!PauseController.GameIsPaused)
         {
-            // Fade Out when falling
-            cameraScript.enabled = false;
-            // ==
-        }
-        else if (!cameraScript.enabled)
-        {
-            cameraScript.enabled = true;
+            if (transform.position.y < cameraHeight)
+            {
+                // Fade Out when falling
+                cameraScript.enabled = false;
+                // ==
+            }
+            else if (!cameraScript.enabled)
+            {
+                cameraScript.enabled = true;
+            }
         }
 
         if (transform.position.y < spawnHeight)

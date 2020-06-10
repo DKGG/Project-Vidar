@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,11 +14,19 @@ public class PauseController : MonoBehaviour
 
     public RectTransform ResumeButton;
     public Texture2D cursorSprite;
+    private OverTheShoulderCamera cameraScript;
+
+    [DllImport("user32.dll")]
+    public static extern bool SetCursorPos(int X, int Y);
 
     private void Awake()
     {
         Cursor.visible = false;
+        cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<OverTheShoulderCamera>();
+
+
     }
+
 
     void Update()
     {
@@ -42,7 +51,7 @@ public class PauseController : MonoBehaviour
     public void Resume()
     {
         Cursor.visible = false;
-        // Cursor.lockState = CursorLockMode.Locked;
+        cameraScript.enabled = true;
 
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
@@ -52,13 +61,13 @@ public class PauseController : MonoBehaviour
 
     void Pause()
     {
+        cameraScript.enabled = false;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.SetCursor(cursorSprite, Vector2.zero, CursorMode.ForceSoftware);
-
-        // Cursor.lockState = CursorLockMode.None;
+        SetCursorPos(Screen.width / 2, Screen.height / 2);
     }
 
     public void LoadMenu()
