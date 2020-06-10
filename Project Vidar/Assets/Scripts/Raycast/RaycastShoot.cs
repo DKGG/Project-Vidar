@@ -17,11 +17,13 @@ public class RaycastShoot : MonoBehaviour
     private float nextFire;
 
     private Vector3 freezeSave;
+    private Transform cameraPivot;
 
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
         gunAudio = GetComponent<AudioSource>();
+        cameraPivot = GameObject.FindGameObjectWithTag("MainCamera").transform.parent;
     }
 
     void Update()
@@ -51,6 +53,7 @@ public class RaycastShoot : MonoBehaviour
 
                 if (box != null && hit.rigidbody != null)
                 {
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cameraPivot.rotation.eulerAngles.y, 0), 0.9f);
                     if (box.isFrozen)
                     {
                         FindObjectOfType<AudioManager>().Play("freeze");
