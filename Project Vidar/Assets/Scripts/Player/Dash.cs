@@ -62,8 +62,11 @@ public class Dash : MonoBehaviour
         PlayerEntity.setDashing(false);
 
         //PlayerEntity.setCanPlayDashAnim(false);       
-        rb.drag = 0;
-    }
+        if (Mathf.Abs(rb.velocity.x) < 1 && Mathf.Abs(rb.velocity.z) < 1)
+        {
+            rb.drag = 0;
+        }
+}
 
     private void dashVariables()
     {
