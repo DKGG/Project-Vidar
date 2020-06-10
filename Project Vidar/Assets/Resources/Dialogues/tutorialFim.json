@@ -1,0 +1,17 @@
+{
+	"dialogues": [
+		{
+			"name": "Parabéns!",
+			"sentence": "Você conseguiu chegar no final."
+		},
+		{
+			"name": "Por favor!",
+			"sentence": "Não esqueça de responder o formulário, é muito importante para nós!"
+		},
+		{
+			"name": "Obrigado!",
+			"sentence": "Esperamos que tenha se divertido. Não tem checkpoint aqui, caso queira voltar pro outro lado é só se jogar. Até a próxima!"
+		}
+	],
+	"sceneName": "Diálogo de fim do tutorial"
+}

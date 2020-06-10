@@ -47,3 +47,4 @@ MonoBehaviour:
   helperText: {fileID: 0}
   messageAnimator: {fileID: 0}
   helperAnimator: {fileID: 0}
+  message: 

@@ -13,10 +13,10 @@ public class PowersManager : MonoBehaviour
     [SerializeField]
     private GameObject freezeRune;
 
-    private CanvasGroup dashCanvas;
-    private CanvasGroup strengthCanvas;
-    private CanvasGroup doubleJumpCanvas;
-    private CanvasGroup freezeCanvas;
+    public static CanvasGroup dashCanvas;
+    public static CanvasGroup strengthCanvas;
+    public static CanvasGroup doubleJumpCanvas;
+    public static CanvasGroup freezeCanvas;
 
     private bool dashCorroutineStarted = false;
     private bool strengthCorroutineStarted = false;
