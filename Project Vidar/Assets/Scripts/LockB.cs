@@ -162,25 +162,25 @@ public class LockB : MonoBehaviour
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 5000 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInSouth())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 5000 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInWest())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 5000 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInEast())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 5000 * Time.deltaTime;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 2500 * Time.deltaTime;
                     }
                     PlayerEntity.setWantToThrow(false);
                     PlayerEntity.setThrewTheBox(true);
@@ -189,7 +189,7 @@ public class LockB : MonoBehaviour
                 {
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 5000 * Time.deltaTime;
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 2500 * Time.deltaTime;
                     PlayerEntity.setWantToThrow(false);
                     PlayerEntity.setThrewTheBox(true);
                 }
