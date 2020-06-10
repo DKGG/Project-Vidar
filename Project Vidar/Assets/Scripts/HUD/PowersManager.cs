@@ -34,14 +34,13 @@ public class PowersManager : MonoBehaviour
 
     void Update()
     {
-        if(PlayerEntity.getDashing() && !dashCorroutineStarted)
+        //DASH
+        if(PlayerEntity.getDashing())
         {
+            dashCorroutineStarted = true;
             StartCoroutine(IncreaseAlpha(dashCanvas));
-        } else if (!PlayerEntity.getDashing() && dashCorroutineStarted)
-        {
-            StartCoroutine(DecreaseAlpha(dashCanvas));
-        }
-
+        } 
+        //DOUBLEJUMP    
         if (!PlayerEntity.getGrounded() && PlayerEntity.getJumping() && !PlayerEntity.getIsOnDialogue() && !doubleJumpCorroutineStarted)
         {
             StartCoroutine(IncreaseAlpha(doubleJumpCanvas));
@@ -50,30 +49,59 @@ public class PowersManager : MonoBehaviour
         {
             StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
         }
+        //STRENGTH
+        if(PlayerEntity.getIsLockedInContinuous() || PlayerEntity.getIsLockedInSimple())
+        {
+            StartCoroutine(IncreaseAlpha(strengthCanvas));
+        }
+        else if(!PlayerEntity.getIsLockedInContinuous() || !PlayerEntity.getIsLockedInSimple())
+        {
+            StartCoroutine(DecreaseAlpha(strengthCanvas));
+        }
+        //FREEZE
+        if (PlayerEntity.getIsFreezing())
+        {
+            freezeCorroutineStarted = true;
+            StartCoroutine(IncreaseAlpha(freezeCanvas));
+        }
     }
 
     IEnumerator IncreaseAlpha(CanvasGroup canvas)
     {
-        Debug.Log("dasshhhh");
         doubleJumpCorroutineStarted = true;
-        dashCorroutineStarted = true;
+        strengthCorroutineStarted = true;
         while (canvas.alpha < 1)
         {
             canvas.alpha += 0.1f;
-            yield return new WaitForSeconds(0.1f);
+            if (!freezeCorroutineStarted && !dashCorroutineStarted)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+        //se ele comecar alguma coroutine que desative rapido e nao quando o player apertar, tratar aqui pra nao flickar no update
+        if (freezeCorroutineStarted)
+        {
+            yield return new WaitForSeconds(1.0f);
+            StartCoroutine(DecreaseAlpha(freezeCanvas));
+        }
+        if (dashCorroutineStarted)
+        {
+            yield return new WaitForSeconds(0.7f);
+            StartCoroutine(DecreaseAlpha(dashCanvas));
         }
     }
 
     IEnumerator DecreaseAlpha(CanvasGroup canvas)
     {
-        Debug.Log("!!!dasshhhh");
-        while (canvas.alpha > 0.5f)
+        while (canvas.alpha > 0.3f)
         {
             canvas.alpha -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         doubleJumpCorroutineStarted = false;
         dashCorroutineStarted = false;
+        strengthCorroutineStarted = false;
+        freezeCorroutineStarted = false;
 
     }
 }
