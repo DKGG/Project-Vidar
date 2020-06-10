@@ -20,6 +20,7 @@ public class LockB : MonoBehaviour
     bool noOeste;
     bool noLeste;
     bool insideMe;
+    bool colidiu = false;
 
     public LayerMask Player;
 
@@ -87,7 +88,7 @@ public class LockB : MonoBehaviour
             return;
         }
 
-        if (PlayerEntity.getWantToLock() == true && PlayerEntity.getLocked() == false)
+        if (PlayerEntity.getWantToLock() && !PlayerEntity.getLocked())
         {
             FindObjectOfType<AudioManager>().stopAll();
             playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
@@ -112,7 +113,7 @@ public class LockB : MonoBehaviour
 
         }
 
-        if (PlayerEntity.getWantToLock() == false && PlayerEntity.getLocked() == true)
+        if (!PlayerEntity.getWantToLock() && PlayerEntity.getLocked())
         {
 
             playerGameObject.SetParent(null);
@@ -124,18 +125,18 @@ public class LockB : MonoBehaviour
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
             PlayerEntity.setIsInsideOfSimple(false);
             PlayerEntity.setIsInsideOfContinuous(false);
-            if (PlayerEntity.getIsInsideOfContinuous() == false)
+            if (!PlayerEntity.getIsInsideOfContinuous() )
             {
                 PlayerEntity.setIsLockedInContinuous(false);
             }
 
-            if (PlayerEntity.getIsInsideOfSimple() == false)
+            if (!PlayerEntity.getIsInsideOfSimple())
             {
                 PlayerEntity.setIsLockedInSimple(false);
             }
         }
 
-        if (PlayerEntity.getLocked() == true && PlayerEntity.getThrewTheBox() == true)
+        if (PlayerEntity.getLocked() && PlayerEntity.getThrewTheBox())
         {
 
             playerGameObject.SetParent(null);
@@ -151,7 +152,7 @@ public class LockB : MonoBehaviour
 
         if (insideMe == true)
         {
-            if (PlayerEntity.getWantToThrow() == true)
+            if (PlayerEntity.getWantToThrow() && !colidiu)
             {
                 FindObjectOfType<AudioManager>().stopAll();
                 FindObjectOfType<AudioManager>().Play("throw");
@@ -162,24 +163,28 @@ public class LockB : MonoBehaviour
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = false;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.right * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInSouth())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = false;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.right * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInWest())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = false;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.forward * 2500 * Time.deltaTime;
                     }
                     if (PlayerEntity.getIsLockedInEast())
                     {
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                        PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = false;
                         PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = -transform.forward * 2500 * Time.deltaTime;
                     }
                     PlayerEntity.setWantToThrow(false);
@@ -189,15 +194,39 @@ public class LockB : MonoBehaviour
                 {
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.None;
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+                    PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = false;
                     PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = transform.up * 2500 * Time.deltaTime;
                     PlayerEntity.setWantToThrow(false);
                     PlayerEntity.setThrewTheBox(true);
                 }
             }
         }
+
+        if (colidiu)
+        {
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().useGravity = true;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
 
     //verificar aqui se o player está dentro dela
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("paraBloco"))
+        {
+            colidiu = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("paraBloco"))
+        {
+            colidiu = false;
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
