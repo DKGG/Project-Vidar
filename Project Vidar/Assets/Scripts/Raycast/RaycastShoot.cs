@@ -63,6 +63,7 @@ public class RaycastShoot : MonoBehaviour
                         //Debug.Log("true");
                         box.isFrozen = false;
                         box.rb.constraints = RigidbodyConstraints.None;
+                        box.rb.constraints = RigidbodyConstraints.FreezeRotation;
                         box.rb.velocity = freezeSave;
                     }
                     else

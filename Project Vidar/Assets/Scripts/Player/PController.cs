@@ -17,7 +17,7 @@ public class PController : MonoBehaviour
     {
         if (PlayerEntity.getBoxLocked() != null)
         {
-            if (PlayerEntity.getIsInside() && PlayerEntity.getKeyE() && !PlayerEntity.getLocked())
+            if (PlayerEntity.getIsInside() && PlayerEntity.getKeyE() && !PlayerEntity.getLocked() && !PlayerEntity.getBoxLocked().GetComponentInChildren<FreezableBox>().isFrozen)
             {
                 PlayerEntity.setWantToLock(true);
             }
