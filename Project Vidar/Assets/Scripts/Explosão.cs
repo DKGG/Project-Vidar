@@ -35,7 +35,7 @@ public class Explosão : MonoBehaviour
             hitCol.gameObject.GetComponent<Animator>().SetBool("block",false);
             //hitCol.GetComponent<MeshRenderer>().enabled = false;
             hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
-            Destroy(hitCol.gameObject,5);
+            Destroy(hitCol.gameObject,2);
         }
     }
 }
