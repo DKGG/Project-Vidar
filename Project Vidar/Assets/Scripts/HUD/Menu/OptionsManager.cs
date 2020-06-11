@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class OptionsManager : MonoBehaviour
 {
@@ -9,12 +10,17 @@ public class OptionsManager : MonoBehaviour
     private GameObject optionsMenuUI;
     [SerializeField]
     private GameObject pauseMenuUI;
+    [SerializeField]
+    private GameObject graphicsMenuUI;
 
     private float speedSliderValue = 5f;
     private float volumeSliderValue = 0.5f;
     private float cameraRotationDefault;
     private OverTheShoulderCamera cameraScript;
-    private GameObject postProcessing;
+    private PostProcessVolume postProcessing;
+    private Vignette vignette;
+    private MotionBlur motionBlur;
+    private DepthOfField depthOfField;
     private AudioManager audioManager;
     private PauseController pauseController;
 
@@ -23,7 +29,11 @@ public class OptionsManager : MonoBehaviour
         cameraScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<OverTheShoulderCamera>();
         cameraRotationDefault = cameraScript.rotationSpeed;
 
-        postProcessing = GameObject.Find("Main PostProcessingVolume");
+        postProcessing = GameObject.Find("Main PostProcessingVolume").GetComponent<PostProcessVolume>();
+        postProcessing.profile.TryGetSettings(out vignette);
+        postProcessing.profile.TryGetSettings(out motionBlur);
+        postProcessing.profile.TryGetSettings(out depthOfField);
+
         audioManager = FindObjectOfType<AudioManager>();
         pauseController = pauseMenuUI.transform.parent.GetComponent<PauseController>();
     }
@@ -34,6 +44,8 @@ public class OptionsManager : MonoBehaviour
         // Load values from player's computer
         setVolume(volumeSliderValue);
         setCameraSpeed(speedSliderValue);
+
+
     }
 
     void Update()
@@ -66,8 +78,30 @@ public class OptionsManager : MonoBehaviour
         optionsMenuUI.SetActive(false);
     }
 
-    public void TogglePostProcessing(bool value)
+    public void ShowGraphics()
     {
-        postProcessing.SetActive(value);
+        graphicsMenuUI.SetActive(true);
+        optionsMenuUI.SetActive(false);
+    }
+
+    public void HideGraphics()
+    {
+        graphicsMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(true);
+    }
+
+    public void ToggleVignette(bool value)
+    {
+        vignette.enabled.value = value;
+    }
+
+    public void ToggleMotionBlur(bool value)
+    {
+        motionBlur.enabled.value = value;
+    }
+
+    public void ToggleDepthField(bool value)
+    {
+        depthOfField.enabled.value = value;
     }
 }

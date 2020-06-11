@@ -28,53 +28,6 @@ MonoBehaviour:
   kernelSize:
     overrideState: 1
     value: 0
---- !u!114 &-2986090149569715614
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
-  m_Name: Bloom
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 3
-  threshold:
-    overrideState: 0
-    value: 2.78
-  softKnee:
-    overrideState: 0
-    value: 0.55
-  clamp:
-    overrideState: 0
-    value: 65466.16
-  diffusion:
-    overrideState: 0
-    value: 10
-  anamorphicRatio:
-    overrideState: 0
-    value: -1
-  color:
-    overrideState: 0
-    value: {r: 1, g: 0.5406598, b: 0.1462264, a: 1}
-  fastMode:
-    overrideState: 0
-    value: 0
-  dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
-    defaultState: 1
-  dirtIntensity:
-    overrideState: 0
-    value: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +41,6 @@ MonoBehaviour:
   m_Name: MainEffect
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: -2986090149569715614}
   - {fileID: 2998422067756761692}
   - {fileID: 6445137345426944375}
   - {fileID: -3435765776435805071}
