@@ -1,5 +1,4 @@
 ﻿using TMPro.Examples;
-using UnityEditor.Hardware;
 using UnityEngine;
 
 public class LockB : MonoBehaviour
