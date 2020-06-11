@@ -23,14 +23,12 @@ public class ThrowBox : MonoBehaviour
 
     Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         //lockSide = GetComponent<LockB>().side;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //Debug.Log("strength no throwBox" + strength);
@@ -39,7 +37,6 @@ public class ThrowBox : MonoBehaviour
         {
             ApplyForce();
         }
-
     }
 
     private void ApplyForce()
@@ -112,14 +109,4 @@ public class ThrowBox : MonoBehaviour
         }
 
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-
-    //}
 }

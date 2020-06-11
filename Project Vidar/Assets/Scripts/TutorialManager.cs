@@ -26,9 +26,9 @@ public class TutorialManager : MonoBehaviour
     void Update()
     {
         if (PlayerEntity.getIsOnDialogue())
-        {
             return;
-        }
+
+        #region Dialogue Routine
 
         if (!corroutine)
         {
@@ -147,6 +147,8 @@ public class TutorialManager : MonoBehaviour
                     break;
             }
         }
+
+        #endregion
     }
 
     IEnumerator changeLevel()
