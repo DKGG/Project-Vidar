@@ -30,6 +30,10 @@ public class AnimatorManager : MonoBehaviour
     {
         checkStates();
         updateAnim();
+        if (PlayerEntity.getLocked())
+        {
+            setStateChanneling();
+        }
     }
 
     public static void updateAnim()
