@@ -30,10 +30,6 @@ public class AnimatorManager : MonoBehaviour
     {
         checkStates();
         updateAnim();
-        if (PlayerEntity.getLocked() || PlayerEntity.getIsInsideOfContinuous() || PlayerEntity.getIsLockedInSimple())
-        {
-            setStateChanneling();
-        }
     }
 
     public static void updateAnim()
