@@ -17,11 +17,8 @@ public class Explosion : MonoBehaviour
     {
         box = col.gameObject;
 
-        Debug.Log(box);
-
-        if (box.layer == 9) // && PlayerEntity.getFirstExplosionWall()
+        if (box.layer == 9)
         {
-            //PlayerEntity.setFirstExplosionWall(false);
             ExplosionWorks(col.contacts[0].point);
         }
     }

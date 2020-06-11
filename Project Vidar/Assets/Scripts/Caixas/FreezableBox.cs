@@ -4,33 +4,52 @@ using System.Collections;
 public class FreezableBox : MonoBehaviour
 {
 	public bool isFrozen = false;
-	public bool freeze;
 	public Rigidbody rb;
-	//Renderer rnd;
-	//public Material[] material;
-	//Animator anim;
-	public GameObject boxWithShader;
 
+	AlphaShaderAnimation shader;
+
+	/* Deprecated */
+	GameObject boxWithShader;
 	Mesh initialMesh;
 	Mesh swapMesh;
 
 	public void Start()
-	{		
-		//rnd = gameObject.GetComponent<Renderer>();
-		//rnd.sharedMaterial = material[0];	
+	{
+		if(gameObject.GetComponentInParent<Rigidbody>())
+        {
+			rb = gameObject.GetComponentInParent<Rigidbody>();
+		} else
+        {
+			rb = gameObject.GetComponent<Rigidbody>();
+		}
+
+		shader = gameObject.GetComponent<AlphaShaderAnimation>();
 	}
+
 	public void Update()
 	{
-		changeAnimState();
+		if (!isFrozen)
+        {
+			shader.spellDown = true;
+			shader.spellUp = false;
+		}
+        else
+        {
+			shader.spellDown = false;
+			shader.spellUp = true;
+		}
+
+		// changeAnimState();
 	}
+
+	/* Deprecated */
+	#region Animation Freeze
+
 	public void changeAnimState()
 	{
 		if (!isFrozen)
 		{
-			//anim.SetBool("freeze", true);			
-			//rnd.sharedMaterial = material[0];
 			freezeEffect();
-			//boxWithShader.SetActive(false);
 			boxWithShader.GetComponent<Animator>().SetBool("freeze", true);
 		}
 		else
@@ -42,10 +61,13 @@ public class FreezableBox : MonoBehaviour
 			boxWithShader.GetComponent<Animator>().SetBool("freeze", false);
 		}
 	}
+
 	private IEnumerator freezeEffect()
 	{
 		//gunAudio.Play();
 
 		yield return 1.0;
 	}
+
+	#endregion
 }

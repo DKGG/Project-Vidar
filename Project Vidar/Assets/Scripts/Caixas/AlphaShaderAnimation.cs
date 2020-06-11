@@ -6,7 +6,8 @@ public class AlphaShaderAnimation : MonoBehaviour
 {
     [SerializeField] float smoothTime = 1f;
     [SerializeField] float alphaSpeed = 0f;
-    public bool spellDown = false;
+    public bool spellDown = true;
+    public bool spellUp = false;
 
     Renderer rend;
     float alpha;
@@ -24,6 +25,11 @@ public class AlphaShaderAnimation : MonoBehaviour
         {
             alpha = Mathf.SmoothDamp(rend.material.GetFloat("_Alpha"), 0, ref alphaSpeed, smoothTime);
             rend.material.SetFloat("_Alpha", alpha);
+        }
+
+        if (spellUp)
+        {
+            rend.material.SetFloat("_Alpha", 1);
         }
     }
 }
