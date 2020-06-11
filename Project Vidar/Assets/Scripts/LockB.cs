@@ -68,6 +68,7 @@ public class LockB : MonoBehaviour
         noChao3 = Physics.Linecast(gameObject.transform.position, ChecaChao3.position);
         noChao4 = Physics.Linecast(gameObject.transform.position, ChecaChao4.position);
         noChao5 = Physics.Linecast(gameObject.transform.position, ChecaChao5.position);
+        
 
         if (noNorte)
         {
@@ -243,7 +244,8 @@ public class LockB : MonoBehaviour
         if (collision.gameObject.CompareTag("paraBloco"))
         {
             if ((noChao || noChao2 || noChao3 || noChao4 || noChao5))
-            {                
+            {
+                
                 this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                 this.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
