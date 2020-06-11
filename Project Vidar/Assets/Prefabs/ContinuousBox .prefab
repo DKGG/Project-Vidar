@@ -615,7 +615,6 @@ MonoBehaviour:
   explosionLayers:
     serializedVersion: 2
     m_Bits: 512
-  stop: 0
 --- !u!114 &1257224428522674065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +643,7 @@ GameObject:
   - component: {fileID: 5555648903658103571}
   - component: {fileID: 1221557645141772754}
   - component: {fileID: 5569106615392424039}
-  - component: {fileID: 1232294358424067779}
+  - component: {fileID: 877119768}
   m_Layer: 0
   m_Name: 'ContinuousBox '
   m_TagString: ContinuosBox
@@ -741,7 +740,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1232294358424067779
+--- !u!114 &877119768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -753,9 +752,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec344323051ec64c950940cce8e28e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 50
-  explodionPower: 50
+  blastRadius: 15
+  explodionPower: 15
   explosionLayers:
     serializedVersion: 2
     m_Bits: 512
-  stop: 0

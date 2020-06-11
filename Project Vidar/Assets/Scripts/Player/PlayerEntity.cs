@@ -74,10 +74,15 @@ public static class PlayerEntity
 
     #endregion
 
+    #region World Challenges
+
+    //private static bool firstExplosionWall = true;
+
+    #endregion
+
     //METHODS
 
     #region Player States Methods  
-
 
     public static bool getWantToLock()
     {
@@ -462,6 +467,20 @@ public static class PlayerEntity
     {
         canPlayChannelingAnim = value;
     }
+    #endregion
+
+    #region World Challenges Methods
+
+    //public static bool getFirstExplosionWall()
+    //{
+    //    return firstExplosionWall;
+    //}
+
+    //public static void setFirstExplosionWall(bool value)
+    //{
+    //    firstExplosionWall = value;
+    //}
+
     #endregion
 
     //OBJECTS

@@ -57,7 +57,6 @@ public class LockB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
         noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);
@@ -68,7 +67,6 @@ public class LockB : MonoBehaviour
         noChao4 = Physics.Linecast(gameObject.transform.position, ChecaChao4.position);
         noChao5 = Physics.Linecast(gameObject.transform.position, ChecaChao5.position);
         
-
         if (noNorte)
         {
             PlayerEntity.setIslockedInNorth(true);
@@ -123,6 +121,7 @@ public class LockB : MonoBehaviour
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
             if (PlayerEntity.getIsInsideOfContinuous())
             {
                 PlayerEntity.setIsLockedInContinuous(true);
@@ -132,7 +131,6 @@ public class LockB : MonoBehaviour
             {
                 PlayerEntity.setIsLockedInSimple(true);
             }
-
         }
 
         if (!PlayerEntity.getWantToLock() && PlayerEntity.getLocked())
