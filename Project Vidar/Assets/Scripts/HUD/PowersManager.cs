@@ -35,7 +35,7 @@ public class PowersManager : MonoBehaviour
     void Update()
     {
         //DASH
-        if(PlayerEntity.getDashing())
+        if(PlayerEntity.getDashing() && !dashCorroutineStarted)
         {
             dashCorroutineStarted = true;
             StartCoroutine(IncreaseAlpha(dashCanvas));
@@ -43,17 +43,25 @@ public class PowersManager : MonoBehaviour
         //DOUBLEJUMP    
         if (!PlayerEntity.getGrounded() && PlayerEntity.getJumping() && !PlayerEntity.getIsOnDialogue() && !doubleJumpCorroutineStarted)
         {
+            doubleJumpCorroutineStarted = true;
             StartCoroutine(IncreaseAlpha(doubleJumpCanvas));
         }
-        else if (PlayerEntity.getGrounded() && !PlayerEntity.getJumping())
-        {
-            StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
-        }
+        //else if (PlayerEntity.getGrounded() && !PlayerEntity.getJumping())
+        //{
+        //    StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
+        //}
         //STRENGTH
         if(PlayerEntity.getIsLockedInContinuous() || PlayerEntity.getIsLockedInSimple())
         {
-            strengthCorroutineStarted = true;
-            StartCoroutine(IncreaseAlpha(strengthCanvas));
+            if (!strengthCorroutineStarted)
+            {
+                strengthCorroutineStarted = true;
+                StartCoroutine(IncreaseAlpha(strengthCanvas));
+            }
+        }
+        if (!PlayerEntity.getIsLockedInContinuous() && !PlayerEntity.getIsLockedInSimple())
+        {
+            strengthCorroutineStarted = false;
         }
         //FREEZE
         if (PlayerEntity.getIsFreezing())
@@ -65,11 +73,11 @@ public class PowersManager : MonoBehaviour
 
     IEnumerator IncreaseAlpha(CanvasGroup canvas)
     {
-        doubleJumpCorroutineStarted = true;
+        //doubleJumpCorroutineStarted = true;
         while (canvas.alpha < 1)
         {
             canvas.alpha += 0.1f;
-            if (!freezeCorroutineStarted && !dashCorroutineStarted && !strengthCorroutineStarted)
+            if (!freezeCorroutineStarted && !dashCorroutineStarted && !strengthCorroutineStarted && !doubleJumpCorroutineStarted)
             {
                 yield return new WaitForSeconds(0.1f);
             }
@@ -88,7 +96,12 @@ public class PowersManager : MonoBehaviour
         if (strengthCorroutineStarted)
         {
             yield return new WaitForSeconds(1.0f);
-            StartCoroutine(DecreaseAlpha(dashCanvas));
+            StartCoroutine(DecreaseAlpha(strengthCanvas));
+        }
+        if (doubleJumpCanvas)
+        {
+            yield return new WaitForSeconds(0.7f);
+            StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
         }
     }
 
@@ -101,7 +114,7 @@ public class PowersManager : MonoBehaviour
         }
         doubleJumpCorroutineStarted = false;
         dashCorroutineStarted = false;
-        strengthCorroutineStarted = false;
+        //strengthCorroutineStarted = false;
         freezeCorroutineStarted = false;
 
     }
