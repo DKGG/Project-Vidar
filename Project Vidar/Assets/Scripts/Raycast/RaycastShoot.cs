@@ -19,6 +19,8 @@ public class RaycastShoot : MonoBehaviour
     private Vector3 freezeSave;
     private Transform cameraPivot;
 
+    FreezableBox freezableComponent;
+
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
@@ -48,33 +50,38 @@ public class RaycastShoot : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
 
-                FreezableBox box = hit.collider.GetComponent<FreezableBox>();
-                AnimatorManager.setStateFreezing();
+                if(hit.collider.GetComponent<FreezableBox>())
+                {
+                    freezableComponent = hit.collider.GetComponent<FreezableBox>();
+                }
+                else
+                {
+                    freezableComponent = hit.collider.gameObject.GetComponentInChildren<FreezableBox>();
+                }
 
-                if (box != null && hit.rigidbody != null)
+                // AnimatorManager.setStateFreezing();
+
+                if (freezableComponent != null && freezableComponent.rb != null)
                 {
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cameraPivot.rotation.eulerAngles.y, 0), 0.9f);
-                    if (box.isFrozen)
+                    if (freezableComponent.isFrozen)
                     {
                         FindObjectOfType<AudioManager>().Play("freeze");
-                        AnimatorManager.setStateFreezing();
+                        // AnimatorManager.setStateFreezing();
                         PlayerEntity.setIsFreezing(true);
-                        //AnimatorManager.setState("isFreezing", true);
-                        //Debug.Log("true");
-                        box.isFrozen = false;
-                        box.rb.constraints = RigidbodyConstraints.None;
-                        box.rb.constraints = RigidbodyConstraints.FreezeRotation;
-                        box.rb.velocity = freezeSave;
+
+                        freezableComponent.isFrozen = false;
+                        freezableComponent.rb.constraints = RigidbodyConstraints.FreezeRotation;
+                        freezableComponent.rb.velocity = freezeSave;
                     }
                     else
                     {
                         PlayerEntity.setIsFreezing(true);
                         FindObjectOfType<AudioManager>().Play("freeze");
-                        //AnimatorManager.setStateFreezing();
-                        //Debug.Log("false");
-                        box.isFrozen = true;
-                        freezeSave = box.rb.velocity;
-                        box.rb.constraints = RigidbodyConstraints.FreezeAll;
+
+                        freezableComponent.isFrozen = true;
+                        freezeSave = freezableComponent.rb.velocity;
+                        freezableComponent.rb.constraints = RigidbodyConstraints.FreezeAll;
                     }
                 }
             }
