@@ -52,11 +52,8 @@ public class PowersManager : MonoBehaviour
         //STRENGTH
         if(PlayerEntity.getIsLockedInContinuous() || PlayerEntity.getIsLockedInSimple())
         {
+            strengthCorroutineStarted = true;
             StartCoroutine(IncreaseAlpha(strengthCanvas));
-        }
-        else if(!PlayerEntity.getIsLockedInContinuous() || !PlayerEntity.getIsLockedInSimple())
-        {
-            StartCoroutine(DecreaseAlpha(strengthCanvas));
         }
         //FREEZE
         if (PlayerEntity.getIsFreezing())
@@ -69,11 +66,10 @@ public class PowersManager : MonoBehaviour
     IEnumerator IncreaseAlpha(CanvasGroup canvas)
     {
         doubleJumpCorroutineStarted = true;
-        strengthCorroutineStarted = true;
         while (canvas.alpha < 1)
         {
             canvas.alpha += 0.1f;
-            if (!freezeCorroutineStarted && !dashCorroutineStarted)
+            if (!freezeCorroutineStarted && !dashCorroutineStarted && !strengthCorroutineStarted)
             {
                 yield return new WaitForSeconds(0.1f);
             }
@@ -87,6 +83,11 @@ public class PowersManager : MonoBehaviour
         if (dashCorroutineStarted)
         {
             yield return new WaitForSeconds(0.7f);
+            StartCoroutine(DecreaseAlpha(dashCanvas));
+        }
+        if (strengthCorroutineStarted)
+        {
+            yield return new WaitForSeconds(1.0f);
             StartCoroutine(DecreaseAlpha(dashCanvas));
         }
     }
