@@ -7,7 +7,7 @@ public class playerJump : MonoBehaviour
     Rigidbody rb;
 
     public float jumpForce = 5f;
-    public int jumpCounter = 1;
+    public int jumpCounter = 2;
     [SerializeField] private float dragDownForce = 5f;
     [SerializeField] private float extraGravity = 1.6f;
 
@@ -27,14 +27,13 @@ public class playerJump : MonoBehaviour
 
         if (PlayerEntity.getButtonJump())
         {
-            if (PlayerEntity.getGrounded() || jumpCounter > 0)
+            if (jumpCounter > 0)
             {
                 if (PlayerEntity.getDashing())
                 {
                     rb.drag = 0;
                 }
 
-                jumpCounter -= 1;
                 Jump();
             }
 
@@ -72,8 +71,12 @@ public class playerJump : MonoBehaviour
 
         if (PlayerEntity.getGrounded())
         {
-            jumpCounter = 1;
+            //jumpCounter = 2;
             PlayerEntity.setIsFalling(false);
+        }
+        if (!PlayerEntity.getIsFalling() && !PlayerEntity.getJumping())
+        {
+            resetJump();
         }
     }
 
@@ -83,7 +86,7 @@ public class playerJump : MonoBehaviour
         PlayerEntity.setJumping(true);
         rb.velocity = Vector3.up * Mathf.Sqrt(jumpForce * -1f * Physics.gravity.y);
         AnimatorManager.setStateJump();
-
+        jumpCounter -= 1;
         StartCoroutine(JumpTime());
     }
 
@@ -91,5 +94,10 @@ public class playerJump : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         PlayerEntity.setJumping(false);
+    }
+
+    private void resetJump()
+    {
+        jumpCounter = 2;
     }
 }
