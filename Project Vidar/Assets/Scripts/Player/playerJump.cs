@@ -74,7 +74,7 @@ public class playerJump : MonoBehaviour
             //jumpCounter = 2;
             PlayerEntity.setIsFalling(false);
         }
-        if (!PlayerEntity.getIsFalling() && !PlayerEntity.getJumping())
+        if (!PlayerEntity.getIsFalling() && !PlayerEntity.getJumping() && PlayerEntity.getGrounded())
         {
             resetJump();
         }

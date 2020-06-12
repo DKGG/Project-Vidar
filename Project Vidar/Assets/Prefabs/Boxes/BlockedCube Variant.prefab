@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4505540700176829566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
-  m_LocalScale: {x: 3.01, y: 3.01, z: 3.01}
+  m_LocalScale: {x: 3.02, y: 3.02, z: 3.02}
   m_Children:
   - {fileID: 4025719192500352589}
   m_Father: {fileID: 0}
@@ -206,3 +206,4 @@ MonoBehaviour:
   smoothTime: 0.5
   alphaSpeed: 0
   spellDown: 0
+  spellUp: 0
