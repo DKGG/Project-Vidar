@@ -8,6 +8,7 @@ public class BoxRespawn : MonoBehaviour
 {
     public float spawnTime = 0;
     [SerializeField] GameObject box;
+    //public Transform playerGameObject;
     Vector3 initialPos;
     bool saiu;
 
@@ -15,6 +16,7 @@ public class BoxRespawn : MonoBehaviour
     void Start()
     {        
         initialPos = box.transform.position;
+        //playerGameObject = GameObject.FindWithTag("Player").transform.parent;
     }
 
     private void Update()
@@ -39,6 +41,15 @@ public class BoxRespawn : MonoBehaviour
         if (other.CompareTag("ContinuosBox"))
         {
             spawnTime = 2f;
+           
+        }
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //GameObject.FindWithTag("Player").transform.parent.SetParent(null);
+            //PlayerEntity.setLocked(true);
+            PlayerEntity.setWantToLock(false);
+
+            //playerGameObject.SetParent(PlayerEntity.getBoxLocked().transform);
         }
     }
 }
