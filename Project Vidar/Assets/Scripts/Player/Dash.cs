@@ -24,7 +24,7 @@ public class Dash : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {        
         if (PlayerEntity.getKeyLeftShift() && !PlayerEntity.getDashing() && dashCooldown == 0)
         {

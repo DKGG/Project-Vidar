@@ -818,6 +818,31 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 162486997490338819}
+    - target: {fileID: 7501194719814549793, guid: 7dca39b1ad961f9468a35f6510d45392,
+        type: 3}
+      propertyPath: DashDistance
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782646757759781432, guid: 7dca39b1ad961f9468a35f6510d45392,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782646757759781432, guid: 7dca39b1ad961f9468a35f6510d45392,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782646757759781432, guid: 7dca39b1ad961f9468a35f6510d45392,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7782646757759781432, guid: 7dca39b1ad961f9468a35f6510d45392,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7424670201242049186, guid: 7dca39b1ad961f9468a35f6510d45392, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7dca39b1ad961f9468a35f6510d45392, type: 3}
