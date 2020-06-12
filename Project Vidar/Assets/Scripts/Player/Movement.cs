@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
         cam = Camera.main.transform;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Debug.Log(sound);
         //linecastall
