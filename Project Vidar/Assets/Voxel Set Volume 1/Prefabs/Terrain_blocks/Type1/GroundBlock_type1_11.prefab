@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2699724532436010457}
   m_Layer: 0
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 404092}
   m_Layer: 0
   m_Name: GroundBlock_type1_11
-  m_TagString: Untagged
+  m_TagString: grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
