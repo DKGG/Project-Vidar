@@ -29,6 +29,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(sound);
         //linecastall
         //raycasthit
         //noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
