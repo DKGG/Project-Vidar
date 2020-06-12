@@ -656,7 +656,7 @@ Transform:
   m_GameObject: {fileID: 9184353717782366727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 5446466432797589210}
   - {fileID: 3529244750003398439}
@@ -715,6 +715,7 @@ MonoBehaviour:
   ChecaChao3: {fileID: 2619987222854765476}
   ChecaChao4: {fileID: 2427305038958740860}
   ChecaChao5: {fileID: 2133971157902612636}
+  pushSpeed: 1500
   Player:
     serializedVersion: 2
     m_Bits: 256
@@ -747,8 +748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec344323051ec64c950940cce8e28e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blastRadius: 15
-  explodionPower: 15
+  blastRadius: 30
+  explodionPower: 20
   explosionLayers:
     serializedVersion: 2
     m_Bits: 512
