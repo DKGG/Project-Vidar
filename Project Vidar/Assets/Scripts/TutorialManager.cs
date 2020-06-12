@@ -98,7 +98,7 @@ public class TutorialManager : MonoBehaviour
                 case 7:
                     if (checkpoint == "strengthAndFreeze" || completed)
                     {
-                        messageManager.DisplayMessage("Você pode pegar certas caixas apertando E próximo delas.");
+                        messageManager.DisplayMessage("Você pode pegar certas caixas apertando E próximo delas.", "Também pode se mover enquanto segura", 0.1f);
                         if (PlayerEntity.getLocked())
                         {
                             PowersManager.strengthCanvas.alpha = 0.3f;
@@ -135,6 +135,7 @@ public class TutorialManager : MonoBehaviour
 
                 case 11:
                     messageManager.DisplayMessage("Isso é tudo, pessoal! Use o que aprendeu para chegar ao outro lado!");
+                    StartCoroutine(dismissLastMessage());
                     if (/*Input.GetKeyDown(KeyCode.R)*/ false)
                     {
                         StartCoroutine(changeLevel());
@@ -142,8 +143,8 @@ public class TutorialManager : MonoBehaviour
                     break;
 
                 default:
-                    completed = true;
-                    tutorialLevel = 1;
+                    //completed = true;
+                    //tutorialLevel = 1;
                     break;
             }
         }
@@ -158,6 +159,13 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         tutorialLevel++;
         corroutine = false;
+    }
+
+    IEnumerator dismissLastMessage()
+    {
+        yield return new WaitForSeconds(5f);
+        messageManager.DismissMessage();
+        tutorialLevel++;
     }
 
     public void setCheckpoint(string checkpoint)
