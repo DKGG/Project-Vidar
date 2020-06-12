@@ -97,9 +97,9 @@ public class RaycastShoot : MonoBehaviour
     {
         //gunAudio.Play();
 
-        laserLine.enabled = true;
+        //laserLine.enabled = true;
         yield return shotDuration;
-        laserLine.enabled = false;
+        //laserLine.enabled = false;
         yield return 1.1;
         PlayerEntity.setIsFreezing(false);
     }
