@@ -16,7 +16,6 @@ public class RespawnController : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             PlayerEntity.setSpawnPoint(spawnPoint);
-            Debug.Log(PlayerEntity.getSpawnPoint());
             // col.transform.position = spawnPoint;
         }
     }
