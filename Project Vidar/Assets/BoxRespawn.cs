@@ -31,6 +31,7 @@ public class BoxRespawn : MonoBehaviour
                 box.transform.position = initialPos;
                 box.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 box.GetComponent<Rigidbody>().isKinematic = true;
+                box.GetComponent<Rigidbody>().useGravity = true;
                 box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             }
         }
