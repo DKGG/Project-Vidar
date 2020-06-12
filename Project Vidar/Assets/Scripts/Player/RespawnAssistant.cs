@@ -9,6 +9,7 @@ public class RespawnAssistant : MonoBehaviour
 
     Camera m_MainCamera;
     OverTheShoulderCamera cameraScript;
+    bool deadly;
 
     void Start()
     {
@@ -42,6 +43,14 @@ public class RespawnAssistant : MonoBehaviour
             // Debug.Log(PlayerEntity.getSpawnPoint());
             transform.position = PlayerEntity.getSpawnPoint();
             // ==
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<MovingPlatform>() && other.GetComponent<MovingPlatform>().deadly)
+        {
+            transform.position = PlayerEntity.getSpawnPoint();
         }
     }
 }
