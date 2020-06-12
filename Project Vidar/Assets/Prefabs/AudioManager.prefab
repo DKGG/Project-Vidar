@@ -155,7 +155,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: popUp
     clip: {fileID: 8300000, guid: d8abeff01f10dc440b6fa98adb7d9931, type: 3}
-    volume: 1
+    volume: 0.7
     volumeVariance: 0.486
     pitch: 0.5
     pitchVariance: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: throw
-    clip: {fileID: 8300000, guid: 3f0510ce35cf21241b70a821ec14fa9c, type: 3}
+    clip: {fileID: 8300000, guid: 5d2b47a225f9bbc4dad8eeda15123a53, type: 3}
     volume: 0.8
     volumeVariance: 0
     pitch: 1
