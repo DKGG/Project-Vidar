@@ -16,6 +16,7 @@ TagManager:
   - stone
   - charge
   - freezeAim
+  - BoxRespawner
   layers:
   - Default
   - TransparentFX

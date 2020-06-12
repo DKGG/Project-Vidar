@@ -396,6 +396,7 @@ MonoBehaviour:
   smoothTime: 0.5
   alphaSpeed: 0
   spellDown: 0
+  spellUp: 0
 --- !u!114 &4011234203885954629
 MonoBehaviour:
   m_ObjectHideFlags: 0
