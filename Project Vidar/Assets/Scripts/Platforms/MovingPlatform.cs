@@ -22,8 +22,8 @@ public class MovingPlatform : MonoBehaviour
     [Header("Movement Configs")]
     [SerializeField] public bool movementEnabled = true;
     [SerializeField] bool positiveDirection = true;[Space]
-
     [SerializeField] float speed = 15f;[Space]
+    [SerializeField] public bool deadly = false;
 
     [Header("How will i move")]
     [SerializeField] PlatformMovement platformMovement;
