@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] Transform grabPos;
+    [SerializeField] Transform VerificaFrente;
     bool grab = false;
 
     private void OnTriggerStay(Collider other)
@@ -20,6 +21,8 @@ public class PickUp : MonoBehaviour
         yield return new WaitForEndOfFrame();
         GetComponent<Rigidbody>().useGravity = false;
         transform.position = grabPos.position;
+        VerificaFrente.localPosition = new Vector3(0,1,3.3f);
+        PlayerEntity.setIsLockedInSimple(true);
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
         grab = true;
@@ -30,6 +33,8 @@ public class PickUp : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         transform.parent = null;
+        VerificaFrente.localPosition = new Vector3(0, 1, 1);
+        PlayerEntity.setIsLockedInSimple(false);
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         grab = false;

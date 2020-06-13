@@ -51,7 +51,7 @@ public class PowersManager : MonoBehaviour
         //    StartCoroutine(DecreaseAlpha(doubleJumpCanvas));
         //}
         //STRENGTH
-        if(PlayerEntity.getIsLockedInContinuous() || PlayerEntity.getIsLockedInSimple())
+        if(PlayerEntity.getIsLockedInContinuous())
         {
             if (!strengthCorroutineStarted)
             {
@@ -59,7 +59,7 @@ public class PowersManager : MonoBehaviour
                 StartCoroutine(IncreaseAlpha(strengthCanvas));
             }
         }
-        if (!PlayerEntity.getIsLockedInContinuous() && !PlayerEntity.getIsLockedInSimple())
+        if (!PlayerEntity.getIsLockedInContinuous())
         {
             strengthCorroutineStarted = false;
         }

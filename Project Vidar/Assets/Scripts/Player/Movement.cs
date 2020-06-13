@@ -35,7 +35,19 @@ public class Movement : MonoBehaviour
         //noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
         //objectHit = Physics.Linecast(gameObject.transform.position, verificaFrente.position);
 
-        somethingInFrontOfPlayer = Physics.Linecast(gameObject.transform.position,verificaFrente.position);
+        somethingInFrontOfPlayer = Physics.Linecast(gameObject.transform.position,verificaFrente.position, out objectHit);
+
+        if (PlayerEntity.getIsLockedInSimple())
+        {
+            if(objectHit.collider != null)
+            {
+                if (objectHit.collider.CompareTag("grabPos"))
+                {
+                    Debug.Log("Entrei");
+                    somethingInFrontOfPlayer = false;
+                }
+            }           
+        }        
 
         getInput();
 

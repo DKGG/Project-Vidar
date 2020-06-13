@@ -117,10 +117,10 @@ public class LockB : MonoBehaviour
                 PlayerEntity.setIsLockedInContinuous(true);
             }
 
-            if (PlayerEntity.getIsInsideOfSimple())
-            {
-                PlayerEntity.setIsLockedInSimple(true);
-            }
+            //if (PlayerEntity.getIsInsideOfSimple())
+            //{
+            //    PlayerEntity.setIsLockedInSimple(true);
+            //}
         }
 
         if (!PlayerEntity.getWantToLock() && PlayerEntity.getLocked())
@@ -140,10 +140,10 @@ public class LockB : MonoBehaviour
                 PlayerEntity.setIsLockedInContinuous(false);
             }
 
-            if (!PlayerEntity.getIsInsideOfSimple())
-            {
-                PlayerEntity.setIsLockedInSimple(false);
-            }
+            //if (!PlayerEntity.getIsInsideOfSimple())
+            //{
+            //    PlayerEntity.setIsLockedInSimple(false);
+            //}
         }
 
         if (PlayerEntity.getLocked() && PlayerEntity.getThrewTheBox())
@@ -156,6 +156,8 @@ public class LockB : MonoBehaviour
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;            
             GameObject obj = GameObject.FindGameObjectWithTag("charge");
             obj.GetComponent<Animator>().SetBool("charge", false);
+            PlayerEntity.setIsLockedInContinuous(false);
+            
 
         }
         
