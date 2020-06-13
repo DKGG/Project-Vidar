@@ -59,7 +59,6 @@ public class RaycastShoot : MonoBehaviour
                     freezableComponent = hit.collider.gameObject.GetComponentInChildren<FreezableBox>();
                 }
 
-                // AnimatorManager.setStateFreezing();
 
                 if (freezableComponent != null && freezableComponent.rb != null)
                 {

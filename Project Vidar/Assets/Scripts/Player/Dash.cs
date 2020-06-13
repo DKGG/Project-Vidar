@@ -60,6 +60,11 @@ public class Dash : MonoBehaviour
         rb.velocity = dashVelocity;         // Adiciona o novo vetor na velocidade do Rigidbody
         yield return dashDuration;
         PlayerEntity.setDashing(false);
+        if (!PlayerEntity.getGrounded())
+        {
+            PlayerEntity.setIsFalling(true);
+            AnimatorManager.setStateFalling();
+        }
 
         //PlayerEntity.setCanPlayDashAnim(false);       
         if (Mathf.Abs(rb.velocity.x) < 1 && Mathf.Abs(rb.velocity.z) < 1)

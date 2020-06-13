@@ -28,11 +28,16 @@ public class AnimatorManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("caindo"+PlayerEntity.getIsFalling());
         checkStates();
         updateAnim();
         if (PlayerEntity.getLocked())
         {
             setStateChanneling();
+        }
+        if (PlayerEntity.getIsFalling() && !PlayerEntity.getJumping())
+        {
+            setStateFalling();
         }
     }
 
