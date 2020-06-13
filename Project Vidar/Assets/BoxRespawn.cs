@@ -7,6 +7,7 @@ using UnityEngine;
 public class BoxRespawn : MonoBehaviour
 {
     public float spawnTime = 0;
+    public static bool Respawning;
     [SerializeField] GameObject box;
     //public Transform playerGameObject;
     Vector3 initialPos;
@@ -25,17 +26,31 @@ public class BoxRespawn : MonoBehaviour
         if(spawnTime!= 0)
         {
             spawnTime -= Time.deltaTime;
+            Respawning = true;
             if (spawnTime <= 0)
             {
                 spawnTime = 0;
-                box.transform.position = initialPos;
+                box.transform.position = initialPos;                
                 box.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                box.GetComponent<Rigidbody>().isKinematic = true;
                 box.GetComponent<Rigidbody>().useGravity = true;
-                box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                LockB.noChao = true;                             
+                box.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;                
+                StartCoroutine(ligaKinematic());
+                box.GetComponent<Rigidbody>().useGravity = true;
+
             }
         }
+        else
+        {
+            Respawning = false;
+        }
 
+    }
+
+    IEnumerator ligaKinematic()
+    {
+        yield return new WaitForSeconds(0.1f);
+        box.GetComponent<Rigidbody>().isKinematic = true;
     }
     private void OnTriggerEnter(Collider other)
     {
