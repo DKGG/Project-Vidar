@@ -129,6 +129,36 @@ Transform:
   m_Father: {fileID: 8158909530390343039}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1166883412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1166883413}
+  m_Layer: 8
+  m_Name: cameraLockedOnTheBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1166883413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166883412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5, y: 8, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 162486997490338818}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162486997490338819
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +190,7 @@ Transform:
   - {fileID: 2448022612843557640}
   - {fileID: 162486997857717616}
   - {fileID: 162486998418623497}
+  - {fileID: 1166883413}
   m_Father: {fileID: 3948840067029483595}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -297,6 +328,7 @@ MonoBehaviour:
   mouseMax: 70
   mouseMin: -35
   zoomSpeed: 5
+  cameraLockedOnTheBox: {fileID: 1166883413}
   zoomIn: {fileID: 2448022612843557640}
   zoomOut: {fileID: 3694907603332534752}
 --- !u!114 &1504761398

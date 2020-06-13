@@ -241,7 +241,15 @@ public class LockB : MonoBehaviour
         }
         else if(collision.gameObject.CompareTag("paraBloco") && noChao)
         {
-            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            if (PlayerEntity.getLocked())
+            {
+                gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
+            else
+            {
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+            
             gameObject.GetComponent<Rigidbody>().useGravity = true;
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
