@@ -12,8 +12,8 @@ public class OverTheShoulderCamera : MonoBehaviour
     [SerializeField] int mouseMax = 70;
     [SerializeField] int mouseMin = -70;
     [SerializeField] float zoomSpeed = 5f;
-
-    bool changeCam;
+    public Transform cameraLockedOnTheBox;
+   
     bool moveCam = false;
 
     public Transform zoomIn;
@@ -32,7 +32,8 @@ public class OverTheShoulderCamera : MonoBehaviour
     private void Start()
     {
         cameraPivot = transform.parent;
-        changeTargetAxis = new Vector3(2.5f, 0.75f, -16f);
+        changeTargetAxis = new Vector3(0f, 0f, -16f);
+        //changeTargetAxis = new Vector3(2.5f, 0.75f, -16f);
         OldchangeTargetAxis = new Vector3(2.5f, 0.75f, -3.75f);
         playerFocus = playerTransForm;
         obstruction = lookTarget;
@@ -55,16 +56,9 @@ public class OverTheShoulderCamera : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, zoomOut.transform.position, Time.deltaTime * 5f);
         }
+        
 
-        if (PlayerEntity.getLocked() == true)
-        {
-            //playerTransForm.position = playerObject.transform.parent.position;            
-            playerTransForm = PlayerEntity.getBoxLocked().transform;
-            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, changeTargetAxis, Time.deltaTime * 5);
-            changeCam = true;
-        }
-
-        if (PlayerEntity.getLocked() == false)
+        if (!PlayerEntity.getLocked())
         {
             //Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, OldchangeTargetAxis, Time.deltaTime * 100);
             playerTransForm = playerFocus;
@@ -75,14 +69,25 @@ public class OverTheShoulderCamera : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (PlayerEntity.getLocked())
+        {
+            //playerTransForm.position = playerObject.transform.parent.position;            
+            playerTransForm = PlayerEntity.getBoxLocked().transform;
+            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, cameraLockedOnTheBox.transform.localPosition, 5f);
+            //Camera.main.transform.parent.rotation = Quaternion.Lerp(Camera.main.transform.parent.rotation, Quaternion.Euler(0, 270, 0), 5f);            
+        }
+
         if (cameraPivot.position == null)
         {
             playerTransForm = playerFocus;
         }
 
         mouseX += PlayerEntity.checkMouseX() * rotationSpeed;
-        mouseY -= PlayerEntity.checkMouseY() * rotationSpeed;
-
+        //if (!PlayerEntity.getLocked())
+        //{
+            mouseY -= PlayerEntity.checkMouseY() * rotationSpeed;
+        //}
+        
         mouseY = Mathf.Clamp(mouseY, mouseMin, mouseMax);
 
         cameraPivot.position = playerTransForm.position;
