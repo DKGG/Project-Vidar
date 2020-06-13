@@ -294,6 +294,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7289791077520106963, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289791077520106963, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289791077520106963, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289791077520106963, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 5.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7289791077520106963, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 2.52
+      objectReference: {fileID: 0}
     - target: {fileID: 7289791077925088626, guid: e33642f5e07ad436d80da95ffc4f3be5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -353,6 +378,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Moving Platform Push Thick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190542886838725743, guid: e33642f5e07ad436d80da95ffc4f3be5,
+        type: 3}
+      propertyPath: speed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33642f5e07ad436d80da95ffc4f3be5, type: 3}
