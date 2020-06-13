@@ -24,6 +24,7 @@ public class playerJump : MonoBehaviour
     {
         GroundCheck();
         JumpBalance();
+        //Debug.Log(PlayerEntity.getGrounded());
 
         if (PlayerEntity.getButtonJump())
         {
@@ -36,8 +37,8 @@ public class playerJump : MonoBehaviour
 
                 Jump();
             }
-
         }
+     
     }
 
     private void GroundCheck()
@@ -55,6 +56,7 @@ public class playerJump : MonoBehaviour
     {
         if (Mathf.Abs(rb.velocity.y) <= 1f && !PlayerEntity.getGrounded() && !PlayerEntity.getDashing())
         {
+            rb.drag = 0;
             AnimatorManager.setStateFalling();
             PlayerEntity.setIsFalling(true);
             return;

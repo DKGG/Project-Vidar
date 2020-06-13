@@ -33,18 +33,20 @@ public class Explosion : MonoBehaviour
             stop = true;
         }
 
-        foreach (Collider hitCol in hitColliders)
-        {
-            hitCol.GetComponent<Rigidbody>().isKinematic = false;
+        if (!PlayerEntity.getLocked()) {
+            foreach (Collider hitCol in hitColliders)
+            {
+                hitCol.GetComponent<Rigidbody>().isKinematic = false;
 
-            shader = hitCol.gameObject.GetComponent<AlphaShaderAnimation>();
-            shader.spellDown = true;
+                shader = hitCol.gameObject.GetComponent<AlphaShaderAnimation>();
+                shader.spellDown = true;
 
-            //hitCol.gameObject.GetComponent<Animator>().SetBool("block",false);
-            //hitCol.GetComponent<MeshRenderer>().enabled = false;
+                //hitCol.gameObject.GetComponent<Animator>().SetBool("block",false);
+                //hitCol.GetComponent<MeshRenderer>().enabled = false;
 
-            hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
-            Destroy(hitCol.gameObject,2);
+                hitCol.GetComponent<Rigidbody>().AddExplosionForce(explodionPower, explosionPoint, blastRadius, 1, ForceMode.Impulse);
+                Destroy(hitCol.gameObject, 2);
+            }
         }
     }
 }
