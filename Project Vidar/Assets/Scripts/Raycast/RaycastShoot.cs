@@ -13,13 +13,15 @@ public class RaycastShoot : MonoBehaviour
     public Camera fpsCam;
     private WaitForSeconds shotDuration = new WaitForSeconds(.07f);
     private AudioSource gunAudio;
-    private LineRenderer laserLine; 
+    private LineRenderer laserLine;
     private float nextFire;
 
     private Vector3 freezeSave;
     private Transform cameraPivot;
 
     FreezableBox freezableComponent;
+    [SerializeField]
+    private Animator freezeAimAnimator;
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class RaycastShoot : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
         if (PlayerEntity.getKeyQ() == true && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
@@ -50,7 +52,7 @@ public class RaycastShoot : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
 
-                if(hit.collider.GetComponent<FreezableBox>())
+                if (hit.collider.GetComponent<FreezableBox>())
                 {
                     freezableComponent = hit.collider.GetComponent<FreezableBox>();
                 }
@@ -58,10 +60,11 @@ public class RaycastShoot : MonoBehaviour
                 {
                     freezableComponent = hit.collider.gameObject.GetComponentInChildren<FreezableBox>();
                 }
-
-
+                
                 if (freezableComponent != null && freezableComponent.rb != null)
                 {
+                    freezeAimAnimator.SetBool("Hitted", true);
+                    StartCoroutine(TurnOffAnimation("Hitted"));
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, cameraPivot.rotation.eulerAngles.y, 0), 0.9f);
                     if (freezableComponent.isFrozen)
                     {
@@ -82,10 +85,17 @@ public class RaycastShoot : MonoBehaviour
                         freezableComponent.rb.constraints = RigidbodyConstraints.FreezeAll;
                     }
                 }
+                else 
+                {
+                    freezeAimAnimator.SetBool("Missed", true);
+                    StartCoroutine(TurnOffAnimation("Missed"));
+                }
             }
             else
             {
                 laserLine.SetPosition(1, rayOrigin + (fpsCam.transform.forward * weaponRange));
+                freezeAimAnimator.SetBool("Missed", true);
+                StartCoroutine(TurnOffAnimation("Missed"));
             }
         }
 
@@ -100,5 +110,11 @@ public class RaycastShoot : MonoBehaviour
         laserLine.enabled = false;
         yield return 1.1;
         PlayerEntity.setIsFreezing(false);
+    }
+
+    private IEnumerator TurnOffAnimation(string animation)
+    {
+        yield return new WaitForSeconds(0.5f);
+        freezeAimAnimator.SetBool(animation, false);
     }
 }
