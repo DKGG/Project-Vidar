@@ -12,7 +12,9 @@ public class LockB : MonoBehaviour
     public Transform FaceNorte;
     public Transform FaceSul;
     public Transform FaceOeste;
-    public Transform FaceLeste;  
+    public Transform FaceLeste;
+
+    public BoxCollider b1;
 
     public float pushSpeed;
 
@@ -53,8 +55,8 @@ public class LockB : MonoBehaviour
         noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
         noSul = Physics.Linecast(ponto1.position, ponto2.position, Player);
         noOeste = Physics.Linecast(ponto2.position, ponto4.position, Player);
-        noLeste = Physics.Linecast(ponto1.position, ponto3.position, Player);              
-
+        noLeste = Physics.Linecast(ponto1.position, ponto3.position, Player);
+       
         if (noNorte)
         {
             PlayerEntity.setIslockedInNorth(true);
@@ -170,8 +172,7 @@ public class LockB : MonoBehaviour
         if (insideMe)
         {
             if (PlayerEntity.getWantToThrow())
-            {
-                //Debug.Log(colidiu);
+            {                
                 FindObjectOfType<AudioManager>().stopAll();
                 FindObjectOfType<AudioManager>().Play("throw");
                 if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
@@ -260,8 +261,7 @@ public class LockB : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("grass"))
         {
-            noChao = false;
-            Debug.Log("sai" + noChao);
+            noChao = false;            
         }        
     }
 
