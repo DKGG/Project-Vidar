@@ -67,9 +67,8 @@ public class RaycastShoot : MonoBehaviour
                     if (freezableComponent.isFrozen)
                     {
                         FindObjectOfType<AudioManager>().Play("freeze");
-                        // AnimatorManager.setStateFreezing();
+                        AnimatorManager.setStateFreezing();
                         PlayerEntity.setIsFreezing(true);
-
                         freezableComponent.isFrozen = false;
                         freezableComponent.rb.constraints = RigidbodyConstraints.FreezeRotation;
                         freezableComponent.rb.velocity = freezeSave;
@@ -78,7 +77,7 @@ public class RaycastShoot : MonoBehaviour
                     {
                         PlayerEntity.setIsFreezing(true);
                         FindObjectOfType<AudioManager>().Play("freeze");
-
+                        AnimatorManager.setStateFreezing();
                         freezableComponent.isFrozen = true;
                         freezeSave = freezableComponent.rb.velocity;
                         freezableComponent.rb.constraints = RigidbodyConstraints.FreezeAll;
