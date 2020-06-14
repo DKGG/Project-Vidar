@@ -394,7 +394,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8691482146854757495}
-  m_Mesh: {fileID: 4300000, guid: 3ee8dd4249e784e43b02096d6ce4f654, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 553d975cf2b4a634ea0a5e8239fc4df2, type: 3}
 --- !u!23 &5891513850374211274
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -555,12 +555,7 @@ MonoBehaviour:
   FaceSul: {fileID: 2188093891880829829}
   FaceOeste: {fileID: 610171924635120725}
   FaceLeste: {fileID: 2548078395883668270}
-  ChecaChao: {fileID: 0}
-  ChecaChao2: {fileID: 0}
-  ChecaChao3: {fileID: 0}
-  ChecaChao4: {fileID: 0}
-  ChecaChao5: {fileID: 0}
-  Centro: {fileID: 0}
+  b1: {fileID: 0}
   pushSpeed: 1500
   Player:
     serializedVersion: 2
