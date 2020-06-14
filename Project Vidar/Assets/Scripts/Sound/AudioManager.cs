@@ -85,11 +85,13 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var item in sounds)
         {
-            if (!item.name.Equals("ambient") && !item.name.Equals("throw") && !item.name.Equals("ambient2"))
+            if (!item.isAmbient)
             {
                 Stop(item.name);
             }
             PlayerEntity.setIsPlayingGrassStep(false);
+            PlayerEntity.setisPlayingStoneStep(false);
+            PlayerEntity.setisPlayingWoodStep(false);
         }
     }
 
@@ -99,6 +101,30 @@ public class AudioManager : MonoBehaviour
         {
             item.source.volume = item.volume * value;
         }
+    }
+    public void stopAllAmbients()
+    {
+        foreach (var item in sounds)
+        {
+            if (item.isAmbient)
+            {
+                Stop(item.name);
+            }
+        }
+    }
+    public String getAmbientThatIsPlaying()
+    {
+        foreach (var item in sounds)
+        {
+            if (item.isAmbient)
+            {
+                if (item.source.isPlaying)
+                {
+                    return item.name;
+                }
+            }
+        }
+        return "";
     }
 
 }
