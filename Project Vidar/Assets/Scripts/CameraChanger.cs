@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraChanger : MonoBehaviour
 {
-    [SerializeField] float timeLeft = 3f;
+    [SerializeField] float timeLeft = 5f;
 
     Camera cam;
     Camera mainCam;
@@ -26,7 +26,7 @@ public class CameraChanger : MonoBehaviour
             {
                 mainCam.enabled = true;
                 cam.enabled = false;
-                timeLeft = 3f;
+                timeLeft = 5f;
                 active = false;
             }
             else
