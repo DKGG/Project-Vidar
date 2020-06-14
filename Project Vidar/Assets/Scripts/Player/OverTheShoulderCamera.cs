@@ -13,6 +13,8 @@ public class OverTheShoulderCamera : MonoBehaviour
     [SerializeField] int mouseMin = -70;
     [SerializeField] float zoomSpeed = 5f;
     public Transform cameraLockedOnTheBox;
+
+    bool teste;
    
     bool moveCam = false;
 
@@ -148,4 +150,5 @@ public class OverTheShoulderCamera : MonoBehaviour
         }
         oldObstruction = obstruction;
     }
+   
 }

@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 using UnityEngine;
 
 public class PController : MonoBehaviour
-{  
-    GameObject caixa = null;    
+{
+    GameObject caixa = null;
     Rigidbody rb;
 
     void Start()
@@ -42,7 +42,8 @@ public class PController : MonoBehaviour
         {
             DisableMovement();
 
-            rb.isKinematic = true;
+            //rb.isKinematic = true;
+            rb.useGravity = false;
 
             transform.position = Vector3.Lerp(transform.position, PlayerEntity.getPositionToLock().position, Time.deltaTime * 5f);
             transform.rotation = Quaternion.Lerp(transform.rotation, PlayerEntity.getPositionToLock().rotation, Time.deltaTime * 5f);
@@ -54,14 +55,18 @@ public class PController : MonoBehaviour
 
             return;
         }
-        else if(PlayerEntity.getIsOnDialogue())
+        else if (PlayerEntity.getIsOnDialogue())
         {
             DisableMovement();
         }
 
+        rb.useGravity = true;
+        rb.isKinematic = false;
+
+
+
         EnableMovement();
 
-        rb.isKinematic = false;
     }
 
     private void DisableMovement()

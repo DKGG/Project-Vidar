@@ -135,6 +135,7 @@ public class LockB : MonoBehaviour
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
             PlayerEntity.setIsInsideOfSimple(false);
             PlayerEntity.setIsInsideOfContinuous(false);
+            GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = Vector3.zero;
             if (!PlayerEntity.getIsInsideOfContinuous() )
             {
                 PlayerEntity.setIsLockedInContinuous(false);
@@ -157,8 +158,7 @@ public class LockB : MonoBehaviour
             GameObject obj = GameObject.FindGameObjectWithTag("charge");
             obj.GetComponent<Animator>().SetBool("charge", false);
             PlayerEntity.setIsLockedInContinuous(false);
-            
-
+            GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
         
         if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero)
@@ -176,6 +176,15 @@ public class LockB : MonoBehaviour
             {                
                 FindObjectOfType<AudioManager>().stopAll();
                 FindObjectOfType<AudioManager>().Play("throw");
+                playerGameObject.SetParent(null);
+                PlayerEntity.setLocked(false);
+                PlayerEntity.setWantToThrow(false);
+                PlayerEntity.setWantToLock(false);
+                PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+                GameObject obj = GameObject.FindGameObjectWithTag("charge");
+                obj.GetComponent<Animator>().SetBool("charge", false);
+                PlayerEntity.setIsLockedInContinuous(false);
+                GameObject.FindWithTag("Player").GetComponent<Rigidbody>().velocity = Vector3.zero;
                 if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
                 {                  
 
