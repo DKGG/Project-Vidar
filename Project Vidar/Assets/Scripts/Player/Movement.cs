@@ -23,7 +23,6 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        //sound = "grass";
         cam = Camera.main.transform;
     }
 
