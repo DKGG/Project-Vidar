@@ -23,13 +23,12 @@ public class Movement : MonoBehaviour
 
     private void Start()
     {
-        //sound = "grass";
         cam = Camera.main.transform;
     }
 
     private void Update()
     {
-        //Debug.Log(sound);
+        Debug.Log(sound);
         //linecastall
         //raycasthit
         //noNorte = Physics.Linecast(ponto3.position, ponto4.position, Player);
@@ -115,7 +114,7 @@ public class Movement : MonoBehaviour
         angle += cam.eulerAngles.y;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         sound = collision.gameObject.tag;
         if (collision.gameObject.tag.Equals("wood") && !PlayerEntity.getisPlayingWoodStep() && !PlayerEntity.getDashing() && !PlayerEntity.getIsOnDialogue())
@@ -139,10 +138,14 @@ public class Movement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Equals("SoundTriggerTemple"))
+        if (other.gameObject.name.Equals("SoundTriggerTemple") && !FindObjectOfType<AudioManager>().getAmbientThatIsPlaying().Equals("ambientTemple"))
         {
-            FindObjectOfType<AudioManager>().Stop("ambient");
+            FindObjectOfType<AudioManager>().stopAllAmbients();
             FindObjectOfType<AudioManager>().Play("ambientTemple");
+        } else if (other.gameObject.name.Equals("SoundTriggerTutorial") && !FindObjectOfType<AudioManager>().getAmbientThatIsPlaying().Equals("ambient"))
+        {
+            FindObjectOfType<AudioManager>().stopAllAmbients();
+            FindObjectOfType<AudioManager>().Play("ambient");
         }
     }
 }
