@@ -13,8 +13,9 @@ public class MessageManager : MonoBehaviour
     [SerializeField]
     private Animator helperAnimator;
 
-    private bool messageDisplayed = false;
+    [HideInInspector]
     public string message = "";
+    private bool messageDisplayed = false;
     private AudioManager audioManager;
 
     private void Start()
