@@ -11,12 +11,22 @@ public class AlphaShaderAnimation : MonoBehaviour
 
     Renderer rend;
     float alpha;
+    private float maxAlpha;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
 
-        rend.material.shader = Shader.Find("Custom/RimMiscellaneous");
+        if (gameObject.CompareTag("charge"))
+        {
+            rend.material.shader = Shader.Find("Custom/DiscardFragment");
+            maxAlpha = 0.5f;
+        }
+        else
+        {
+            rend.material.shader = Shader.Find("Custom/RimMiscellaneous");
+            maxAlpha = 1;
+        }
     }
 
     void Update()
@@ -25,11 +35,13 @@ public class AlphaShaderAnimation : MonoBehaviour
         {
             alpha = Mathf.SmoothDamp(rend.material.GetFloat("_Alpha"), 0, ref alphaSpeed, smoothTime);
             rend.material.SetFloat("_Alpha", alpha);
+            //gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
         if (spellUp)
         {
-            rend.material.SetFloat("_Alpha", 1);
+            //gameObject.GetComponent<MeshRenderer>().enabled = true;
+            rend.material.SetFloat("_Alpha", maxAlpha);
         }
     }
 }

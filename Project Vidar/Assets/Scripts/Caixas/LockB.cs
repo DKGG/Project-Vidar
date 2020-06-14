@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LockB : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class LockB : MonoBehaviour
     public static bool noChao;
 
     public LayerMask Player;
+    private AlphaShaderAnimation shader;
+    private MeshRenderer chargeMesh;
 
     public enum DirecaoForca
     {
@@ -45,7 +48,13 @@ public class LockB : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        playerGameObject = GameObject.FindWithTag("Player").transform.parent;      
+        playerGameObject = GameObject.FindWithTag("Player").transform.parent;
+        shader = GameObject.FindWithTag("charge").GetComponent<AlphaShaderAnimation>();
+        chargeMesh = GameObject.FindWithTag("charge").GetComponent<MeshRenderer>();
+
+        shader.spellUp = false;
+        shader.spellDown = true;
+        chargeMesh.enabled = false;
     }
 
     // Update is called once per frame
@@ -104,8 +113,7 @@ public class LockB : MonoBehaviour
             PlayerEntity.setLocked(true);            
             AnimatorManager.setStateChanneling();
             FindObjectOfType<AudioManager>().Play("channeling");
-            GameObject obj = GameObject.FindGameObjectWithTag("charge");
-            obj.GetComponent<Animator>().SetBool("charge", true);
+            StartCoroutine(ToggleChargeAnimation());
 
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = true;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = false;
@@ -128,8 +136,7 @@ public class LockB : MonoBehaviour
 
             playerGameObject.SetParent(null);
             PlayerEntity.setLocked(false);
-            GameObject obj = GameObject.FindGameObjectWithTag("charge");
-            obj.GetComponent<Animator>().SetBool("charge", false);
+            StartCoroutine(ToggleChargeAnimation());
             FindObjectOfType<AudioManager>().stopAll();
             PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
             PlayerEntity.getBoxLocked().GetComponentInParent<Rigidbody>().isKinematic = true;
@@ -153,13 +160,12 @@ public class LockB : MonoBehaviour
             PlayerEntity.setLocked(false);
             PlayerEntity.setWantToThrow(false);
             PlayerEntity.setWantToLock(false);
-            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;            
-            GameObject obj = GameObject.FindGameObjectWithTag("charge");
-            obj.GetComponent<Animator>().SetBool("charge", false);
+            PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;
+            StartCoroutine(ToggleChargeAnimation());
 
         }
-        
-        if(gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero)
+
+        if (gameObject.GetComponent<Rigidbody>().velocity == Vector3.zero)
         {
             PlayerEntity.setThrewTheBox(false);
         }
@@ -302,4 +308,13 @@ public class LockB : MonoBehaviour
             PlayerEntity.setIsInside(false);
         }        
     }
+
+    IEnumerator ToggleChargeAnimation()
+    {
+        chargeMesh.enabled = !chargeMesh.enabled;
+        shader.spellDown = !shader.spellDown;
+        shader.spellUp = !shader.spellUp;
+        yield return null;
+    }
+
 }
