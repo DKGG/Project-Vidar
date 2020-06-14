@@ -9,8 +9,6 @@ public class OptionsManager : MonoBehaviour
     [SerializeField]
     private GameObject optionsMenuUI;
     [SerializeField]
-    private GameObject pauseMenuUI;
-    [SerializeField]
     private GameObject graphicsMenuUI;
 
     private float speedSliderValue = 5f;
@@ -35,7 +33,6 @@ public class OptionsManager : MonoBehaviour
         postProcessing.profile.TryGetSettings(out depthOfField);
 
         audioManager = FindObjectOfType<AudioManager>();
-        pauseController = pauseMenuUI.transform.parent.GetComponent<PauseController>();
     }
 
     public void Start()
@@ -50,10 +47,7 @@ public class OptionsManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && optionsMenuUI.activeSelf)
-        {
-            pauseController.HandleInput();
-        }
+
     }
 
     public void setCameraSpeed(float value)
@@ -74,7 +68,6 @@ public class OptionsManager : MonoBehaviour
 
     public void LoadPause()
     {
-        pauseMenuUI.SetActive(true);
         optionsMenuUI.SetActive(false);
     }
 
