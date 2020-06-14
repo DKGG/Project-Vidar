@@ -4,6 +4,7 @@
         _MainTex("Base (RGB)", 2D) = "white" {}
         _RimValue("Rim value", Range(0, 5)) = 0.5
         _AuraBehavior("aura Behavior", Range(0, 5)) = 1.0
+        _Movement("Movement", Range(0,1)) = 0
         _Alpha("Alpha", Range(0, 1)) = 1
         _Color("Color", Color) = (1, 1, 1, 1)
     }
@@ -15,6 +16,7 @@
 
         sampler2D _MainTex;
         fixed _RimValue;
+        fixed _Movement;
         fixed _AuraBehavior;
         fixed _Alpha;
 
@@ -27,7 +29,7 @@
         fixed4 _Color;
 
         void surf(Input IN, inout SurfaceOutput o) {
-            half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * 0.1);
+            half4 c = tex2D(_MainTex, IN.uv_MainTex + _Time.y * _Movement);
             o.Albedo = c.rgb * _Color;
 
             float3 normal = normalize(IN.worldNormal);

@@ -137,4 +137,12 @@ public class Movement : MonoBehaviour
             PlayerEntity.setisPlayingStoneStep(true);
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Equals("SoundTriggerTemple"))
+        {
+            FindObjectOfType<AudioManager>().Stop("ambient");
+            FindObjectOfType<AudioManager>().Play("ambientTemple");
+        }
+    }
 }

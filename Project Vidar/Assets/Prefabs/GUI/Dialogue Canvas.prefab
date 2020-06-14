@@ -702,8 +702,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Message
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7daf13fbb9a5672469293a3093b5a69c, type: 2}
-  m_sharedMaterial: {fileID: 619292145467964651, guid: 7daf13fbb9a5672469293a3093b5a69c,
+  m_fontAsset: {fileID: 11400000, guid: ab76cb0d4ecac1a4ab2015a16db0de6e, type: 2}
+  m_sharedMaterial: {fileID: 1976737094096269304, guid: ab76cb0d4ecac1a4ab2015a16db0de6e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -729,17 +729,17 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 35
+  m_fontStyle: 34
   m_textAlignment: 4098
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -30
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -934,10 +934,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Message '
+  m_text: Message
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7daf13fbb9a5672469293a3093b5a69c, type: 2}
-  m_sharedMaterial: {fileID: 619292145467964651, guid: 7daf13fbb9a5672469293a3093b5a69c,
+  m_fontAsset: {fileID: 11400000, guid: ab76cb0d4ecac1a4ab2015a16db0de6e, type: 2}
+  m_sharedMaterial: {fileID: 1976737094096269304, guid: ab76cb0d4ecac1a4ab2015a16db0de6e,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -963,17 +963,17 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 33
+  m_fontStyle: 32
   m_textAlignment: 4098
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: -30
+  m_lineSpacing: -10
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -1004,9 +1004,9 @@ MonoBehaviour:
   m_margin: {x: 150.40245, y: 0, z: 113.58886, w: 0}
   m_textInfo:
     textComponent: {fileID: 8382655689524198214}
-    characterCount: 8
+    characterCount: 7
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 0
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -1252,7 +1252,7 @@ RectTransform:
   m_GameObject: {fileID: 8382655689760559651}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8382655689561104745}
   - {fileID: 1661582820112561677}
