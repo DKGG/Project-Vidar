@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PortalMaterial
-  m_Shader: {fileID: 4800000, guid: dd6dd66a05bf5a240ba56cafacf2ac82, type: 3}
+  m_Shader: {fileID: 4800000, guid: 6645abca1332443c5b7e4424e8c0a7e4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -41,8 +41,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: ed7918d71b57e564b932f299ea7ebc2b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+        m_Scale: {x: 0.7, y: 0.7}
+        m_Offset: {x: 0.15, y: 0.15}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -65,11 +65,13 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Metallic: 0
+    - _Metallic: 0.317
     - _Mode: 0
+    - _Movement: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimValue: 0
+    - _RotationSpeed: 100
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -77,5 +79,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.8204853, g: 0.4764151, b: 1, a: 0.5372549}
+    - _Color: {r: 0.7585559, g: 0.40494838, b: 0.9433962, a: 0.5372549}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
