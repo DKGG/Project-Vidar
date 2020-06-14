@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,17 +13,22 @@ public class AudioManager : MonoBehaviour
 
     public String currentSong;
 
+    Scene currentScene;
+    string sceneName;
+
     void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        currentScene = SceneManager.GetActiveScene();
+        sceneName = currentScene.name;
+        //if (instance != null)
+        //{
+        //    Destroy(gameObject);
+        //}
+        //else
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
 
         foreach (Sound s in sounds)
         {
@@ -32,8 +38,17 @@ public class AudioManager : MonoBehaviour
 
             s.source.outputAudioMixerGroup = mixerGroup;
         }
-
-        Play("ambient");
+        if (sceneName.Equals("Tutorial"))
+        {
+            Play("ambient");
+        } else if (sceneName.Equals("Level 1"))
+        {
+            Play("ambient2");
+        }
+    }
+    public void Update()
+    {
+        Debug.Log(sceneName);
     }
 
     public void Play(string sound)
@@ -74,7 +89,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var item in sounds)
         {
-            if (!item.name.Equals("ambient") && !item.name.Equals("throw"))
+            if (!item.name.Equals("ambient") && !item.name.Equals("throw") && !item.name.Equals("ambient2"))
             {
                 Stop(item.name);
             }
