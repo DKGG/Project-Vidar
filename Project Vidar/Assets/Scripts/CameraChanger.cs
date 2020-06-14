@@ -28,11 +28,13 @@ public class CameraChanger : MonoBehaviour
                 cam.enabled = false;
                 timeLeft = 5f;
                 active = false;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().enabled = true;
             }
             else
             {
                 mainCam.enabled = false;
                 cam.enabled = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().enabled = false;
             }
         }
     }
