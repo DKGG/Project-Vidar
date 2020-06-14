@@ -4,27 +4,44 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
+    [Header("Move Object From -> To")]
     [SerializeField] GameObject toMove;
     [SerializeField] GameObject moveTo;
     [SerializeField] float speed = 7f;
+    [Space]
+    [Header("Will Change Cam")]
+    // [SerializeField] bool changeCam;
+    [SerializeField] CameraChanger scriptCam;
 
     Vector3 initialtoMove;
-    Vector3 initialMoveTo;
+    // Vector3 initialMoveTo;
 
     bool triggered = false;
 
     private void Start()
     {
         initialtoMove = toMove.transform.position;
-        initialMoveTo = moveTo.transform.position;
+        // initialMoveTo = moveTo.transform.position;
     }
 
     void Update()
     {
-        if (triggered)
+        if (Vector3.Distance(moveTo.transform.position, toMove.transform.position) < 1)
+        {
+            triggered = false;
+        }
+        else if (triggered)
+        {
             toMove.transform.position = Vector3.Lerp(toMove.transform.position, moveTo.transform.position, Time.deltaTime * speed);
-        else
-            toMove.transform.position = Vector3.Lerp(toMove.transform.position, initialtoMove, Time.deltaTime * speed);
+            if (!scriptCam.active)
+                scriptCam.active = true;
+        }
+
+
+        //else
+        //{
+        //    toMove.transform.position = Vector3.Lerp(toMove.transform.position, initialtoMove, Time.deltaTime * speed);
+        //}
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,8 +53,6 @@ public class MoveObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("ContinuosBox"))
-        {
             triggered = !triggered;
-        }
     }
 }
