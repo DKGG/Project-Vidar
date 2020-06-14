@@ -46,10 +46,6 @@ public class AudioManager : MonoBehaviour
             Play("ambient2");
         }
     }
-    public void Update()
-    {
-        Debug.Log(sceneName);
-    }
 
     public void Play(string sound)
     {
