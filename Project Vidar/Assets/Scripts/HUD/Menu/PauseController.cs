@@ -11,6 +11,8 @@ public class PauseController : MonoBehaviour
     private GameObject optionsMenuUI;
     [SerializeField]
     private GameObject pauseMenuUI;
+    [SerializeField]
+    private GameObject confirmExitUI;
 
     public RectTransform ResumeButton;
     public Texture2D cursorSprite;
@@ -82,7 +84,17 @@ public class PauseController : MonoBehaviour
         optionsMenuUI.SetActive(true);
     }
 
-    public void QuitMenu()
+    public void LoadExitConfirmation()
+    {
+        confirmExitUI.SetActive(true);
+    }
+
+    public void CloseExitConfirmation()
+    {
+        confirmExitUI.SetActive(false);
+    }
+
+    public void QuitGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
