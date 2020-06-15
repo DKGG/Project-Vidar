@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraChanger : MonoBehaviour
 {
-    [SerializeField] float timeLeft = 5f;
+    [SerializeField] float timeLeft = 6f;
+    float initialTimeLeft;
 
     Camera cam;
     Camera mainCam;
@@ -14,6 +15,7 @@ public class CameraChanger : MonoBehaviour
     {
         cam = gameObject.GetComponent<Camera>();
         mainCam = Camera.main;
+        initialTimeLeft = timeLeft;
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class CameraChanger : MonoBehaviour
             {
                 mainCam.enabled = true;
                 cam.enabled = false;
-                timeLeft = 5f;
+                timeLeft = initialTimeLeft;
                 active = false;
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>().enabled = true;
             }

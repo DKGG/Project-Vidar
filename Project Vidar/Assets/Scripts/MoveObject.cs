@@ -26,7 +26,7 @@ public class MoveObject : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(moveTo.transform.position, toMove.transform.position) < 1)
+        if (Vector3.Distance(moveTo.transform.position, toMove.transform.position) < 3f)
         {
             triggered = false;
         }
