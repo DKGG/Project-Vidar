@@ -138,7 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b8b0e76a3f56a409eaac9854ccbb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelIndex: 0
+  sceneIndex: 1
+  loadingScreen: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!65 &5536192481515183079
 BoxCollider:
   m_ObjectHideFlags: 0
