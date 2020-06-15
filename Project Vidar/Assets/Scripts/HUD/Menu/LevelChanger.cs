@@ -11,6 +11,10 @@ public class LevelChanger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            PlayerEntity.setDashing(false);
+            PlayerEntity.setJumping(false);
+            PlayerEntity.setWalking(false);
+            AnimatorManager.setStateIdle();
             FadeToLevel();
             OnFadeComplete();
         }

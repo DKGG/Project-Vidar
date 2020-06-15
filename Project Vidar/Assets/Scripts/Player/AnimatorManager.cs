@@ -20,10 +20,15 @@ public class AnimatorManager : MonoBehaviour
 
     public static Animator control;
 
+    private void Awake()
+    {
+        setStateIdle();
+    }
+
     void Start()
     {
         control = GetComponent<Animator>();
-        control.updateMode = AnimatorUpdateMode.UnscaledTime;
+        control.updateMode = AnimatorUpdateMode.UnscaledTime;     
     }
 
     private void Update()

@@ -1,0 +1,9 @@
+{
+	"dialogues": [
+		{
+			"name": "Bem-vindo!",
+			"sentence": "Você está no teste do TempleManager :D"
+		}
+	],
+	"sceneName": "teste"
+}

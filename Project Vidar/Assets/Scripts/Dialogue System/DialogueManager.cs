@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -16,16 +15,18 @@ public class DialogueManager : MonoBehaviour
     private Image dialogueEmote;
     [SerializeField]
     private Animator animator;
-
     private string currentScene;
     private bool crIsRunning = false;
     private Dialogue oldDialogue;
     private Dialogue dialogue;
     private Queue<Dialogue> dialogues;
     private AudioManager audioManager;
+    public List<string> endedScenes;
+
     //private Sprite dialogueEmoteSprite;
 
     // Start is called before the first frame update
+ 
     void Start()
     {
         dialogues = new Queue<Dialogue>();
@@ -120,7 +121,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         PlayerEntity.setIsOnDialogue(false);
-
+        fadeInOut.fadeIn = false;
+        fadeInOut.fadeOut = true;
+        endedScenes.Add(currentScene);
         animator.SetBool("IsOpen", false);
     }
 }

@@ -8,9 +8,12 @@ public class PController : MonoBehaviour
     GameObject caixa = null;    
     Rigidbody rb;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+
     }
 
     void Update()
