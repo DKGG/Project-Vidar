@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
     [Header("Move Object From -> To")]
+    [Space]
     [SerializeField] GameObject toMove;
     [SerializeField] GameObject moveTo;
     [SerializeField] float speed = 7f;
@@ -13,15 +14,12 @@ public class MoveObject : MonoBehaviour
     // [SerializeField] bool changeCam;
     [SerializeField] CameraChanger scriptCam;
 
-    Vector3 initialtoMove;
-    // Vector3 initialMoveTo;
-
     bool triggered = false;
+    Animator anim;
 
     private void Start()
     {
-        initialtoMove = toMove.transform.position;
-        // initialMoveTo = moveTo.transform.position;
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -33,15 +31,10 @@ public class MoveObject : MonoBehaviour
         else if (triggered)
         {
             toMove.transform.position = Vector3.Lerp(toMove.transform.position, moveTo.transform.position, Time.deltaTime * speed);
-            if (!scriptCam.active)
+            if (scriptCam != null && !scriptCam.active)
                 scriptCam.active = true;
+            anim.SetBool("turn", true);
         }
-
-
-        //else
-        //{
-        //    toMove.transform.position = Vector3.Lerp(toMove.transform.position, initialtoMove, Time.deltaTime * speed);
-        //}
     }
 
     private void OnTriggerStay(Collider other)
