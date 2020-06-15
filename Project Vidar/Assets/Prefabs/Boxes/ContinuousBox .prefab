@@ -273,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937c66a66b8e74f03a7b54567d402261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.5
-  alphaSpeed: 0
+  smoothTime: 0.2
+  alphaSpeed: 0.5
   spellDown: 0
   spellUp: 0
 --- !u!114 &4011234203885954629
