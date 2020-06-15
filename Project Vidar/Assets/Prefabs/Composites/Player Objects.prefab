@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 141396239}
   - component: {fileID: 141396238}
   - component: {fileID: 141396236}
+  - component: {fileID: 1173230752}
   m_Layer: 8
   m_Name: charging
   m_TagString: charge
@@ -99,6 +100,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1173230752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141396234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937c66a66b8e74f03a7b54567d402261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothTime: 0.57
+  alphaSpeed: 0.5
+  spellDown: 1
+  spellUp: 0
 --- !u!1 &168307538
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,15 +895,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7424670201242049186, guid: 7dca39b1ad961f9468a35f6510d45392, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7dca39b1ad961f9468a35f6510d45392, type: 3}
---- !u!136 &8857531155931456958 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 6774286370123295465, guid: 7dca39b1ad961f9468a35f6510d45392,
-    type: 3}
-  m_PrefabInstance: {fileID: 2661447231160700759}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8158909529947183081 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6184876991046146238, guid: 7dca39b1ad961f9468a35f6510d45392,
+    type: 3}
+  m_PrefabInstance: {fileID: 2661447231160700759}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8158909530390343039 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6184876990406910504, guid: 7dca39b1ad961f9468a35f6510d45392,
     type: 3}
   m_PrefabInstance: {fileID: 2661447231160700759}
   m_PrefabAsset: {fileID: 0}
@@ -896,9 +913,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2661447231160700759}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8158909530390343039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6184876990406910504, guid: 7dca39b1ad961f9468a35f6510d45392,
+--- !u!136 &8857531155931456958 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 6774286370123295465, guid: 7dca39b1ad961f9468a35f6510d45392,
     type: 3}
   m_PrefabInstance: {fileID: 2661447231160700759}
   m_PrefabAsset: {fileID: 0}
