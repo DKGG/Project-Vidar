@@ -1,0 +1,49 @@
+{
+	"dialogues": [
+		{
+			"name": "Narrador",
+			"sentence": "Vidar acorda e percebe que o feitiço o havia apagado por mais que algumas horas. Foram dias, talvez semanas. Sua mãe ainda estava lá, petrificada."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Vidar não sabe o que fazer. Então, ouve Odin novamente, dessa vez acordado, e treme perante a voz do deus."
+		},
+		{
+			"name": "Odin",
+			"sentence": "Escute, garoto, meus poderes estão enfraquecidos, mal consigo me comunicar com você."
+		},
+		{
+			"name": "Odin",
+			"sentence": "Loki já começou o ataque por aqui, mas errou em te poupar, eu tenho certeza."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Por que me poupar seria um erro? Não sou uma ameaça para ele. O que... "
+		},
+		{
+			"name": "Odin",
+			"sentence": "Não há tempo para explicações agora garoto. Esse lugar é antigo, eu mesmo pus alguns labirintos aqui para proteger alguns tesouros."
+		},
+		{
+			"name": "Odin",
+			"sentence": "Preciso que lute por mim e por Liv, entre por aquela porta e supere o desafio. Eu acredito em você, afinal..."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "A voz de Odin some."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Odin? Hey?! Você ainda está aí?"
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Silêncio... Vidar estava sozinho novamente. Ele olha para sua mãe e diz"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Eu vou encontrar um jeito de te salvar, eu prometo."
+		}
+	],
+	"sceneName": "Cena4"
+}

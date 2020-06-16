@@ -1,0 +1,53 @@
+{
+	"dialogues": [
+		{
+			"name": "Narrador",
+			"sentence": "Ao chegar no templo, Vidar vê que as portas estão abertas."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Ele corre para dentro e a vê petrificada como uma estátua, com uma névoa azul e fria em volta dela, desesperado o garoto chega próximo dela e ao tocá-la, devido a um feitiço que Loki deixou como armadilha, desmaia e cai num profundo transe."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Vidar sonha com sua vida até então, em particular uma conversa que teve com sua mãe há alguns anos."
+		},
+		{
+			"name": "Liv",
+			"sentence": "Filho, lembre-se, tudo que vemos, comemos, plantamos e vivemos, nos é proporcionado pelos deuses."
+		},
+		{
+			"name": "Liv",
+			"sentence": "Por isso, devemos sempre os agradecer em forma de orações e oferendas, assim, eles continuarão nos dando suas graças sempre."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Agora, uma memória mais recente, no templo."
+		},
+		{
+			"name": "Liv",
+			"sentence": "Esse é o templo mais especial de Midgard, foi construído pelo próprio Odin milhares de anos atrás, dedicado não a um deus, mas sim a toda Asgard."
+		},
+		{
+			"name": "Liv",
+			"sentence": "Foi aqui, quando eu tinha um pouco mais que a sua idade, que eu descobri o meu propósito nesse mundo e conheci seu pai."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Quem foi meu pai, mãe?"
+		},
+		{
+			"name": "Liv",
+			"sentence": "Quando for a hora, você irá saber."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Então Odin aparece no sonho e diz"
+		},
+		{
+			"name": "Odin",
+			"sentence": "VIDAR! Acorde! Impeça Loki! Todos nós dependemos disso! Midgard clama o seu nome!"
+		}
+	],
+	"sceneName": "Cena3"
+}

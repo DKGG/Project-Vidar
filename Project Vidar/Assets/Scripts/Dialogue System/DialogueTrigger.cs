@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class DialogueTrigger : MonoBehaviour
 {
     private DialogueCollection dialogueList;
     private bool dialogueExecuted = false;
+    private PostProcessVolume postProcessing;
+    private AutoExposure autoExposure;
 
     [SerializeField]
     private string fileName;
+    [SerializeField]
+    private bool fadeInOut = false;
+
     void Start()
     {
         // Open a json.file on the provided path and put it on a DialogueCollection object
-
         if (fileName != null)
         {
             TextAsset jsonTextFile = Resources.Load<TextAsset>("Dialogues/" + fileName);
@@ -36,6 +41,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         dialogueExecuted = true;
         // TODO use singleton?
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogueList);
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogueList, fadeInOut);
     }
 }

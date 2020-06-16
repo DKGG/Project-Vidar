@@ -1,0 +1,29 @@
+{
+	"dialogues": [
+		{
+			"name": "Narrador",
+			"sentence": "Vidar acorda assustado, não sabendo se acredita no sonho ou não, porém seu instinto o diz para acreditar."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Ele olha em volta e vê que o mundo havia mudado e que sua mãe não está lá. Ele sai de casa e vai em direção ao templo em busca dela."
+		},
+		{
+			"name": "Bem-vindo!",
+			"sentence": "Esse é o segundo teste do nosso jogo! Versão Alpha 1.3 - antes mesmo do beta. Você jogará uma versão do tutorial que foi planejada especialmente para esse teste e uma versão inicial do level 1."
+		},
+		{
+			"name": "Importante!",
+			"sentence": "A partir da versão beta, você terá que progredir no jogo para liberar todas as mecânicas, porém, para fins de desenvolvimento,"
+		},
+		{
+			"name": "Importante!",
+			"sentence": "queremos e precisamos que teste todas agora, e por causa disso, é possível perceber alguns erros de continuidade na narrativa."
+		},
+		{
+			"name": "Até mais!",
+			"sentence": "Por enquanto isso é tudo! Siga as instruções e divirta-se!"
+		}
+	],
+	"sceneName": "Cena2"
+}

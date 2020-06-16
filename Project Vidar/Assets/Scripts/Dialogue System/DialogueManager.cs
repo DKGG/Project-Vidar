@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -22,25 +23,37 @@ public class DialogueManager : MonoBehaviour
     private Queue<Dialogue> dialogues;
     private AudioManager audioManager;
     public List<string> endedScenes;
-
+    private PostProcessVolume postProcessing;
+    private AutoExposure autoExposure;
+    private bool fadeInOut;
     //private Sprite dialogueEmoteSprite;
 
-    // Start is called before the first frame update
- 
+    private void Awake()
+    {
+        postProcessing = GameObject.Find("Main PostProcessingVolume").GetComponent<PostProcessVolume>();
+        postProcessing.profile.TryGetSettings(out autoExposure);
+    }
+
     void Start()
     {
         dialogues = new Queue<Dialogue>();
         audioManager = FindObjectOfType<AudioManager>();
     }
+
     void Update()
     {
         if (PlayerEntity.getIsOnDialogue() && PlayerEntity.getButtonJump())
         {
             DisplayNextSentence();
         }
+
+        if (fadeInOut && !endedScenes.Contains(currentScene))
+        {
+            autoExposure.minLuminance.value += 4f * Time.deltaTime;
+        }
     }
 
-    public void StartDialogue(DialogueCollection dialogueList)
+    public void StartDialogue(DialogueCollection dialogueList, bool fadeInOut)
     {
         // Lock player movement and by so make way to use Jump/Space bar key here
         PlayerEntity.setIsOnDialogue(true);
@@ -48,7 +61,7 @@ public class DialogueManager : MonoBehaviour
         AnimatorManager.setStateIdle();
         audioManager.Stop("grass");
         audioManager.Stop("wood");
-
+        this.fadeInOut = fadeInOut;
 
         dialogues.Clear();
         currentScene = dialogueList.sceneName;
@@ -96,6 +109,7 @@ public class DialogueManager : MonoBehaviour
         oldDialogue = dialogue;
     }
 
+
     // TODO animate on a more efficient way?
     IEnumerator TypeSentence(string sentence)
     {
@@ -118,11 +132,19 @@ public class DialogueManager : MonoBehaviour
         crIsRunning = false;
     }
 
+    IEnumerator fadeOutCor()
+    {
+        while (autoExposure.minLuminance.value > 0)
+        {
+            autoExposure.minLuminance.value -= 4f * Time.deltaTime;
+        }
+        yield return null;
+    }
+
     void EndDialogue()
     {
         PlayerEntity.setIsOnDialogue(false);
-        fadeInOut.fadeIn = false;
-        fadeInOut.fadeOut = true;
+        StartCoroutine(fadeOutCor());
         endedScenes.Add(currentScene);
         animator.SetBool("IsOpen", false);
     }

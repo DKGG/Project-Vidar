@@ -1,0 +1,65 @@
+{
+	"dialogues": [
+		{
+			"name": "Liv",
+			"sentence": "Lembre-se, filho, devemos sempre viver uma vida justa e honrosa, sendo valentes, mas sábios. "
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Por que, mãe? "
+		},
+		{
+			"name": "Liv",
+			"sentence": "Para que os deuses sempre estejam ao nosso lado e nos protejam do mal, daqui até o Ragnrök."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "E o que é o Ragnarök?"
+		},
+		{
+			"name": "Liv",
+			"sentence": "Nada com que você precise se preocupar no momento, querido. Agora durma, temos muito a fazer amanhã."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Me conta uma história antes?"
+		},
+		{
+			"name": "Liv",
+			"sentence": "Qual?"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Aquela em que Thor se veste de noiva!"
+		},
+		{
+			"name": "Liv",
+			"sentence": "Tudo bem, vamos lá..."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Após Vidar dormir, Liv vai ao templo rezar. Uma tentativa de falar com Odin, pois ela estava muito preocupada com um mau pressentimento."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Vidar tem um sonho, onde ele vê Loki e Odin tendo uma discussão."
+		},
+		{
+			"name": "Loki",
+			"sentence": "VOCÊS VÃO PAGAR PELO O QUE FIZERAM COMIGO! ASGARD E MIDGARD IRÃO CAIR E TUDO COMEÇA AGORA!"
+		},
+		{
+			"name": "Odin",
+			"sentence": "LOKI! NÃO!"
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Loki então desaparece e Odin grita diretamente a Vidar."
+		},
+		{
+			"name": "Odin",
+			"sentence": "GAROTO! ACORDE! VÁ SALVAR SUA MÃE!"
+		}
+	],
+	"sceneName": "Cena1"
+}
