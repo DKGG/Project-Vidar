@@ -46,7 +46,7 @@ public class MoveObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("ContinuosBox"))
+        if (other.gameObject.CompareTag("ContinuosBox") && !triggered)
             triggered = !triggered;
     }
 }
