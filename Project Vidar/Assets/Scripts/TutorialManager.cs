@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField]
     private MessageManager messageManager;
+    [SerializeField]
+    private GameObject cena2Trigger;
     private int tutorialLevel = 1;
     private bool corroutine = false;
     private bool completed = false;
+    private bool canStartTuto = false;
     private string checkpoint;
     private GameObject freezeAim;
+    private DialogueManager dialogueManager;
+    private PostProcessVolume postProcessing;
+    private AutoExposure autoExposure;
 
     private void Start()
     {
@@ -21,21 +28,42 @@ public class TutorialManager : MonoBehaviour
         PowersManager.strengthCanvas.alpha = 0;
         PowersManager.doubleJumpCanvas.alpha = 0;
         PowersManager.freezeCanvas.alpha = 0;
+
+        dialogueManager = FindObjectOfType<DialogueManager>();
+
+        postProcessing = GameObject.Find("Main PostProcessingVolume").GetComponent<PostProcessVolume>();
+        postProcessing.profile.TryGetSettings(out autoExposure);
     }
 
     void Update()
     {
+        if (dialogueManager.endedScenes.Contains("Cena1"))
+        {
+            cena2Trigger.SetActive(true);
+        }
+        else
+        {
+            autoExposure.minLuminance.value = 9f;
+        }
+
         if (PlayerEntity.getIsOnDialogue())
+        {
             return;
+        }
+
+        if (dialogueManager.endedScenes.Contains("Cena2"))
+        {
+            canStartTuto = true;
+        }
 
         #region Dialogue Routine
 
-        if (!corroutine)
+        if (!corroutine && canStartTuto)
         {
             switch (tutorialLevel)
             {
                 case 1:
-                    messageManager.DisplayMessage("Você pode acessar o menu apertando ESC");
+                    messageManager.DisplayMessage("Acesse o menu/pause apertando ESC");
                     if (Input.GetKeyDown(KeyCode.Escape))
                     {
                         StartCoroutine(changeLevel());
