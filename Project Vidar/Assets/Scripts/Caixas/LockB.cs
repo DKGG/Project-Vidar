@@ -180,6 +180,13 @@ public class LockB : MonoBehaviour
             {                
                 FindObjectOfType<AudioManager>().stopAll();
                 FindObjectOfType<AudioManager>().Play("throw");
+                playerGameObject.SetParent(null);
+                PlayerEntity.setLocked(false);
+                StartCoroutine(ToggleChargeAnimation());
+                FindObjectOfType<AudioManager>().stopAll();
+                PlayerEntity.getBoxLocked().GetComponentInParent<boxMovement>().enabled = false;               
+                PlayerEntity.setIsInsideOfSimple(false);
+                PlayerEntity.setIsInsideOfContinuous(false);
                 if (this.gameObject.GetComponent<LockB>().movimento == DirecaoForca.normal)
                 {                  
 
