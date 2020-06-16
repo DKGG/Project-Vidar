@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1558244655524119699}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   movementEnabled: 1
   positiveDirection: 1
   speed: 5
+  deadly: 0
   platformMovement: 2
   platformPhysics: 0
 --- !u!54 &2594078775120196786
