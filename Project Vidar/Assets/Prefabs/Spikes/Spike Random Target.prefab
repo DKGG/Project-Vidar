@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePattern: 2
   movementEnabled: 1
-  speed: 10
+  speed: 15
   playerTarget: {fileID: 0}
   deadly: 1
   target: {fileID: 0}
