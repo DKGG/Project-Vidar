@@ -52,5 +52,11 @@ public class RespawnAssistant : MonoBehaviour
         {
             transform.position = PlayerEntity.getSpawnPoint();
         }
+        if(other.GetComponent<TargetSpike>() && other.GetComponent<TargetSpike>().deadly)
+        {
+            transform.position = PlayerEntity.getSpawnPoint();
+            FindObjectOfType<AudioManager>().stopAllAmbients();
+            FindObjectOfType<AudioManager>().Play("ambient2");
+        }
     }
 }

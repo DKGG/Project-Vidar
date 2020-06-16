@@ -62,8 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePattern: 2
   movementEnabled: 1
-  speed: 3
+  speed: 10
   playerTarget: {fileID: 0}
+  deadly: 1
   target: {fileID: 0}
 --- !u!65 &8471914313331942254
 BoxCollider:
@@ -76,8 +77,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.7, y: 3, z: 0.1}
-  m_Center: {x: 1.25, y: 1.5, z: 0.1}
+  m_Size: {x: 3.0014062, y: 3.299806, z: 2.338932}
+  m_Center: {x: 1.2276182, y: 1.649903, z: -0.9660359}
 --- !u!54 &1196096320312629958
 Rigidbody:
   m_ObjectHideFlags: 0

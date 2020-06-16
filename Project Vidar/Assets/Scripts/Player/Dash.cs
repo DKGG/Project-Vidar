@@ -35,7 +35,7 @@ public class Dash : MonoBehaviour
              //FindObjectOfType<AudioManager>().Stop("grass");
             PlayerEntity.setIsPlayingGrassStep(false);
            
-            dashCooldown = 2.0f;
+            dashCooldown = 3.0f;
 
             StartCoroutine(DashReset());
         }

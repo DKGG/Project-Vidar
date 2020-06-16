@@ -142,7 +142,7 @@ public class Movement : MonoBehaviour
         else if (other.gameObject.name.Equals("SoundTriggerEndBoss") && !FindObjectOfType<AudioManager>().getAmbientThatIsPlaying().Equals("ambientEndBoss"))
         {
             FindObjectOfType<AudioManager>().stopAllAmbients();
-            FindObjectOfType<AudioManager>().Play("ambientBoss");
+            FindObjectOfType<AudioManager>().Play("ambientEndBoss");
         }
     }
 }

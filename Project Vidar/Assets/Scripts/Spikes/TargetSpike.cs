@@ -18,9 +18,10 @@ public class TargetSpike : MonoBehaviour
     [SerializeField]
     private bool movementEnabled = true;
     [SerializeField]
-    private float speed = 2f;
+    public float speed = 4f;
     [SerializeField]
     private GameObject playerTarget;
+    [SerializeField] public bool deadly = false;
 
     [Space]
     [Header("Script Variables")]
