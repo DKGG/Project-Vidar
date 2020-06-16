@@ -6,6 +6,13 @@ public class PlatformLever : MonoBehaviour
 {
     [SerializeField] MovingPlatform platformTarget;
 
+    Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponentInChildren<Animator>();
+    }
+
     private void OnTriggerStay(Collider other)
     {
         // Can be through trigger
@@ -19,6 +26,8 @@ public class PlatformLever : MonoBehaviour
     private void ActivatePlatform()
     {
         platformTarget.movementEnabled = true;
+        if (anim != null)
+            anim.SetBool("turn", true);
     }
 
     private void DeactivatePlatform()
