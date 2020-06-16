@@ -32,6 +32,7 @@ public static class PlayerEntity
     private static GameObject PlayerPrefab;
 
     private static Vector3 spawnPoint = new Vector3(170.55f, 45, 135.3f);
+    private static float bossSpawner = 0f;
 
     #endregion
 
@@ -315,6 +316,16 @@ public static class PlayerEntity
     public static void setSpawnPoint(Vector3 value)
     {
         spawnPoint = value;
+    }
+
+    public static float getBossSpawner()
+    {
+        return bossSpawner;
+    }
+
+    public static void setBossSpawner(float value)
+    {
+        bossSpawner = value;
     }
 
     public static bool getDashing()

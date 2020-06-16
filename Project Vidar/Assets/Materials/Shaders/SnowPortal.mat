@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PortalMaterialTrue
+  m_Name: SnowPortal
   m_Shader: {fileID: 4800000, guid: 6645abca1332443c5b7e4424e8c0a7e4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -79,5 +79,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.3517815, g: 0.77254903, b: 0.23529412, a: 0.28235295}
+    - _Color: {r: 0.23529412, g: 0.6728956, b: 0.77254903, a: 0.28235295}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

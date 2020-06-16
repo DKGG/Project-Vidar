@@ -243,7 +243,6 @@ public class LockB : MonoBehaviour
         if (collision.gameObject.CompareTag("grass") && BoxRespawn.Respawning == false)
         {
             noChao = true;
-            
         }
 
         if(collision.gameObject.CompareTag("paraBloco") && !noChao)
@@ -279,7 +278,7 @@ public class LockB : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("grass"))
+        if (collision.gameObject.CompareTag("grass") || collision.gameObject.CompareTag("stone"))
         {
             noChao = false;            
         }        

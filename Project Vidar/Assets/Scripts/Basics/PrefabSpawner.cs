@@ -33,4 +33,13 @@ public class PrefabSpawner : MonoBehaviour
     {
         return Time.time >= nextSpawnTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("ContinuosBox"))
+        {
+            PlayerEntity.setBossSpawner(PlayerEntity.getBossSpawner() + 1);
+            Destroy(this.gameObject);
+        }
+    }
 }
