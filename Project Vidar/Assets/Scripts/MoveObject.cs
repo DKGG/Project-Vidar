@@ -33,7 +33,8 @@ public class MoveObject : MonoBehaviour
             toMove.transform.position = Vector3.Lerp(toMove.transform.position, moveTo.transform.position, Time.deltaTime * speed);
             if (scriptCam != null && !scriptCam.active)
                 scriptCam.active = true;
-            anim.SetBool("turn", true);
+            if (anim != null)
+                anim.SetBool("turn", true);
         }
     }
 
