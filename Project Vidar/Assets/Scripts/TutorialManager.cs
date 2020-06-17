@@ -103,7 +103,7 @@ public class TutorialManager : MonoBehaviour
                     break;
 
                 case 5:
-                    messageManager.DisplayMessage("O dash pode ser muito útil para prolongar pulos ou simplesmente chegar mais rápido onde você quer.", "Ele possui um tempo de recarga de 2 segundos.", 0.1f);
+                    messageManager.DisplayMessage("O dash pode ser muito útil para prolongar pulos ou simplesmente chegar mais rápido onde você quer.", "Ele possui um tempo de recarga de 3 segundos.", 0.1f);
                     if (!PlayerEntity.getGrounded() && PlayerEntity.getKeyLeftShift())
                     {
                         StartCoroutine(changeLevel());

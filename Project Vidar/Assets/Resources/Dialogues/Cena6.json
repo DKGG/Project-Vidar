@@ -1,0 +1,69 @@
+{
+	"dialogues": [
+		{
+			"name": "Thor",
+			"sentence": "Vidar! Meu pai e eu sabíamos que você seria capaz de superar o desafio!"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "E então?! Me provei digno?"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Sem sombra de dúvidas, irmão!"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "... irmão ?"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Bom, essa é a verdade que você buscava: somos irmãos. Meios-irmãos, na verdade, você  é um semideus."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "O que?! C-c-como assim? Eu sou filho de..."
+		},
+		{
+			"name": "Thor",
+			"sentence": "Sim, assim como eu, você é filho de Odin. Bem-vindo à família."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "C-c-como?! Por que minha mãe ou Odin nunca me contaram isso?! Essa era a “hora certa” que ela tanto falava?!"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Talvez eu tenha apressado as coisas te contando isso agora, mas, devido a sua responsabilidade, você precisava saber o quanto antes."
+		},
+		{
+			"name": "Thor",
+			"sentence": "Não sei nada sobre ou se eles tinham planos sobre isso, então não posso te dizer suas intenções."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "E o que você pode me dizer? Eu não entendo mais o que está acontecendo! Meu mundo virou do avesso!"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Ontem eu saí para caçar com a minha mãe e então ela é petrificada e eu passo aparentemente semanas desacordado e agora estou conversando com os deuses e sou FILHO DE ODIN?!"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Infelizmente eu não tenho mais tempo, irmão. Você terá que encontrar o resto das respostas no caminho."
+		},
+		{
+			"name": "Thor",
+			"sentence": "O que posso te dizer no momento é que, enquanto nós deuses lutamos contra Loki aqui em Asgard, você é nossa carta na manga em Midgard."
+		},
+		{
+			"name": "Thor",
+			"sentence": "Acreditamos e confiamos em você, sempre o fizemos. Adeus, Vidar, boa sorte em seu caminho, vá ao próximo desafio."
+		},
+		{
+			"name": "Narrador",
+			"sentence": "Thor se despede deixando mais perguntas do que respostas e Vidar não pode fazer nada a não ser seguir em frente."
+		}
+	],
+	"sceneName": "Cena6"
+}

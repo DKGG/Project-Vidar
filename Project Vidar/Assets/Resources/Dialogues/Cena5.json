@@ -1,0 +1,65 @@
+{
+	"dialogues": [
+		{
+			"name": "...",
+			"sentence": "Vidar!"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Q-Quem é você?"
+		},
+		{
+			"name": "...",
+			"sentence": "Eu sou Thor! Filho de Odin!"
+		},
+		{
+			"name": "Vidar",
+			"sentence": "T-T-THOR?!"
+		},
+		{
+			"name": "Thor",
+			"sentence": "O primeiro e único! Sem mais delongas, vejo que você pegou o martelo... "
+		},
+		{
+			"name": "Vidar",
+			"sentence": "E-eu não deveria?! Me perdoe, grande Thor, mas ele sumiu!"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Calma garoto, está tudo bem, o martelo não sumiu, ele está dentro de você. "
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Dentro de mim?"
+		},
+		{
+			"name": "Thor",
+			"sentence": "O martelo que você absorveu era uma benção, uma benção vinda de mim. Agora você possui parte da minha força e será capaz de chamar alguns deuses através de seus totens e templos, assim como fez comigo."
+		},
+		{
+			"name": "Thor",
+			"sentence": "Enquanto for digno, esse poder continuará dentro de você e crescerá."
+		},
+		{
+			"name": "Vidar",
+			"sentence": "Uau... a força de Thor, poder falar com os deuses... Mas... por que eu?"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Bom, você é o único em Midgard digno e capaz de receber esse poder. "
+		},
+		{
+			"name": "Vidar",
+			"sentence": "O que eu tenho de especial?!"
+		},
+		{
+			"name": "Thor",
+			"sentence": "Você é digno de receber o poder, mas talvez não seja digno de saber a verdade, algo que eu não posso tirar de você caso precise. "
+		},
+		{
+			"name": "Thor",
+			"sentence": "Supere o desafio, prove-se digno e lhe direi a verdade."
+		}
+	],
+	"sceneName": "Cena5"
+}
